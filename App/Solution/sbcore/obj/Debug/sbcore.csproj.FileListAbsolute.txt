@@ -1,0 +1,5 @@
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\sbcore\bin\Debug\sbcore.dll
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\sbcore\bin\Debug\sbcore.pdb
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\sbcore\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\sbcore\obj\Debug\sbcore.dll
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\sbcore\obj\Debug\sbcore.pdb

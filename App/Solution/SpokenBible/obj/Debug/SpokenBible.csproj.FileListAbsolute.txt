@@ -1,0 +1,12 @@
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.pdb
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\MainWindow.baml
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\MainWindow.g.cs
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\App.g.cs
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible_MarkupCompile.cache
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.g.resources
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.Properties.Resources.resources
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.csproj.GenerateResource.Cache
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.exe
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.pdb
