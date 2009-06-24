@@ -7,5 +7,8 @@ namespace sbcore.Model
 {
     class Traducao
     {
+        public string Idioma { get; set; }
+        public string Nome { get; set; }
+        public IList<Testamento> Testamentos { get; set; }
     }
 }

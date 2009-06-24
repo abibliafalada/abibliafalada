@@ -7,5 +7,7 @@ namespace sbcore.Model
 {
     class Capitulo
     {
+        public int Numero { get; set; }
+        public IList<Versiculo> Versiculos { get; set; }
     }
 }
