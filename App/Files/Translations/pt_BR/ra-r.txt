@@ -1,39 +1,40 @@
-Idioma: PortuguÍs Brasileiro
-TraduÁ„o: Revista e Atualizada
-Livro: GÍnesis
-CapÌtulo: 1
-1 - No princÌpio, criou Deus os cÈus e a terra.
-2 - A terra, porÈm, estava sem forma e vazia; havia trevas sobre a face do abismo, e o EspÌrito de Deus pairava por sobre as ·guas.
+Idioma: Portugu√™s Brasileiro
+Traducao: RA - Revista e Atualizada
+Testamento: AT - Antigo Testamento
+Livro: GN - G√™nesis
+Cap√≠tulo: 1
+1 - No princ√≠pio, criou Deus os c√©us e a terra.
+2 - A terra, por√©m, estava sem forma e vazia; havia trevas sobre a face do abismo, e o Esp√≠rito de Deus pairava por sobre as √°guas.
 3 - Disse Deus: Haja luz; e houve luz.
-CapÌtulo:  2
-1 - Assim, pois, foram acabados os cÈus e a terra e todo o seu exÈrcito.
-2 - E, havendo Deus terminado no dia sÈtimo a sua obra, que fizera, descansou nesse dia de toda a sua obra que tinha feito.
-3 - E abenÁoou Deus o dia sÈtimo e o santificou; porque nele descansou de toda a obra que, como Criador, fizera.
-CapÌtulo:  3
-1 - Mas a serpente, mais sagaz que todos os animais selv·ticos que o SENHOR Deus tinha feito, disse ‡ mulher: … assim que Deus disse: N„o comereis de toda ·rvore do jardim?
-2 - Respondeu-lhe a mulher: Do fruto das ·rvores do jardim podemos comer,
-3 - mas do fruto da ·rvore que est· no meio do jardim, disse Deus: Dele n„o comereis, nem tocareis nele, para que n„o morrais.
-4 - Ent„o, a serpente disse ‡ mulher: … certo que n„o morrereis.
-5 - Porque Deus sabe que no dia em que dele comerdes se vos abrir„o os olhos e, como Deus, sereis conhecedores do bem e do mal.
-6 - Vendo a mulher que a ·rvore era boa para se comer, agrad·vel aos olhos e ·rvore desej·vel para dar entendimento, tomou-lhe do fruto e comeu e deu tambÈm ao marido, e ele comeu.
-Livro:   xodo
-CapÌtulo:  1
-1 - S„o estes os nomes dos filhos de Israel que entraram com JacÛ no Egito; cada um entrou com sua famÌlia:
-2 - R˙ben, Sime„o, Levi e Jud·,
+Cap√≠tulo:  2
+1 - Assim, pois, foram acabados os c√©us e a terra e todo o seu ex√©rcito.
+2 - E, havendo Deus terminado no dia s√©timo a sua obra, que fizera, descansou nesse dia de toda a sua obra que tinha feito.
+3 - E aben√ßoou Deus o dia s√©timo e o santificou; porque nele descansou de toda a obra que, como Criador, fizera.
+Cap√≠tulo:  3
+1 - Mas a serpente, mais sagaz que todos os animais selv√°ticos que o SENHOR Deus tinha feito, disse √† mulher: √â assim que Deus disse: N√£o comereis de toda √°rvore do jardim?
+2 - Respondeu-lhe a mulher: Do fruto das √°rvores do jardim podemos comer,
+3 - mas do fruto da √°rvore que est√° no meio do jardim, disse Deus: Dele n√£o comereis, nem tocareis nele, para que n√£o morrais.
+4 - Ent√£o, a serpente disse √† mulher: √â certo que n√£o morrereis.
+5 - Porque Deus sabe que no dia em que dele comerdes se vos abrir√£o os olhos e, como Deus, sereis conhecedores do bem e do mal.
+6 - Vendo a mulher que a √°rvore era boa para se comer, agrad√°vel aos olhos e √°rvore desej√°vel para dar entendimento, tomou-lhe do fruto e comeu e deu tamb√©m ao marido, e ele comeu.
+Livro:  EX - √äxodo
+Cap√≠tulo:  1
+1 - S√£o estes os nomes dos filhos de Israel que entraram com Jac√≥ no Egito; cada um entrou com sua fam√≠lia:
+2 - R√∫ben, Sime√£o, Levi e Jud√°,
 3 - Issacar, Zebulom e Benjamim,
-4 - D„, Naftali, Gade e Aser.
-5 - Todas as pessoas, pois, que descenderam de JacÛ foram setenta; JosÈ, porÈm, estava no Egito.
-6 - Faleceu JosÈ, e todos os seus irm„os, e toda aquela geraÁ„o.
+4 - D√£, Naftali, Gade e Aser.
+5 - Todas as pessoas, pois, que descenderam de Jac√≥ foram setenta; Jos√©, por√©m, estava no Egito.
+6 - Faleceu Jos√©, e todos os seus irm√£os, e toda aquela gera√ß√£o.
 7 - Mas os filhos de Israel foram fecundos, e aumentaram muito, e se multiplicaram, e grandemente se fortaleceram, de maneira que a terra se encheu deles.
-8 - Entrementes, se levantou novo rei sobre o Egito, que n„o conhecera a JosÈ.
-9 - Ele disse ao seu povo: Eis que o povo dos filhos de Israel È mais numeroso e mais forte do que nÛs.
-10 - Eia, usemos de ast˙cia para com ele, para que n„o se multiplique, e seja o caso que, vindo guerra, ele se ajunte com os nossos inimigos, peleje contra nÛs e saia da terra.
-11 - E os egÌpcios puseram sobre eles feitores de obras, para os afligirem com suas cargas. E os israelitas edificaram a FaraÛ as cidades-celeiros, Pitom e RamessÈs.
+8 - Entrementes, se levantou novo rei sobre o Egito, que n√£o conhecera a Jos√©.
+9 - Ele disse ao seu povo: Eis que o povo dos filhos de Israel √© mais numeroso e mais forte do que n√≥s.
+10 - Eia, usemos de ast√∫cia para com ele, para que n√£o se multiplique, e seja o caso que, vindo guerra, ele se ajunte com os nossos inimigos, peleje contra n√≥s e saia da terra.
+11 - E os eg√≠pcios puseram sobre eles feitores de obras, para os afligirem com suas cargas. E os israelitas edificaram a Fara√≥ as cidades-celeiros, Pitom e Ramess√©s.
 12 - Mas, quanto mais os afligiam, tanto mais se multiplicavam e tanto mais se espalhavam; de maneira que se inquietavam por causa dos filhos de Israel;
-CapÌtulo:  2
+Cap√≠tulo:  2
 1 - Foi-se um homem da casa de Levi e casou com uma descendente de Levi.
-2 - E a mulher concebeu e deu ‡ luz um filho; e, vendo que era formoso, escondeu-o por trÍs meses.
-3 - N„o podendo, porÈm, escondÍ-lo por mais tempo, tomou um cesto de junco, calafetou-o com betume e piche e, pondo nele o menino, largou-o no carriÁal ‡ beira do rio.
-4 - A irm„ do menino ficou de longe, para observar o que lhe haveria de suceder.
-5 - Desceu a filha de FaraÛ para se banhar no rio, e as suas donzelas passeavam pela beira do rio; vendo ela o cesto no carriÁal, enviou a sua criada e o tomou.
-6 - Abrindo-o, viu a crianÁa; e eis que o menino chorava. Teve compaix„o dele e disse: Este È menino dos hebreus.
+2 - E a mulher concebeu e deu √† luz um filho; e, vendo que era formoso, escondeu-o por tr√™s meses.
+3 - N√£o podendo, por√©m, escond√™-lo por mais tempo, tomou um cesto de junco, calafetou-o com betume e piche e, pondo nele o menino, largou-o no carri√ßal √† beira do rio.
+4 - A irm√£ do menino ficou de longe, para observar o que lhe haveria de suceder.
+5 - Desceu a filha de Fara√≥ para se banhar no rio, e as suas donzelas passeavam pela beira do rio; vendo ela o cesto no carri√ßal, enviou a sua criada e o tomou.
+6 - Abrindo-o, viu a crian√ßa; e eis que o menino chorava. Teve compaix√£o dele e disse: Este √© menino dos hebreus.

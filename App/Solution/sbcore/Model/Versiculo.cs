@@ -5,9 +5,20 @@ using System.Text;
 
 namespace sbcore.Model
 {
-    class Versiculo
+    public class Versiculo
     {
-        public int numero { get; set; }
-        public string descricao { get; set; }
+        #region Atributos e propriedades
+        public int Numero { get; set; }
+        public string Descricao { get; set; }
+        public Capitulo Capitulo;
+        #endregion
+
+        #region Construtor
+        public Versiculo(int numero, string descricao)
+        {
+            Numero = numero;
+            Descricao = descricao;
+        }
+        #endregion
     }
 }

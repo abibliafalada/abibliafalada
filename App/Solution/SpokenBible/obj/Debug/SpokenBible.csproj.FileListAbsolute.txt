@@ -12,3 +12,5 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.pdb
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\sbcore.dll
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\sbcore.pdb
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.dll
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.xml
