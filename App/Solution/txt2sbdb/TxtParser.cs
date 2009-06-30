@@ -22,6 +22,7 @@ namespace txt2sbdb
 
         internal void parse(string linha)
         {
+            char[] ahifen = { '-' };
             string tipo;
             string conteudo;
 
@@ -38,11 +39,11 @@ namespace txt2sbdb
                         OnTraducaoFound(new Traducao(idioma, conteudo));
                         break;
                     case "testamento":
-                        string[] testamento = conteudo.Split('-');
+                        string[] testamento = conteudo.Split(ahifen);
                         OnTestamentoFound(new Testamento(testamento[0].Trim(), testamento[1].Trim()));
                         break;
                     case "livro":
-                        string[] livro = conteudo.Split('-');
+                        string[] livro = conteudo.Split(ahifen);
                         OnLivroFound(new Livro(++numeroLivro, livro[0].Trim(), livro[1].Trim()));
                         break;
                     case "capítulo":
@@ -50,13 +51,15 @@ namespace txt2sbdb
                         OnCapituloFound(new Capitulo(Convert.ToInt32(conteudo)));
                         break;
                     default:
-                        OnVersiculoFound(new Versiculo(++numeroVersiculo, conteudo));
+                        string[] versiculo = linha.Split(ahifen, 2);
+                        OnVersiculoFound(new Versiculo(++numeroVersiculo, versiculo[1].Trim()));
                         break;
                 }
             }
             else
             {
-                OnVersiculoFound(new Versiculo(++numeroVersiculo, linha));
+                string[] versiculo = linha.Split(ahifen, 2);
+                OnVersiculoFound(new Versiculo(++numeroVersiculo, versiculo[1].Trim()));
             }
         }
     }

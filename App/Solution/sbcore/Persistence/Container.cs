@@ -8,7 +8,7 @@ namespace sbcore.Persistence
 {
     public class Container
     {
-        private static string file = @"database.yap";
+        private static string file = @"..\..\..\..\Files\SbDbs\database.yap";
 
         private static IObjectContainer container = null;
 

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
+using sbcore.Model.Interface;
 
 namespace sbcore.Model
 {
-    public class Livro
+    public class Livro : ISbItem
     {
         #region Atributos e propriedades
         private IList<Capitulo> capitulos;
@@ -19,9 +21,7 @@ namespace sbcore.Model
         {
             get
             {
-                if (capitulos == null)
-                    capitulos = new List<Capitulo>();
-                return capitulos;
+                return new ReadOnlyCollection<Capitulo>(capitulos);
             }
         }
         #endregion
@@ -32,6 +32,7 @@ namespace sbcore.Model
             Numero = numero;
             Acronimo = acronimo;
             Nome = nome;
+            capitulos = new List<Capitulo>();
         }
         #endregion
 
@@ -39,9 +40,23 @@ namespace sbcore.Model
         public Capitulo AddCapitulo(Capitulo capitulo)
         {
             capitulo.Livro = this;
-            this.Capitulos.Add(capitulo);
+            this.capitulos.Add(capitulo);
             return capitulo;
         }
+        #endregion
+
+        #region ISbItem Members
+
+        public string Display
+        {
+            get { return Nome; }
+        }
+
+        public IEnumerable<ISbItem> Children
+        {
+            get { return Enumerable.Cast<ISbItem>(Capitulos); }
+        }
+
         #endregion
     }
 }

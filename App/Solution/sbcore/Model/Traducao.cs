@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using sbcore.Model.Interface;
 
 namespace sbcore.Model
 {
-    public class Traducao
+    public class Traducao : ISbItem
     {
         #region Atributos e propriedades
         public IList<Testamento> testamentos;
@@ -14,7 +15,7 @@ namespace sbcore.Model
         public string Idioma { get; set; }
         public string Nome { get; set; }
 
-        public ReadOnlyCollection<Testamento> Testamentos
+        public IList<Testamento> Testamentos
         {
             get
             {
@@ -39,6 +40,20 @@ namespace sbcore.Model
             this.testamentos.Add(testamento);
             return testamento;
         }
+        #endregion
+
+        #region ISbItem<Livro> Members
+
+        public string Display
+        {
+            get { return Nome; }
+        }
+
+        public IEnumerable<ISbItem> Children
+        {
+            get { return Enumerable.Cast<ISbItem>(Testamentos); }
+        }
+
         #endregion
     }
 }

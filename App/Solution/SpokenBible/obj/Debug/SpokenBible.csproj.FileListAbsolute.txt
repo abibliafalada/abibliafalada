@@ -1,8 +1,6 @@
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.pdb
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\MainWindow.baml
-C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\MainWindow.g.cs
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\App.g.cs
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible_MarkupCompile.cache
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.g.resources
@@ -14,3 +12,8 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\sbcore.pdb
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.dll
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.xml
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\MainWindow.baml
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\MainWindow.g.cs
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.Linq.dll
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Cecil.FlowAnalysis.dll
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\Mono.Cecil.dll

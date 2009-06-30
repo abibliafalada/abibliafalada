@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
+using sbcore.Model.Interface;
 
 namespace sbcore.Model
 {
-    public class Capitulo
+    public class Capitulo : ISbItem
     {
         #region Atributos e propriedades
         private IList<Versiculo> versiculos;
@@ -17,9 +19,7 @@ namespace sbcore.Model
         {
             get
             {
-                if (versiculos == null)
-                    versiculos = new List<Versiculo>();
-                return versiculos;
+                return new ReadOnlyCollection<Versiculo>(versiculos);
             }
         }
         #endregion
@@ -28,6 +28,7 @@ namespace sbcore.Model
         public Capitulo(int numero)
         {
             Numero = numero;
+            versiculos = new List<Versiculo>();
         }
         #endregion
 
@@ -35,9 +36,23 @@ namespace sbcore.Model
         public Versiculo AddVersiculo(Versiculo versiculo)
         {
             versiculo.Capitulo = this;
-            this.Versiculos.Add(versiculo);
+            this.versiculos.Add(versiculo);
             return versiculo;
         }
+        #endregion
+
+        #region ISbItem Members
+
+        public string Display
+        {
+            get { return Numero.ToString(); }
+        }
+
+        public IEnumerable<ISbItem> Children
+        {
+            get { return Enumerable.Cast<ISbItem>(Versiculos); }
+        }
+
         #endregion
     }
 }

@@ -11,17 +11,34 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using sbcore.Model;
+using sbcore.Model.Interface;
+using SpokenBible.Presenter;
 
-namespace SpokenBible
+namespace SpokenBible.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        MainPresenter presenter = null;
+
+        public MainWindow(MainPresenter presenter)
         {
+            this.presenter = presenter;
             InitializeComponent();
+        }
+
+        public void ShowContent(ISbItem item)
+        {
+            foreach (ISbItem i in item.Children)
+            {
+                Paragraph p = new Paragraph();
+                p.Inlines.Add(i.Display);
+                document.Blocks.Add(p);
+                ShowContent(i);
+            }
         }
     }
 }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Capitulo.cs" />
+    <Compile Include="Model\Interface\ISbItem.cs" />
     <Compile Include="Model\Livro.cs" />
     <Compile Include="Model\Testamento.cs" />
     <Compile Include="Model\Traducao.cs" />
