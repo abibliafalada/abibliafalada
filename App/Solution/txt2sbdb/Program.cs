@@ -24,7 +24,7 @@ namespace txt2sbdb
 
         public Program()
         {
-            string arquivo = @"..\..\..\..\Files\Translations\pt_BR\ra-r.txt";
+            string arquivo = @"..\..\..\..\Files\Translations\pt_BR\ra.txt";
 
             Console.WriteLine("--- SpokenBible: file.txt to SpokenBible DataBase file converter ---");
 
