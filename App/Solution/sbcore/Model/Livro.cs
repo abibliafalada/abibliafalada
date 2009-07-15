@@ -57,6 +57,10 @@ namespace sbcore.Model
             get { return Enumerable.Cast<ISbItem>(Capitulos); }
         }
 
+        public override string ToString()
+        {
+            return this.Display;
+        }
         #endregion
     }
 }

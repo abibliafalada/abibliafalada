@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using sbcore.Model;
 using sbcore.Model.Interface;
 using SpokenBible.Presenter;
-using WPFAutoCompleteTextbox;
 
 namespace SpokenBible.View
 {
@@ -24,7 +23,7 @@ namespace SpokenBible.View
     public partial class MainWindow : Window
     {
         MainPresenter presenter = null;
-
+        
         public MainWindow(MainPresenter presenter)
         {
             this.presenter = presenter;
@@ -46,16 +45,19 @@ namespace SpokenBible.View
         {
             set
             {
-                busca.Items.Clear();
+                /*busca.Items.Clear();
                 busca.DisplayMemberPath = "Nome";
+                
                 busca.ItemsSource = value;
-                busca.BringIntoView();
+                busca.BringIntoView();*/
                 //busca.Items.Clear();
-                foreach (Livro l in value)
+
+                /*foreach (Livro l in value)
                 {
-                  //  tbBusca.AddItem(new AutoCompleteEntry(l.Nome, l.Acronimo, l.Nome));
-                }
+                    busca.AddItem(new AutoCompleteEntry(l.Nome, l.Acronimo, l.Nome));
+                }*/
             }
         }
+
     }
 }
