@@ -11,12 +11,18 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <DockPanel LastChildFill="True" Margin="1">
-                            <Button x:Name="PART_ClearFilterButton" Content="X" Width="20"
-                                    ToolTip="Clear Filter" DockPanel.Dock="Right" />
-                            
+                        <DockPanel LastChildFill="True" Margin="1" x:Name="ContentPanel">
+                            <Popup Margin="10,10,0,13" x:Name="PART_Popup" HorizontalAlignment="Left" PlacementTarget="{Binding ElementName=ContentPanel}" 
+                                    VerticalAlignment="Bottom" Width="194" Height="200">
+                                <StackPanel>
+                                    <TextBlock Name="McTextBlock" Background="LightBlue">
+                                        This is popup text
+                                    </TextBlock>
+                                    <Button Content="This is button on a Pupup" />
+                                </StackPanel>
+                            </Popup>
 
-                            <TextBox x:Name="PART_FilterTextBox" Text="{Binding Path=Text, Mode=TwoWay,
+                            <TextBox x:Name="PART_TextBox" Text="{Binding Path=Text, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}"
                                 BorderBrush="{x:Null}" BorderThickness="0" VerticalAlignment="Center" />
                         </DockPanel>

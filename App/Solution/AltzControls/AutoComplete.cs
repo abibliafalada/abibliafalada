@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
+using System.ComponentModel;
 
 /*
  * Seguindo o tutorial:
@@ -54,6 +56,58 @@ namespace AltzControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AutoComplete), new FrameworkPropertyMetadata(typeof(AutoComplete)));
         }
 
+        #region AutoComplete
+        public AutoComplete()
+        {
+            this.LostFocus += this.AutoCompleteLostFocus;
+        }
+
+        private void AutoCompleteLostFocus(object o, EventArgs e)
+        {
+            OcultaPopup();
+        }
+        #endregion
+
+        #region MainWindow
+        private FrameworkElement FindMainWindow(FrameworkElement child)
+        {
+            if (child.Parent == null || child.Parent is Window)
+                return child.Parent as FrameworkElement;
+            if (child.Parent is FrameworkElement)
+                return FindMainWindow(child.Parent as FrameworkElement);
+            return null;
+        }
+
+        protected void OnMainWindowLocationChanged(object o, EventArgs e)
+        {
+            OcultaPopup();
+        }
+        #endregion
+
+        #region Popup
+        private Popup popup = null;
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            this.popup = base.GetTemplateChild("PART_Popup") as Popup;
+            if (this.popup != null)
+            {
+                //this.popup.Click += new RoutedEventHandler(ClearFilterButton_Click);
+            }
+
+            Window mainWindow = FindMainWindow(this) as Window;
+            if (mainWindow != null)
+                mainWindow.LocationChanged += this.OnMainWindowLocationChanged;
+        }
+
+        private void OcultaPopup()
+        {
+            if (this.popup != null && this.popup.IsOpen)
+                this.popup.IsOpen = false;
+        }
+        #endregion
+
         #region Text property
         public static readonly DependencyProperty TextProperty = 
             DependencyProperty.Register("Text", typeof(String), typeof(AutoComplete),
@@ -88,6 +142,8 @@ namespace AltzControls
 
         protected virtual void OnTextChanged(String oldValue, String newValue)
         {
+            if (this.popup != null && !this.popup.IsOpen)
+                this.popup.IsOpen = true;
             this.RaiseEvent(new RoutedEventArgs(AutoComplete.TextChangedEvent, this));
         }
 

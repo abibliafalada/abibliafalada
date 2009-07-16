@@ -29,7 +29,7 @@ namespace SpokenBible.Presenter
 
             window.AutoCompleteItems = new List<Livro>(livros);
 
-            ShowContent(livros.First<Livro>());
+            //ShowContent(livros.First<Livro>());
 
         }
 

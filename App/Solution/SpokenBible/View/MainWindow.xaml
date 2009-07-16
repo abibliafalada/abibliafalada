@@ -8,16 +8,8 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="100*" />
         </Grid.RowDefinitions>
+        
         <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" Text="Teste"></a:AutoComplete>
-        <Popup Margin="10,10,0,13" Name="Popup1" HorizontalAlignment="Left" PlacementTarget="{Binding ElementName=busca}"
-               VerticalAlignment="Bottom" Width="194" Height="200" IsOpen="True">
-            <StackPanel>
-                <TextBlock Name="McTextBlock" Background="LightBlue" >
-                    This is popup text 
-                </TextBlock>
-                <Button Content="This is button on a Pupup" />
-            </StackPanel>
-        </Popup>
 
         <FlowDocumentReader Grid.Row="1" Grid.Column="0" ViewingMode="TwoPage">
             <FlowDocument x:Name="document" ColumnWidth="5000">
