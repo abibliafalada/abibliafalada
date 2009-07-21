@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.ComponentModel;
+using System.Collections;
 
 /*
  * Seguindo o tutorial:
@@ -56,19 +57,33 @@ namespace AltzControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AutoComplete), new FrameworkPropertyMetadata(typeof(AutoComplete)));
         }
 
-        #region AutoComplete
-        public AutoComplete()
+        #region TextBox
+        void TextBoxKeyUp(object sender, KeyEventArgs e)
         {
-            this.LostFocus += this.AutoCompleteLostFocus;
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    OcultaPopup();
+                    break;
+                case Key.Down:
+                    this.list.SelectedIndex = this.list.Items.Count > 0 ? 0 : -1;
+                    ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
+                    item.Focus();
+                    break;
+            }
         }
 
-        private void AutoCompleteLostFocus(object o, EventArgs e)
+        private void TextBoxLostFocus(object o, EventArgs e)
         {
             OcultaPopup();
         }
         #endregion
 
         #region MainWindow
+        private TextBox textbox = null;
+        private Popup popup = null;
+        private ListBox list = null;
+
         private FrameworkElement FindMainWindow(FrameworkElement child)
         {
             if (child.Parent == null || child.Parent is Window)
@@ -82,29 +97,72 @@ namespace AltzControls
         {
             OcultaPopup();
         }
-        #endregion
-
-        #region Popup
-        private Popup popup = null;
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            this.textbox = base.GetTemplateChild("PART_TextBox") as TextBox;
             this.popup = base.GetTemplateChild("PART_Popup") as Popup;
-            if (this.popup != null)
+            this.list = base.GetTemplateChild("PART_ListBox") as ListBox;
+
+            if (this.textbox != null)
             {
-                //this.popup.Click += new RoutedEventHandler(ClearFilterButton_Click);
+                this.textbox.LostFocus += this.TextBoxLostFocus;
+                this.textbox.KeyUp += new KeyEventHandler(TextBoxKeyUp);
+            }
+
+            if (this.popup != null && this.list != null)
+            {
+                IList<string> itens = new List<string>();
+                itens.Add("Matheus");
+                itens.Add("Marcos");
+                itens.Add("Lucas");
+                itens.Add("João");
+                this.list.ItemsSource = itens;
+
+                this.list.KeyUp += new KeyEventHandler(ListBoxKeyUp);
+                this.list.MouseUp += new MouseButtonEventHandler(ListBoxMouseUp);
             }
 
             Window mainWindow = FindMainWindow(this) as Window;
             if (mainWindow != null)
                 mainWindow.LocationChanged += this.OnMainWindowLocationChanged;
         }
+        #endregion
+
+        #region Popup
+        void ListBoxMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SelecionaItem();
+        }
+
+        void ListBoxKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SelecionaItem();
+            }
+        }
+
+        void SelecionaItem()
+        {
+            this.textbox.Text = this.list.SelectedValue as string;
+            this.textbox.CaretIndex = this.textbox.Text.Length;
+            OcultaPopup();
+        }
 
         private void OcultaPopup()
         {
             if (this.popup != null && this.popup.IsOpen)
                 this.popup.IsOpen = false;
+        }
+        #endregion
+
+        #region ItemsSource
+        public IEnumerable ItemsSource
+        {
+            get { return this.list.ItemsSource; }
+            set { this.list.ItemsSource = value; }
         }
         #endregion
 

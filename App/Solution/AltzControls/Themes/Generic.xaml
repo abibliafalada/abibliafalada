@@ -13,13 +13,9 @@
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <DockPanel LastChildFill="True" Margin="1" x:Name="ContentPanel">
                             <Popup Margin="10,10,0,13" x:Name="PART_Popup" HorizontalAlignment="Left" PlacementTarget="{Binding ElementName=ContentPanel}" 
-                                    VerticalAlignment="Bottom" Width="194" Height="200">
-                                <StackPanel>
-                                    <TextBlock Name="McTextBlock" Background="LightBlue">
-                                        This is popup text
-                                    </TextBlock>
-                                    <Button Content="This is button on a Pupup" />
-                                </StackPanel>
+                                    VerticalAlignment="Bottom" Width="194" Height="200" FocusManager.IsFocusScope="True">
+                                <ListBox x:Name="PART_ListBox">
+                                </ListBox>
                             </Popup>
 
                             <TextBox x:Name="PART_TextBox" Text="{Binding Path=Text, Mode=TwoWay,

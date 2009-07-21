@@ -59,5 +59,14 @@ namespace SpokenBible.View
             }
         }
 
+        private void busca_TextChanged(object sender, RoutedEventArgs e)
+        {
+            IList<string> itens = new List<string>();
+            itens.Add(busca.Text);
+            itens.Add(busca.Text + " 1");
+            itens.Add(busca.Text + " 2");
+            busca.ItemsSource = itens;
+        }
+
     }
 }
