@@ -10,6 +10,9 @@ using sbcore.Model.Interface;
 using SpokenBible.Controller;
 using System.Collections.Generic;
 using Db4objects.Db4o.Linq;
+using sbcore.Components.Interface;
+using sbcore.Components;
+using Db4objects.Db4o;
 
 namespace SpokenBible.Presenter
 {
@@ -17,19 +20,18 @@ namespace SpokenBible.Presenter
     {
         private MainWindow window = null;
         private AppController controller = null;
+        private ISuggestComponent suggest = null;
 
         public MainPresenter(AppController controller)
         {
             this.controller = controller;
-
-            window = new MainWindow(this);
+            this.window = new MainWindow(this);
 
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
 
-            window.AutoCompleteItems = new List<Livro>(livros);
-
-            //ShowContent(livros.First<Livro>());
+            //IEnumerable<Livro> livros = controller.DefaultContainer.Query<Livro>();
+            this.suggest = new SimpleSuggester(livros);
 
         }
 
@@ -43,5 +45,11 @@ namespace SpokenBible.Presenter
             window.ShowContent(item);
         }
 
+
+        internal void SearchChanged(string term)
+        {
+            IEnumerable<string> sugestoes = this.suggest.GetSuggestionsFor(term);
+            this.window.UpdateSuggestions(sugestoes);
+        }
     }
 }

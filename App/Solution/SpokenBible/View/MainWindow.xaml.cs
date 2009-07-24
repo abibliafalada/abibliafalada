@@ -41,32 +41,15 @@ namespace SpokenBible.View
             }
         }
 
-        public IList<Livro> AutoCompleteItems
-        {
-            set
-            {
-                /*busca.Items.Clear();
-                busca.DisplayMemberPath = "Nome";
-                
-                busca.ItemsSource = value;
-                busca.BringIntoView();*/
-                //busca.Items.Clear();
-
-                /*foreach (Livro l in value)
-                {
-                    busca.AddItem(new AutoCompleteEntry(l.Nome, l.Acronimo, l.Nome));
-                }*/
-            }
-        }
-
         private void busca_TextChanged(object sender, RoutedEventArgs e)
         {
-            IList<string> itens = new List<string>();
-            itens.Add(busca.Text);
-            itens.Add(busca.Text + " 1");
-            itens.Add(busca.Text + " 2");
-            busca.ItemsSource = itens;
+            this.presenter.SearchChanged(busca.Text);
         }
 
+
+        internal void UpdateSuggestions(IEnumerable<string> sugestoes)
+        {
+            busca.ItemsSource = sugestoes;
+        }
     }
 }

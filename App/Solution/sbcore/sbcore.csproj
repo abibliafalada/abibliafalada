@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Interface\ISuggestComponent.cs" />
+    <Compile Include="Components\SimpleSuggester.cs" />
     <Compile Include="Model\Capitulo.cs" />
     <Compile Include="Model\Interface\ISbItem.cs" />
     <Compile Include="Model\Livro.cs" />
