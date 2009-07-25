@@ -70,6 +70,9 @@ namespace AltzControls
                     ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
                     item.Focus();
                     break;
+                case Key.Enter:
+                    this.RaiseEvent(new RoutedEventArgs(AutoComplete.SearchRequestEvent, this));
+                    break;
             }
         }
 
@@ -98,6 +101,11 @@ namespace AltzControls
             OcultaPopup();
         }
 
+        protected void OnMainWindowDeactivated(object sender, EventArgs e)
+        {
+            OcultaPopup();
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -113,20 +121,16 @@ namespace AltzControls
 
             if (this.popup != null && this.list != null)
             {
-                IList<string> itens = new List<string>();
-                itens.Add("Matheus");
-                itens.Add("Marcos");
-                itens.Add("Lucas");
-                itens.Add("João");
-                this.list.ItemsSource = itens;
-
                 this.list.KeyUp += new KeyEventHandler(ListBoxKeyUp);
                 this.list.MouseUp += new MouseButtonEventHandler(ListBoxMouseUp);
             }
 
             Window mainWindow = FindMainWindow(this) as Window;
             if (mainWindow != null)
+            {
                 mainWindow.LocationChanged += this.OnMainWindowLocationChanged;
+                mainWindow.Deactivated += new EventHandler(OnMainWindowDeactivated);
+            }
         }
         #endregion
 
@@ -231,6 +235,18 @@ namespace AltzControls
             add { AddHandler(TextChangedEvent, value); }
             remove { RemoveHandler(TextChangedEvent, value); }
         }
+        #endregion
+
+        #region SearchRequest event
+        public static readonly RoutedEvent SearchRequestEvent = EventManager.RegisterRoutedEvent(
+            "SearchRequest", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(AutoComplete));
+
+        public event RoutedEventHandler SearchRequest
+        {
+            add { AddHandler(SearchRequestEvent, value); }
+            remove { RemoveHandler(SearchRequestEvent, value); }
+        }
+
         #endregion
     }
 }

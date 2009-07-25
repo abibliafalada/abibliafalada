@@ -30,9 +30,7 @@ namespace SpokenBible.Presenter
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
 
-            //IEnumerable<Livro> livros = controller.DefaultContainer.Query<Livro>();
             this.suggest = new SimpleSuggester(livros);
-
         }
 
         public void ShowView()
@@ -50,6 +48,13 @@ namespace SpokenBible.Presenter
         {
             IEnumerable<string> sugestoes = this.suggest.GetSuggestionsFor(term);
             this.window.UpdateSuggestions(sugestoes);
+        }
+
+        internal void SearchRequested(string term)
+        {
+            ISbItem opcao = this.suggest.GetOptionsFor(term).Children.First();
+            this.controller.DefaultContainer.Activate(opcao, 5);
+            this.ShowContent(opcao);
         }
     }
 }

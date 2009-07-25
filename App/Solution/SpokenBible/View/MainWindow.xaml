@@ -9,7 +9,7 @@
             <RowDefinition Height="100*" />
         </Grid.RowDefinitions>
         
-        <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" TextChanged="busca_TextChanged"></a:AutoComplete>
+        <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
 
         <FlowDocumentReader Grid.Row="1" Grid.Column="0" ViewingMode="TwoPage">
             <FlowDocument x:Name="document" ColumnWidth="5000">

@@ -51,5 +51,10 @@ namespace SpokenBible.View
         {
             busca.ItemsSource = sugestoes;
         }
+
+        private void busca_SearchRequest(object sender, RoutedEventArgs e)
+        {
+            this.presenter.SearchRequested(busca.Text);
+        }
     }
 }
