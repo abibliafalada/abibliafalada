@@ -20,7 +20,8 @@ namespace SpokenBible.Presenter
     {
         private MainWindow window = null;
         private AppController controller = null;
-        private ISuggestComponent suggest = null;
+        private ISuggestComponent<string> textSuggest = null;
+        private ISuggestComponent<ISbItem> sbItemSuggest = null;
 
         public MainPresenter(AppController controller)
         {
@@ -30,7 +31,8 @@ namespace SpokenBible.Presenter
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
 
-            this.suggest = new SimpleSuggester(livros);
+            this.textSuggest = new SimpleTextSuggester(livros);
+            this.sbItemSuggest = new SimpleSbItemSuggester(livros);
         }
 
         public void ShowView()
@@ -40,19 +42,20 @@ namespace SpokenBible.Presenter
 
         public void ShowContent(ISbItem item)
         {
+            window.ClearContent();
             window.ShowContent(item);
         }
 
 
         internal void SearchChanged(string term)
         {
-            IEnumerable<string> sugestoes = this.suggest.GetSuggestionsFor(term);
+            IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
             this.window.UpdateSuggestions(sugestoes);
         }
 
         internal void SearchRequested(string term)
         {
-            ISbItem opcao = this.suggest.GetOptionsFor(term).Children.First();
+            ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
             this.controller.DefaultContainer.Activate(opcao, 5);
             this.ShowContent(opcao);
         }

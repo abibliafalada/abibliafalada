@@ -11,7 +11,9 @@
         
         <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
 
-        <FlowDocumentReader Grid.Row="1" Grid.Column="0" ViewingMode="TwoPage">
+        <!--<Frame x:Name="frame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Automatic">
+        </Frame>-->
+        <FlowDocumentReader x:Name="documentReader" Grid.Row="1" Grid.Column="0" ViewingMode="TwoPage">
             <FlowDocument x:Name="document" ColumnWidth="5000">
             </FlowDocument>
         </FlowDocumentReader>

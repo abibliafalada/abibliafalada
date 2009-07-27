@@ -62,5 +62,11 @@ namespace sbcore.Model
             return this.Display;
         }
         #endregion
+
+        public bool Contains(string text)
+        {
+            text = text.ToLower();
+            return this.Acronimo.ToLower().Contains(text) || this.Nome.ToLower().Contains(text);
+        }
     }
 }

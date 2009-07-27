@@ -71,6 +71,7 @@ namespace AltzControls
                     item.Focus();
                     break;
                 case Key.Enter:
+                    OcultaPopup();
                     this.RaiseEvent(new RoutedEventArgs(AutoComplete.SearchRequestEvent, this));
                     break;
             }

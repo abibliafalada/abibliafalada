@@ -7,9 +7,8 @@ using sbcore.Model.Interface;
 
 namespace sbcore.Components.Interface
 {
-    public interface ISuggestComponent
+    public interface ISuggestComponent<T>
     {
-        IEnumerable<string> GetSuggestionsFor(string item);
-        ISbItem GetOptionsFor(string item);
+        IEnumerable<T> GetSuggestionsFor(string item);
     }
 }

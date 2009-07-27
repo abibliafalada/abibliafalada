@@ -9,7 +9,7 @@ using sbcore.Model.Interface;
 
 namespace sbcore.Components
 {
-    public class SimpleSuggester : ISuggestComponent
+    public abstract class SimpleSuggester<T> : ISuggestComponent<T>
     {
         private IEnumerable<Livro> itens = null;
 
@@ -22,51 +22,47 @@ namespace sbcore.Components
         }
 
         #region ISuggestComponent Members
-        public IEnumerable<string> GetSuggestionsFor(string term)
+        public IEnumerable<T> GetSuggestionsFor(string term)
         {
             if (bookPattern.IsMatch(term))
                 return this.GetSuggestionsForBooks(term);
             if (chapPattern.IsMatch(term))
                 return this.GetSuggestionsForChapters(term);
 
-            IList<string> suggestions = new List<string>(0);
-            return suggestions;
-        }
-
-        public ISbItem GetOptionsFor(string item)
-        {
-            //todo: refatorar buscas e completar este código
-            return this.itens.First();
+            return new List<T>(0);
         }
         #endregion
 
-        private IEnumerable<string> GetSuggestionsForBooks(string term)
+        private IEnumerable<T> GetSuggestionsForBooks(string term)
         {
             string book = term.Trim();
-            IList<string> suggestions = new List<string>();
+            IList<T> suggestions = new List<T>();
             foreach (Livro livro in this.itens)
             {
-                if (livro.Nome.Contains(book))
-                    suggestions.Add(livro.Nome + ", ");
+                if (livro.Contains(book))
+                    suggestions.Add(this.GetItem(livro));
             }
             return suggestions;
         }
 
-        private IEnumerable<string> GetSuggestionsForChapters(string term)
+        protected abstract T GetItem(Livro livro);
+        protected abstract T GetItem(Livro livro, int i);
+
+        private IEnumerable<T> GetSuggestionsForChapters(string term)
         {
             Match m = chapPattern.Match(term);
 
             string book = m.Groups[1].Value.Trim();
             string chap = m.Groups[2].Value.Trim();
 
-            IList<string> suggestions = new List<string>();
+            IList<T> suggestions = new List<T>();
             foreach (Livro livro in this.itens)
             {
-                if (livro.Nome.Contains(book))
+                if (livro.Contains(book))
                 {
                     for (int i = 1; i <= livro.Capitulos.Count; i++)
                         if(i.ToString().Contains(chap))
-                            suggestions.Add(livro.Nome + ", " + i);
+                            suggestions.Add(this.GetItem(livro, i));
                     break;
                 }
             }

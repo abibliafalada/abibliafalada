@@ -29,6 +29,14 @@ namespace SpokenBible.View
             this.presenter = presenter;
             InitializeComponent();
         }
+        
+        public void ClearContent()
+        {
+            documentReader.Document.Blocks.Clear();
+            FlowDocument trickToMoveToBegin = documentReader.Document;
+            documentReader.Document = null;
+            documentReader.Document = trickToMoveToBegin;
+        }
 
         public void ShowContent(ISbItem item)
         {
@@ -36,7 +44,7 @@ namespace SpokenBible.View
             {
                 Paragraph p = new Paragraph();
                 p.Inlines.Add(i.Display);
-                document.Blocks.Add(p);
+                documentReader.Document.Blocks.Add(p);
                 ShowContent(i);
             }
         }
