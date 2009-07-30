@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using sbcore.Model;
+using sbcore.Components.Interface;
 
 namespace sbcore.Components
 {
     public class SimpleTextSuggester : SimpleSuggester<string>
     {
-        public SimpleTextSuggester (IEnumerable<Livro> itens) : base (itens)
+        public SimpleTextSuggester(IEnumerable<Livro> itens, SbItemChildrenNeeded SbItemChildrenNeeded)
+            : base(itens, SbItemChildrenNeeded)
         {
         }
 
@@ -17,9 +19,14 @@ namespace sbcore.Components
             return livro.Nome + ", ";
         }
 
-        protected override string GetItem(Livro livro, int i)
+        protected override string GetItem(Livro livro, int cap)
         {
-            return livro.Nome + ", " + i;
+            return livro.Nome + ", " + cap;
+        }
+
+        protected override string GetItem(Livro livro, int cap, int vers)
+        {
+            return livro.Nome + ", " + cap + "." + vers;
         }
     }
 }

@@ -11,23 +11,35 @@ namespace sbcore.Components
 {
     public abstract class SimpleSuggester<T> : ISuggestComponent<T>
     {
+
+        public SbItemChildrenNeeded OnSbItemChildrenNeeded { get; set; }
+
         private IEnumerable<Livro> itens = null;
 
-        private Regex bookPattern = new Regex("^([0-9a-zA-Z ]+)$");
-        private Regex chapPattern = new Regex("^([0-9a-zA-Z ]+)[,;-]([0-9 ]*)$");
-            
-        public SimpleSuggester(IEnumerable<Livro> itens)
+        private Regex bookPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)$");
+        private Regex chapPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)$");
+        private Regex versPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)$");
+
+        protected abstract T GetItem(Livro livro);
+        protected abstract T GetItem(Livro livro, int cap);
+        protected abstract T GetItem(Livro livro, int cap, int vers);
+
+        public SimpleSuggester(IEnumerable<Livro> itens, SbItemChildrenNeeded SbItemChildrenNeeded)
         {
             this.itens = itens;
+            this.OnSbItemChildrenNeeded = SbItemChildrenNeeded;
         }
 
         #region ISuggestComponent Members
         public IEnumerable<T> GetSuggestionsFor(string term)
         {
+            term = TextComponent.slug(term);
             if (bookPattern.IsMatch(term))
                 return this.GetSuggestionsForBooks(term);
             if (chapPattern.IsMatch(term))
                 return this.GetSuggestionsForChapters(term);
+            if (versPattern.IsMatch(term))
+                return this.GetSuggestionsForVersicles(term);
 
             return new List<T>(0);
         }
@@ -45,9 +57,6 @@ namespace sbcore.Components
             return suggestions;
         }
 
-        protected abstract T GetItem(Livro livro);
-        protected abstract T GetItem(Livro livro, int i);
-
         private IEnumerable<T> GetSuggestionsForChapters(string term)
         {
             Match m = chapPattern.Match(term);
@@ -61,12 +70,42 @@ namespace sbcore.Components
                 if (livro.Contains(book))
                 {
                     for (int i = 1; i <= livro.Capitulos.Count; i++)
-                        if(i.ToString().Contains(chap))
+                        if (i.ToString().Contains(chap))
                             suggestions.Add(this.GetItem(livro, i));
                     break;
                 }
             }
             return suggestions;
         }
+
+        private IEnumerable<T> GetSuggestionsForVersicles(string term)
+        {
+            Match m = versPattern.Match(term);
+
+            string book = m.Groups[1].Value.Trim();
+            string chap = m.Groups[2].Value.Trim();
+            string vers = m.Groups[3].Value.Trim();
+
+            IList<T> suggestions = new List<T>();
+            foreach (Livro livro in this.itens)
+            {
+                if (livro.Contains(book))
+                {
+                    for (int i = 1; i <= livro.Capitulos.Count; i++)
+                    {
+                        if (i.ToString().Contains(chap))
+                        {
+                            OnSbItemChildrenNeeded(livro.Capitulos[i-1]);
+                            for (int j = 1; j <= livro.Capitulos[i-1].Versiculos.Count; j++)
+                                if (j.ToString().Contains(vers))
+                                    suggestions.Add(this.GetItem(livro, i, j));
+                        }
+                    }
+                    break;
+                }
+            }
+            return suggestions;
+        }
+
     }
 }

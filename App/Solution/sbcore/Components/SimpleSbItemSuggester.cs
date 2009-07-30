@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using sbcore.Model.Interface;
 using sbcore.Model;
+using sbcore.Components.Interface;
 
 namespace sbcore.Components
 {
     public class SimpleSbItemSuggester : SimpleSuggester<ISbItem>
     {
-        public SimpleSbItemSuggester(IEnumerable<Livro> itens) : base(itens)
+        public SimpleSbItemSuggester(IEnumerable<Livro> itens, SbItemChildrenNeeded SbItemChildrenNeeded)
+            : base(itens, SbItemChildrenNeeded)
         {
         }
 
@@ -18,9 +20,14 @@ namespace sbcore.Components
             return livro;
         }
 
-        protected override ISbItem GetItem(Livro livro, int i)
+        protected override ISbItem GetItem(Livro livro, int cap)
         {
-            return livro.Children.ElementAt(i-1);
+            return livro.Capitulos[cap - 1];
+        }
+
+        protected override ISbItem GetItem(Livro livro, int cap, int vers)
+        {
+            return livro.Capitulos[cap - 1].Versiculos[vers - 1];
         }
     }
 }

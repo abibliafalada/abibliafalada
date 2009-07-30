@@ -7,8 +7,11 @@ using sbcore.Model.Interface;
 
 namespace sbcore.Components.Interface
 {
+    public delegate void SbItemChildrenNeeded(ISbItem item);
+
     public interface ISuggestComponent<T>
     {
+        SbItemChildrenNeeded OnSbItemChildrenNeeded { get; set; }
         IEnumerable<T> GetSuggestionsFor(string item);
     }
 }

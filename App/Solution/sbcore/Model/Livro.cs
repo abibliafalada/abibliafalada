@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 using sbcore.Model.Interface;
+using sbcore.Components;
 
 namespace sbcore.Model
 {
@@ -66,7 +67,7 @@ namespace sbcore.Model
         public bool Contains(string text)
         {
             text = text.ToLower();
-            return this.Acronimo.ToLower().Contains(text) || this.Nome.ToLower().Contains(text);
+            return TextComponent.slug(this.Acronimo.ToLower()).Contains(text) || TextComponent.slug(this.Nome.ToLower()).Contains(text);
         }
     }
 }

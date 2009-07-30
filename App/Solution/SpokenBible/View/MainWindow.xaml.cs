@@ -40,11 +40,16 @@ namespace SpokenBible.View
 
         public void ShowContent(ISbItem item)
         {
+            Paragraph p = new Paragraph();
+            p.Inlines.Add(item.Display);
+            documentReader.Document.Blocks.Add(p);
+            InternalShowContent(item);
+        }
+
+        private void InternalShowContent(ISbItem item)
+        {
             foreach (ISbItem i in item.Children)
             {
-                Paragraph p = new Paragraph();
-                p.Inlines.Add(i.Display);
-                documentReader.Document.Blocks.Add(p);
                 ShowContent(i);
             }
         }

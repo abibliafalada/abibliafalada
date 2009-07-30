@@ -31,8 +31,8 @@ namespace SpokenBible.Presenter
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
 
-            this.textSuggest = new SimpleTextSuggester(livros);
-            this.sbItemSuggest = new SimpleSbItemSuggester(livros);
+            this.textSuggest = new SimpleTextSuggester(livros, ActivateSbItem);
+            this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
         }
 
         public void ShowView()
@@ -53,11 +53,23 @@ namespace SpokenBible.Presenter
             this.window.UpdateSuggestions(sugestoes);
         }
 
+        internal void ActivateSbItem(ISbItem item)
+        {
+            this.controller.DefaultContainer.Activate(item, 5);
+        }
+
         internal void SearchRequested(string term)
         {
-            ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
-            this.controller.DefaultContainer.Activate(opcao, 5);
-            this.ShowContent(opcao);
+            if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
+            {
+                ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
+                this.controller.DefaultContainer.Activate(opcao, 5);
+                this.ShowContent(opcao);
+            }
+            else
+            {
+                ShowContent(new Livro(0, "Nao", "Não encontrado"));
+            }
         }
     }
 }

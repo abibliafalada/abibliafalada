@@ -66,6 +66,7 @@ namespace AltzControls
                     OcultaPopup();
                     break;
                 case Key.Down:
+                    ExibePopup();
                     this.list.SelectedIndex = this.list.Items.Count > 0 ? 0 : -1;
                     ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
                     item.Focus();
@@ -143,9 +144,14 @@ namespace AltzControls
 
         void ListBoxKeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            switch (e.Key)
             {
-                SelecionaItem();
+                case Key.Enter:
+                    SelecionaItem();
+                    break;
+                case Key.Escape:
+                    OcultaPopup();
+                    break;
             }
         }
 
@@ -160,6 +166,12 @@ namespace AltzControls
         {
             if (this.popup != null && this.popup.IsOpen)
                 this.popup.IsOpen = false;
+        }
+
+        private void ExibePopup()
+        {
+            if (this.popup != null && !this.popup.IsOpen && this.list.Items.Count > 0)
+                this.popup.IsOpen = true;
         }
         #endregion
 
@@ -205,9 +217,8 @@ namespace AltzControls
 
         protected virtual void OnTextChanged(String oldValue, String newValue)
         {
-            if (this.popup != null && !this.popup.IsOpen)
-                this.popup.IsOpen = true;
             this.RaiseEvent(new RoutedEventArgs(AutoComplete.TextChangedEvent, this));
+            ExibePopup();
         }
 
         public String Text
