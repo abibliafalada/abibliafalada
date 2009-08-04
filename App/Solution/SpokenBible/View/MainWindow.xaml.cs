@@ -69,5 +69,13 @@ namespace SpokenBible.View
         {
             this.presenter.SearchRequested(busca.Text);
         }
+
+        private void ler_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.documentReader.Selection.Text != string.Empty)
+                this.presenter.SpeachRequest(this.documentReader.Selection.Text);
+            else
+                this.presenter.SpeachRequest("Selecione o texto a ser lido!");
+        }
     }
 }

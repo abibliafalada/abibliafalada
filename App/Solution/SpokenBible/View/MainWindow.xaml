@@ -3,17 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
     Title="MainWindow" Height="650" Width="900">
-    <Grid Name="aua">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="100*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         
         <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
+        
+        <Button x:Name="ler" Grid.Row="0" Grid.Column="1" Content="Ler" Click="ler_Click"></Button>
 
-        <!--<Frame x:Name="frame" Grid.Row="1" Grid.Column="0" NavigationUIVisibility="Automatic">
-        </Frame>-->
-        <FlowDocumentReader x:Name="documentReader" Grid.Row="1" Grid.Column="0" ViewingMode="TwoPage">
+        <FlowDocumentReader x:Name="documentReader" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ViewingMode="TwoPage">
             <FlowDocument x:Name="document" ColumnWidth="5000">
             </FlowDocument>
         </FlowDocumentReader>
