@@ -77,5 +77,6 @@ namespace SpokenBible.View
             else
                 this.presenter.SpeachRequest("Selecione o texto a ser lido!");
         }
+
     }
 }

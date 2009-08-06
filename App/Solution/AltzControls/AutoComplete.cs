@@ -149,7 +149,10 @@ namespace AltzControls
                 case Key.Enter:
                     SelecionaItem();
                     break;
-                case Key.Escape:
+                case Key.Up:
+                case Key.Down:
+                    break;
+                default:
                     OcultaPopup();
                     break;
             }

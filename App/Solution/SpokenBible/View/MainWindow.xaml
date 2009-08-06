@@ -3,23 +3,68 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
     Title="MainWindow" Height="650" Width="900">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="100*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100*"></ColumnDefinition>
-            <ColumnDefinition Width="50"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
-        <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
-        
-        <Button x:Name="ler" Grid.Row="0" Grid.Column="1" Content="Ler" Click="ler_Click"></Button>
+    <Canvas>
+        <Grid
+            Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
+            Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="100*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <FlowDocumentReader x:Name="documentReader" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ViewingMode="TwoPage">
-            <FlowDocument x:Name="document" ColumnWidth="5000">
-            </FlowDocument>
-        </FlowDocumentReader>
-    </Grid>
+            <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
+
+            <Button x:Name="ler" Grid.Row="0" Grid.Column="1" Content="Ler" Click="ler_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Ellipse
+                                x:Name="PlayButtonEllipse"
+                                Fill="CornflowerBlue"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"
+                                Opacity="0.75"/>
+                            <Polygon x:Name="PlayButtonArrow"
+                                     Points="5,0 5,20 20,10"
+                                     Fill="LightYellow"
+                                     Stroke="Black"
+                                     StrokeThickness="0.5"
+                                     HorizontalAlignment="Center"          
+                                     VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <FlowDocumentReader x:Name="documentReader" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ViewingMode="TwoPage">
+                <FlowDocument x:Name="document" ColumnWidth="5000">
+                </FlowDocument>
+            </FlowDocumentReader>
+        </Grid>
+        <Grid
+            x:Name="TopPannel"
+            Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
+            Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
+            Background="Gray">
+            <Button x:Name="esconder" Content="Esconder" Width="50" Height="25">
+            </Button>
+        </Grid>
+    </Canvas>
+    <Window.Triggers>
+        <EventTrigger SourceName="esconder" RoutedEvent="Button.Click">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation 
+                        Storyboard.Target="{Binding ElementName=TopPannel}"
+                        Storyboard.TargetProperty="Height"
+                        Duration="0:0:1"
+                        To="0"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 </Window>

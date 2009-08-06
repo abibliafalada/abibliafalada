@@ -90,7 +90,7 @@ namespace SpokenBible.Presenter
         {
             //Vozes em portugues: http://www.microsoft.com/downloads/details.aspx?FamilyID=30e14c5a-a42c-4d4e-9513-c4b0b8d21086&displaylang=en
             IList<InstalledVoice> voices = Synthetizer.GetInstalledVoices();
-            Synthetizer.Rate = -2;
+            //Synthetizer.Rate = -2;
             Synthetizer.SpeakAsync(text);
         }
     }
