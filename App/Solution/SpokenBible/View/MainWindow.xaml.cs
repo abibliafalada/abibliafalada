@@ -41,9 +41,33 @@ namespace SpokenBible.View
         public void ShowContent(ISbItem item)
         {
             Paragraph p = new Paragraph();
+            p.Cursor = Cursors.Hand;
             p.Inlines.Add(item.Display);
+            p.MouseLeave += new MouseEventHandler(OnParagraphMouseLeave);
+            p.MouseEnter += new MouseEventHandler(OnParagraphMouseEnter);
+            p.MouseDown += new MouseButtonEventHandler(OnParagraphMouseDown);
             documentReader.Document.Blocks.Add(p);
             InternalShowContent(item);
+        }
+
+        private void OnParagraphMouseEnter(object sender, MouseEventArgs e)
+        {
+            Paragraph p = sender as Paragraph;
+            p.Background = Brushes.RosyBrown;
+        }
+
+        private void OnParagraphMouseLeave(object sender, MouseEventArgs e)
+        {
+            Paragraph p = sender as Paragraph;
+            p.Background = null;
+        }
+
+        private void OnParagraphMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Paragraph p = sender as Paragraph;
+            TextRange textRange = new TextRange(p.ContentStart, p.ContentEnd);
+            if (textRange.Text != string.Empty)
+                this.presenter.SpeachRequest(textRange.Text);
         }
 
         private void InternalShowContent(ISbItem item)
@@ -78,5 +102,10 @@ namespace SpokenBible.View
                 this.presenter.SpeachRequest("Selecione o texto a ser lido!");
         }
 
+
+        internal void SetNavigationPages(Page principalPage)
+        {
+            this.principal.Navigate(principalPage);
+        }
     }
 }

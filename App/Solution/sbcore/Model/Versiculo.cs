@@ -27,7 +27,7 @@ namespace sbcore.Model
 
         public string Display
         {
-            get { return Numero + " " + Descricao; }
+            get { return Numero + ". " + Descricao; }
         }
 
         public IEnumerable<ISbItem> Children

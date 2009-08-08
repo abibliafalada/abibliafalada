@@ -1,0 +1,8 @@
+﻿<Page x:Class="SpokenBible.View.Shortcuts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Shortcuts">
+    <Grid>
+        <TextBlock>Shorcuts</TextBlock>
+    </Grid>
+</Page>

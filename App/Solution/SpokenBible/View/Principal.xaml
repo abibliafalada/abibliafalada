@@ -1,0 +1,9 @@
+﻿<Page x:Class="SpokenBible.View.Principal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Principal">
+    <Grid Background="Gray">
+        <Button x:Name="esconder" Content="Esconder" Width="50" Height="25" Click="esconder_Click">
+        </Button>
+    </Grid>
+</Page>

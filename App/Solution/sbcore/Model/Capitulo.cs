@@ -45,7 +45,7 @@ namespace sbcore.Model
 
         public string Display
         {
-            get { return Numero.ToString(); }
+            get { return "Capítulo: " + Numero.ToString(); }
         }
 
         public IEnumerable<ISbItem> Children

@@ -14,12 +14,14 @@ using sbcore.Components.Interface;
 using sbcore.Components;
 using Db4objects.Db4o;
 using System.Speech.Synthesis;
+using System.Windows.Controls;
 
 namespace SpokenBible.Presenter
 {
     public class MainPresenter
     {
-        private MainWindow window = null;
+        private MainWindow mainWindow = null;
+        private Page principalPage = null;
         private AppController controller = null;
         
         private ISuggestComponent<string> textSuggest = null;
@@ -29,14 +31,20 @@ namespace SpokenBible.Presenter
 
         public MainPresenter(AppController controller)
         {
+            //inicialização dos controles
             this.controller = controller;
-            this.window = new MainWindow(this);
+            this.mainWindow = new MainWindow(this);
+            this.principalPage = new Principal(this);
 
+            //carregamento dos dados
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
 
             this.textSuggest = new SimpleTextSuggester(livros, ActivateSbItem);
             this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
+
+            //carregamento de paginas e conteudos visuais adicionais
+            this.mainWindow.SetNavigationPages(this.principalPage);
         }
 
         private SpeechSynthesizer Synthetizer
@@ -51,20 +59,20 @@ namespace SpokenBible.Presenter
 
         public void ShowView()
         {
-            window.Show();
+            mainWindow.Show();
         }
 
         public void ShowContent(ISbItem item)
         {
-            window.ClearContent();
-            window.ShowContent(item);
+            mainWindow.ClearContent();
+            mainWindow.ShowContent(item);
         }
 
 
         internal void SearchChanged(string term)
         {
             IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
-            this.window.UpdateSuggestions(sugestoes);
+            this.mainWindow.UpdateSuggestions(sugestoes);
         }
 
         internal void ActivateSbItem(ISbItem item)
@@ -92,6 +100,11 @@ namespace SpokenBible.Presenter
             IList<InstalledVoice> voices = Synthetizer.GetInstalledVoices();
             //Synthetizer.Rate = -2;
             Synthetizer.SpeakAsync(text);
+        }
+
+        internal void ClosePrincipal()
+        {
+            DefaultEffects.HidePrincipal(mainWindow, "principal");
         }
     }
 }

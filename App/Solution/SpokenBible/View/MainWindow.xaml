@@ -45,26 +45,9 @@
                 </FlowDocument>
             </FlowDocumentReader>
         </Grid>
-        <Grid
-            x:Name="TopPannel"
+        <Frame x:Name="principal"
             Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
-            Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
-            Background="Gray">
-            <Button x:Name="esconder" Content="Esconder" Width="50" Height="25">
-            </Button>
-        </Grid>
+            Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}">
+        </Frame>
     </Canvas>
-    <Window.Triggers>
-        <EventTrigger SourceName="esconder" RoutedEvent="Button.Click">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation 
-                        Storyboard.Target="{Binding ElementName=TopPannel}"
-                        Storyboard.TargetProperty="Height"
-                        Duration="0:0:1"
-                        To="0"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
 </Window>
