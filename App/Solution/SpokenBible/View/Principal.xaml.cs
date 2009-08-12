@@ -28,9 +28,15 @@ namespace SpokenBible.View
             InitializeComponent();
         }
 
-        private void esconder_Click(object sender, RoutedEventArgs e)
+        private void busca_SearchRequest(object sender, RoutedEventArgs e)
         {
+            this.presenter.SearchRequested(busca.Text);
             this.presenter.ClosePrincipal();
+        }
+
+        private void busca_TextChanged(object sender, RoutedEventArgs e)
+        {
+            this.presenter.SearchChanged(busca, busca.Text);
         }
     }
 }

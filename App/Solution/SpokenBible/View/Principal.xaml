@@ -1,9 +1,31 @@
 ﻿<Page x:Class="SpokenBible.View.Principal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
     Title="Principal">
     <Grid Background="{DynamicResource BaseContainer}">
-        <Button x:Name="esconder" Content="Esconder" Width="200" Height="80" Click="esconder_Click">
-        </Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center">
+                A Bíblia Falada
+                <Span Style="{DynamicResource SpanTitle}">v2.0</Span>
+        </TextBlock>
+        
+        <a:AutoComplete x:Name="busca" Grid.Row="2" Grid.Column="1" Margin="12 12"
+                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
+        
+        <Button x:Name="ler" Grid.Row="3" Grid.Column="1" Width="100" Click="busca_SearchRequest"
+                Content="ir para página" FontSize="15" FontFamily="Calibri" />
     </Grid>
 </Page>

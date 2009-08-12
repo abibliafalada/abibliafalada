@@ -15,6 +15,7 @@ using sbcore.Components;
 using Db4objects.Db4o;
 using System.Speech.Synthesis;
 using System.Windows.Controls;
+using AltzControls;
 
 namespace SpokenBible.Presenter
 {
@@ -69,10 +70,10 @@ namespace SpokenBible.Presenter
         }
 
 
-        internal void SearchChanged(string term)
+        internal void SearchChanged(AutoComplete component, string term)
         {
             IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
-            this.mainWindow.UpdateSuggestions(sugestoes);
+            component.ItemsSource = sugestoes;
         }
 
         internal void ActivateSbItem(ISbItem item)

@@ -21,9 +21,12 @@
             <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" Margin="12"
                 SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
 
-            <Button x:Name="ler" Grid.Row="0" Grid.Column="1" Margin="0 10 0 10" 
-                Content="ir para página" FontSize="15" FontFamily="Calibri" Click="ler_Click" />
+            <Button x:Name="ir" Grid.Row="0" Grid.Column="1" Margin="0 10" 
+                Content="ir para página" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" />
 
+            <Button x:Name="ler" Grid.Row="0" Grid.Column="2" Width="50" Margin="0 10" HorizontalAlignment="Left"
+                Content="ler" FontSize="15" FontFamily="Calibri" Click="ler_Click" />
+            
             <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{DynamicResource Gradient1}" BorderThickness="0 1">
                 <Border BorderBrush="{DynamicResource Gradient2}" BorderThickness="0 1">
                     <Border Margin="30 10" Background="#EEE">
@@ -35,7 +38,7 @@
                 </Border>
             </Border>
             
-            <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Right" VerticalAlignment="Center"  Margin="10 0" >
+            <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Right" VerticalAlignment="Center" Margin="10 0" >
                 A Bíblia Falada
                 <Span Style="{DynamicResource SpanTitle}">v2.0</Span>
             </TextBlock>

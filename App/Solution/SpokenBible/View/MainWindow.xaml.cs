@@ -80,13 +80,7 @@ namespace SpokenBible.View
 
         private void busca_TextChanged(object sender, RoutedEventArgs e)
         {
-            this.presenter.SearchChanged(busca.Text);
-        }
-
-
-        internal void UpdateSuggestions(IEnumerable<string> sugestoes)
-        {
-            busca.ItemsSource = sugestoes;
+            this.presenter.SearchChanged(busca, busca.Text);
         }
 
         private void busca_SearchRequest(object sender, RoutedEventArgs e)

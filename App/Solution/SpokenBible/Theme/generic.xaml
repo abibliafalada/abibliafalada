@@ -119,8 +119,8 @@
 
                     <!-- We use Grid as a root because it is easy to add more elements to customize the button -->
                     <Grid x:Name="Grid">
-                        <Border x:Name="Border" Padding="{TemplateBinding Padding}">
-                            <Rectangle RadiusX="10" RadiusY="10" StrokeThickness="{TemplateBinding BorderThickness}" Stroke="{TemplateBinding BorderBrush}" Fill="{DynamicResource ButtonBrush}"/>
+                        <Border Padding="{TemplateBinding Padding}">
+                            <Rectangle x:Name="Border" RadiusX="10" RadiusY="10" StrokeThickness="{TemplateBinding BorderThickness}" Stroke="{TemplateBinding BorderBrush}" Fill="{DynamicResource ButtonBrush}"/>
                         </Border>
 
                         <!-- Content Presenter is where the text content etc is placed by the control -->
@@ -131,20 +131,20 @@
                     <!--Each state sets a brush on the Border in the template -->
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="Stroke" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="Fill" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                            <Setter Property="Stroke" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="true"/>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            <Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
+                            <Setter Property="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
+                            <!-- <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/> -->
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
