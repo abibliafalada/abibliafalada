@@ -2,7 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Shortcuts">
-    <Grid>
-        <TextBlock>Shorcuts</TextBlock>
-    </Grid>
+    <StackPanel Orientation="Horizontal" Width="Auto">
+        <TabControl>
+            <TabItem Header="Velho Testamento">GN | EX | LV | NM | DT</TabItem>
+            <TabItem Header="Novo Testamento">MT | MC | LC | AT | RM</TabItem>
+            <TabItem Header="Favoritos">SL 23 | JO 3.16</TabItem>
+        </TabControl>
+        <Button Style="{DynamicResource expander}" Content=">>" Width="30" Height="30" Click="ocultar" />
+    </StackPanel>
 </Page>

@@ -97,9 +97,10 @@ namespace SpokenBible.View
         }
 
 
-        internal void SetNavigationPages(Page principalPage)
+        internal void SetNavigationPages(Page principalPage, Page shortcutsPage)
         {
             this.principal.Navigate(principalPage);
+            this.shortcuts.Navigate(shortcutsPage);
         }
     }
 }

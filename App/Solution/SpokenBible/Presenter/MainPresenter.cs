@@ -23,6 +23,7 @@ namespace SpokenBible.Presenter
     {
         private MainWindow mainWindow = null;
         private Page principalPage = null;
+        private Page shortcutsPage = null;
         private AppController controller = null;
         
         private ISuggestComponent<string> textSuggest = null;
@@ -36,6 +37,7 @@ namespace SpokenBible.Presenter
             this.controller = controller;
             this.mainWindow = new MainWindow(this);
             this.principalPage = new Principal(this);
+            this.shortcutsPage = new Shortcuts(this);
 
             //carregamento dos dados
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
@@ -45,7 +47,7 @@ namespace SpokenBible.Presenter
             this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
 
             //carregamento de paginas e conteudos visuais adicionais
-            this.mainWindow.SetNavigationPages(this.principalPage);
+            this.mainWindow.SetNavigationPages(this.principalPage, this.shortcutsPage);
         }
 
         private SpeechSynthesizer Synthetizer
@@ -103,9 +105,18 @@ namespace SpokenBible.Presenter
             Synthetizer.SpeakAsync(text);
         }
 
+        #region principal
         internal void ClosePrincipal()
         {
             DefaultEffects.HidePrincipal(mainWindow, "principal");
         }
+        #endregion
+
+        #region shortcuts
+        internal void HideShortcuts()
+        {
+            DefaultEffects.HidePrincipal(mainWindow, "shortcuts");
+        }
+        #endregion
     }
 }

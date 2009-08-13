@@ -71,6 +71,9 @@
     
     <!-- Altz teste -->
     
+    <SolidColorBrush x:Key="BaseColor1" Color="#333"/>
+    <SolidColorBrush x:Key="BaseColor2" Color="#666"/>
+    <SolidColorBrush x:Key="BaseColor3" Color="#222"/>
     <SolidColorBrush x:Key="DefaultBorderBrush" Color="#F90"/>
 
     <LinearGradientBrush x:Key="ButtonBrush" EndPoint="0,1" StartPoint="0,0">
@@ -112,6 +115,7 @@
     <!-- Simple Button - This control sets brushes on each state. Note that these brushes must be listed above since they are static resources -->
     <Style TargetType="{x:Type Button}" BasedOn="{x:Null}">
         <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -119,32 +123,46 @@
 
                     <!-- We use Grid as a root because it is easy to add more elements to customize the button -->
                     <Grid x:Name="Grid">
-                        <Border Padding="{TemplateBinding Padding}">
-                            <Rectangle x:Name="Border" RadiusX="10" RadiusY="10" StrokeThickness="{TemplateBinding BorderThickness}" Stroke="{TemplateBinding BorderBrush}" Fill="{DynamicResource ButtonBrush}"/>
-                        </Border>
-
-                        <!-- Content Presenter is where the text content etc is placed by the control -->
-                        <!-- The bindings are useful so that the control can be parameterized without editing the template -->
+                        <Border x:Name="Border" CornerRadius="10" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBrush}" />
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
                     </Grid>
 
                     <!--Each state sets a brush on the Border in the template -->
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="Stroke" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Fill" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-                            <Setter Property="Stroke" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="true"/>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Fill" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-                            <Setter Property="Stroke" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-                            <!-- <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/> -->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="expander" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid">
+                        <Border x:Name="Border" CornerRadius="0 10 10 0" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBrush}" />
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -220,4 +238,39 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type TabControl}" BasedOn="{x:Null}">
+        <Setter Property="Background" Value="{DynamicResource BaseColor1}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="{x:Type TabItem}" BasedOn="{x:Null}">
+        <Setter Property="Background" Value="{DynamicResource BaseColor3}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BaseColor2}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseColor2}"/>
+        <Setter Property="Margin" Value="1 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid SnapsToDevicePixels="true">
+                        <Border x:Name="Border" CornerRadius="10 10 0 0" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+                        <ContentPresenter Margin="20 10" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Header}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource BaseColor1}" TargetName="Border"/>
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultBorderBrush}"/>
+                            <Setter Property="BorderThickness" Value="1 1 1 0"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

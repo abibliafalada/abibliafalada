@@ -20,7 +20,7 @@ namespace SpokenBible.View
     /// </summary>
     public partial class Principal : Page
     {
-        MainPresenter presenter = null;
+        private MainPresenter presenter = null;
 
         public Principal(MainPresenter presenter)
         {

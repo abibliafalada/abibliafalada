@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SpokenBible.Presenter;
 
 namespace SpokenBible.View
 {
@@ -19,9 +20,18 @@ namespace SpokenBible.View
     /// </summary>
     public partial class Shortcuts : Page
     {
-        public Shortcuts()
+        private MainPresenter presenter = null;
+
+        public Shortcuts(MainPresenter presenter)
         {
+            this.presenter = presenter;
             InitializeComponent();
         }
+
+        private void ocultar(object sender, RoutedEventArgs e)
+        {
+            this.presenter.HideShortcuts();
+        }
+
     }
 }

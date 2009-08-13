@@ -47,6 +47,10 @@
             Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
             Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}">
         </Frame>
+        <Frame x:Name="shortcuts"
+            Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
+            Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}">
+        </Frame>
     </Canvas>
     <Window.Resources>
         <LinearGradientBrush x:Key="Gradient1" StartPoint="0,0" EndPoint="0,1">

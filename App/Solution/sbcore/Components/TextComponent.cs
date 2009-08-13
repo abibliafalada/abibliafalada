@@ -16,6 +16,10 @@ namespace sbcore.Components
         public static string slug(string term)
         {
             string semAcentos = string.Empty;
+            
+            if (term == null)
+                return semAcentos;
+
             semAcentos = Regex.Replace(term, "[àáâäã]", "a", RegexOptions.IgnoreCase);
             semAcentos = Regex.Replace(semAcentos, "[èéêë]", "e", RegexOptions.IgnoreCase);
             semAcentos = Regex.Replace(semAcentos, "[ìíîï]", "i", RegexOptions.IgnoreCase);
