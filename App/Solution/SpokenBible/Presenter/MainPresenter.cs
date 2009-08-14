@@ -22,8 +22,8 @@ namespace SpokenBible.Presenter
     public class MainPresenter
     {
         private MainWindow mainWindow = null;
-        private Page principalPage = null;
-        private Page shortcutsPage = null;
+        private Principal principalPage = null;
+        private Shortcuts shortcutsPage = null;
         private AppController controller = null;
         
         private ISuggestComponent<string> textSuggest = null;
@@ -45,6 +45,13 @@ namespace SpokenBible.Presenter
 
             this.textSuggest = new SimpleTextSuggester(livros, ActivateSbItem);
             this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
+
+            this.shortcutsPage.VelhoTestamento = from Livro l in livros
+                                                 where l.Testamento.Acronimo == "AT"
+                                                 select l;
+            this.shortcutsPage.NovoTestamento = from Livro l in livros
+                                                 where l.Testamento.Acronimo == "NT"
+                                                 select l;
 
             //carregamento de paginas e conteudos visuais adicionais
             this.mainWindow.SetNavigationPages(this.principalPage, this.shortcutsPage);
@@ -113,9 +120,18 @@ namespace SpokenBible.Presenter
         #endregion
 
         #region shortcuts
-        internal void HideShortcuts()
+        internal void ShowHideShortcuts()
         {
-            DefaultEffects.HidePrincipal(mainWindow, "shortcuts");
+            if ((string)shortcutsPage.showHideButton.Content == ">>")
+            {
+                DefaultEffects.MoveShortcuts(shortcutsPage, "conteudo", 0);
+                shortcutsPage.showHideButton.Content = "<<";
+            }
+            else
+            {
+                DefaultEffects.MoveShortcuts(shortcutsPage, "conteudo", -380);
+                shortcutsPage.showHideButton.Content = ">>";
+            }
         }
         #endregion
     }

@@ -32,5 +32,19 @@ namespace SpokenBible.View
             storyboard.Begin(window);
         }
 
+        public static void MoveShortcuts(Page page, string target, int leftSize)
+        {
+            int seconds = 1;
+            Storyboard storyboard = new Storyboard();
+            TimeSpan time = new TimeSpan(0, 0, seconds);
+
+            DoubleAnimation animationFade = new DoubleAnimation(leftSize, new Duration(time));
+            Storyboard.SetTargetName(animationFade, target);
+            Storyboard.SetTargetProperty(animationFade, new PropertyPath(Canvas.LeftProperty));
+
+            storyboard.Children.Add(animationFade);
+
+            storyboard.Begin(page);
+        }
     }
 }

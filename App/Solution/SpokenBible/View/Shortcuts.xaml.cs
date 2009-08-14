@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpokenBible.Presenter;
+using System.Collections;
+using sbcore.Model;
 
 namespace SpokenBible.View
 {
@@ -28,9 +30,28 @@ namespace SpokenBible.View
             InitializeComponent();
         }
 
-        private void ocultar(object sender, RoutedEventArgs e)
+        private void showHide(object sender, RoutedEventArgs e)
         {
-            this.presenter.HideShortcuts();
+            this.presenter.ShowHideShortcuts();
+        }
+
+        public IEnumerable VelhoTestamento
+        {
+            set { velhoTestamento.ItemsSource = value; }
+        }
+
+        public IEnumerable NovoTestamento
+        {
+            set { novoTestamento.ItemsSource = value; }
+        }
+
+        private void lista_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox list = (ListBox)sender;
+            Livro livro = (Livro)list.SelectedItem;
+            this.presenter.ShowHideShortcuts();
+            this.presenter.ClosePrincipal();
+            this.presenter.SearchRequested(livro.ToString());
         }
 
     }
