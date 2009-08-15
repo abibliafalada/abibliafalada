@@ -104,6 +104,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\WindowSettings.cs" />
     <Compile Include="Controller\AppController.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

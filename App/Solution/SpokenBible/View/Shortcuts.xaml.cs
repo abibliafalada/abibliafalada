@@ -51,7 +51,7 @@ namespace SpokenBible.View
             Livro livro = (Livro)list.SelectedItem;
             this.presenter.ShowHideShortcuts();
             this.presenter.ClosePrincipal();
-            this.presenter.SearchRequested(livro.ToString());
+            this.presenter.ShowContent(livro);
         }
 
     }

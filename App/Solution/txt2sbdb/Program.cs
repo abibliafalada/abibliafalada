@@ -28,6 +28,7 @@ namespace txt2sbdb
 
             Console.WriteLine("--- SpokenBible: file.txt to SpokenBible DataBase file converter ---");
 
+            File.Delete(Container.FileName);
             StreamReader sr = new StreamReader(arquivo);
             TxtParser parser = new TxtParser();
             parser.OnTraducaoFound = new TxtParser.TokenFound<Traducao>(this.traducaoFound);

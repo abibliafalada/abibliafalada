@@ -172,6 +172,7 @@
 
     <Style TargetType="{x:Type local:AutoComplete}">
         <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="#EEE" />
         <Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
@@ -188,13 +189,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Grid>
-                        <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                        <ScrollViewer Margin="1" Style="{DynamicResource SimpleScrollViewer}" Focusable="false" Background="{TemplateBinding Background}">
+                        <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer Margin="1" Style="{DynamicResource SimpleScrollViewer}" Focusable="false" Background="{TemplateBinding Background}">
 
-                            <!-- The StackPanel is used to display the children by setting IsItemsHost to be Trus -->
-                            <StackPanel Margin="2" IsItemsHost="true"/>
+                                <!-- The StackPanel is used to display the children by setting IsItemsHost to be Trus -->
+                                <StackPanel Margin="2" IsItemsHost="true"/>
 
-                        </ScrollViewer>
+                            </ScrollViewer>
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -215,6 +217,8 @@
     <Style TargetType="{x:Type ListBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Foreground" Value="#EEE" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -225,12 +229,16 @@
                     <ControlTemplate.Triggers>
 
                         <!-- Change IsSelected SelectedBackgroundBrush to set the selection color for the items -->
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SelectedBackgroundBrush}" TargetName="Border"/>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultBorderBrush}" />
                         </Trigger>
 
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultBorderBrush}" />
+                        </Trigger>
+                        
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -241,14 +249,16 @@
     <Style TargetType="{x:Type TabControl}" BasedOn="{x:Null}">
         <Setter Property="Background" Value="{DynamicResource BaseColor1}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseColor2}"/>
     </Style>
 
     <Style TargetType="{x:Type TabItem}" BasedOn="{x:Null}">
         <Setter Property="Background" Value="{DynamicResource BaseColor3}"/>
-        <Setter Property="Foreground" Value="{DynamicResource BaseColor2}"/>
+        <Setter Property="Foreground" Value="#EEE"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseColor2}"/>
         <Setter Property="Margin" Value="1 0"/>
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">

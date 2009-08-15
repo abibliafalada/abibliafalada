@@ -23,13 +23,14 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <UniformGrid Columns="3" IsItemsHost="True" />
+                        <UniformGrid Columns="3" IsItemsHost="True" Margin="10" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type ListBoxItem}">
+        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
             <Setter Property="Height" Value="Auto" />
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
     </Page.Resources>
 </Page>

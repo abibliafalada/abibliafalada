@@ -39,6 +39,9 @@ namespace SpokenBible.Presenter
             this.principalPage = new Principal(this);
             this.shortcutsPage = new Shortcuts(this);
 
+            //carregamento de paginas e conteudos visuais adicionais
+            this.mainWindow.SetNavigationPages(this.principalPage, this.shortcutsPage);
+
             //carregamento dos dados
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
@@ -53,8 +56,6 @@ namespace SpokenBible.Presenter
                                                  where l.Testamento.Acronimo == "NT"
                                                  select l;
 
-            //carregamento de paginas e conteudos visuais adicionais
-            this.mainWindow.SetNavigationPages(this.principalPage, this.shortcutsPage);
         }
 
         private SpeechSynthesizer Synthetizer
@@ -74,6 +75,7 @@ namespace SpokenBible.Presenter
 
         public void ShowContent(ISbItem item)
         {
+            this.controller.DefaultContainer.Activate(item, 5);
             mainWindow.ClearContent();
             mainWindow.ShowContent(item);
         }
@@ -95,7 +97,6 @@ namespace SpokenBible.Presenter
             if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
             {
                 ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
-                this.controller.DefaultContainer.Activate(opcao, 5);
                 this.ShowContent(opcao);
             }
             else

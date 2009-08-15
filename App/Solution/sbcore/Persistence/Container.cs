@@ -12,6 +12,8 @@ namespace sbcore.Persistence
     {
         private static string file = @"..\..\..\..\Files\SbDbs\database.yap";
 
+        public static string FileName { get { return file; } }
+
         private static IObjectContainer container = null;
 
         private Container() { }

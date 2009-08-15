@@ -1,8 +1,10 @@
 ﻿<Window x:Class="SpokenBible.View.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:k="clr-namespace:Kingsmill.Windows"
     xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
-    Title="A Bíblia Falada" Height="650" Width="900">
+    Title="A Bíblia Falada" Height="650" Width="900"
+    k:WindowSettings.Save="True">
     <Canvas Background="{DynamicResource BaseContainer}">
         <Grid
             Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"

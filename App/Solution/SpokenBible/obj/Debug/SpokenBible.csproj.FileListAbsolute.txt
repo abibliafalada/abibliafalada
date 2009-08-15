@@ -26,3 +26,5 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\App.baml
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\Theme\generic.baml
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\Theme\sample.baml
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible_MarkupCompile.lref
