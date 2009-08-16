@@ -4,7 +4,8 @@
     xmlns:k="clr-namespace:Kingsmill.Windows"
     xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
     Title="A Bíblia Falada" Height="650" Width="900"
-    k:WindowSettings.Save="True">
+    k:WindowSettings.Save="True"
+    AutomationProperties.Name="A Bíblia Falada">
     <Canvas Background="{DynamicResource BaseContainer}">
         <Grid
             Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
@@ -21,10 +22,11 @@
             </Grid.ColumnDefinitions>
 
             <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" Margin="12"
-                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
+                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
+                />
 
             <Button x:Name="ir" Grid.Row="0" Grid.Column="1" Margin="0 10" 
-                Content="ir para página" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" />
+                Content="ir para página" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" AutomationProperties.HelpText="Altieres" AutomationProperties.Name="Lúbia"/>
 
             <Button x:Name="ler" Grid.Row="0" Grid.Column="2" Width="50" Margin="0 10" HorizontalAlignment="Left"
                 Content="ler" FontSize="15" FontFamily="Calibri" Click="ler_Click" />

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.ComponentModel;
 using System.Collections;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation;
 
 /*
  * Seguindo o tutorial:
@@ -67,9 +69,12 @@ namespace AltzControls
                     break;
                 case Key.Down:
                     ExibePopup();
-                    this.list.SelectedIndex = this.list.Items.Count > 0 ? 0 : -1;
-                    ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
-                    item.Focus();
+                    if (this.list.Items.Count > 0)
+                    {
+                        this.list.SelectedIndex = 0;
+                        ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
+                        item.Focus();
+                    }
                     break;
                 case Key.Enter:
                     OcultaPopup();
@@ -117,6 +122,8 @@ namespace AltzControls
 
             if (this.textbox != null)
             {
+                AutomationProperties.SetName(this.textbox, AutomationProperties.GetName(this));
+
                 this.textbox.LostFocus += this.TextBoxLostFocus;
                 this.textbox.KeyUp += new KeyEventHandler(TextBoxKeyUp);
             }
@@ -262,6 +269,13 @@ namespace AltzControls
             remove { RemoveHandler(SearchRequestEvent, value); }
         }
 
+        #endregion
+
+        #region Automation
+        /*protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new TextBoxAutomationPeer(this.textbox);
+        }*/
         #endregion
     }
 }

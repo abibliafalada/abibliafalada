@@ -5,6 +5,7 @@
 
 
     <Style TargetType="{x:Type local:AutoComplete}">
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:AutoComplete}">
@@ -12,7 +13,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <DockPanel LastChildFill="True" Margin="1" x:Name="ContentPanel">
-                            <Popup Margin="10,10,0,13" x:Name="PART_Popup" HorizontalAlignment="Left" PlacementTarget="{Binding ElementName=ContentPanel}" 
+                            <Popup Margin="10,10,0,13" x:Name="PART_Popup" HorizontalAlignment="Left" PlacementTarget="{Binding ElementName=ContentPanel}"
                                     VerticalAlignment="Bottom" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type local:AutoComplete}}}" Height="200" FocusManager.IsFocusScope="True">
                                 <ListBox x:Name="PART_ListBox" BorderThickness="0">
                                 </ListBox>
@@ -20,7 +21,7 @@
 
                             <TextBox x:Name="PART_TextBox" Text="{Binding Path=Text, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{TemplateBinding Foreground}" BorderThickness="0" VerticalAlignment="Center" />
+                                BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{TemplateBinding Foreground}" BorderThickness="0" VerticalAlignment="Center"/>
                         </DockPanel>
                     </Border>
                 </ControlTemplate>

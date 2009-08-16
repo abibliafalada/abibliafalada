@@ -23,7 +23,8 @@
         </TextBlock>
         
         <a:AutoComplete x:Name="busca" Grid.Row="2" Grid.Column="1" Margin="12 12"
-                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"></a:AutoComplete>
+                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
+                AutomationProperties.Name="Busca por Capítulo" />
         
         <Button x:Name="ler" Grid.Row="3" Grid.Column="1" Width="100" Click="busca_SearchRequest"
                 Content="ir para página" FontSize="15" FontFamily="Calibri" />
