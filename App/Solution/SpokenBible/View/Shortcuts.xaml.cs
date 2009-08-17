@@ -37,21 +37,41 @@ namespace SpokenBible.View
 
         public IEnumerable VelhoTestamento
         {
-            set { velhoTestamento.ItemsSource = value; }
+            set
+            {
+                velhoTestamento.ItemsSource = value;
+                if(velhoTestamento.Items.Count > 0)
+                    velhoTestamento.SelectedIndex = 0;
+            }
         }
 
         public IEnumerable NovoTestamento
         {
-            set { novoTestamento.ItemsSource = value; }
+            set
+            {
+                novoTestamento.ItemsSource = value;
+                if (novoTestamento.Items.Count > 0)
+                    novoTestamento.SelectedIndex = 0;
+            }
         }
 
-        private void lista_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void favoritos_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+                this.ItemSelecionado(sender);
+        }
+
+        private void favoritos_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.ItemSelecionado(sender);
+        }
+
+        private void ItemSelecionado(object sender)
         {
             ListBox list = (ListBox)sender;
             Livro livro = (Livro)list.SelectedItem;
             this.presenter.ShowHideShortcuts();
-            this.presenter.ClosePrincipal();
-            this.presenter.ShowContent(livro);
+            this.presenter.ShowContentFromShortcuts(livro);
         }
 
     }

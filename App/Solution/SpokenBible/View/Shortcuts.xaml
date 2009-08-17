@@ -4,18 +4,20 @@
     Title="Shortcuts">
     <Canvas Height="400" Width="400">
         <StackPanel x:Name="conteudo" Orientation="Horizontal" Canvas.Left="-380" Height="400" Width="400">
-            <TabControl Width="380">
+            <TabControl x:Name="tabs" IsEnabled="False" Width="380" TabIndex="110">
                 <TabItem Header="Velho Testamento">
-                    <ListBox x:Name="velhoTestamento" SelectionChanged="lista_SelectionChanged" />
+                    <ListBox x:Name="velhoTestamento" KeyUp="favoritos_KeyUp" MouseUp="favoritos_MouseUp" />
                 </TabItem>
                 <TabItem Header="Novo Testamento">
-                    <ListBox x:Name="novoTestamento" SelectionChanged="lista_SelectionChanged" />
+                    <ListBox x:Name="novoTestamento" KeyUp="favoritos_KeyUp" MouseUp="favoritos_MouseUp" />
                 </TabItem>
                 <TabItem Header="Favoritos" Visibility="Hidden">
-                    <ListBox x:Name="favoritos" SelectionChanged="lista_SelectionChanged" />
+                    <ListBox x:Name="favoritos" KeyUp="favoritos_KeyUp" MouseUp="favoritos_MouseUp" />
                 </TabItem>
             </TabControl>
-            <Button x:Name="showHideButton" Style="{DynamicResource expander}" Content=">>" Width="20" Height="30" Click="showHide" />
+            <Button x:Name="showHideButton" Style="{DynamicResource expander}"
+                Content=">>" AutomationProperties.Name="Acessar Índice de Livros"
+                Width="20" Height="30" Click="showHide" TabIndex="100" />
         </StackPanel>
     </Canvas>
     <Page.Resources>
@@ -30,6 +32,7 @@
         </Style>
         <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
             <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="200" />
             <Setter Property="Cursor" Value="Hand" />
         </Style>
     </Page.Resources>

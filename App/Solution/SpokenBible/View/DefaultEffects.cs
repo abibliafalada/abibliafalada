@@ -10,25 +10,28 @@ namespace SpokenBible.View
 {
     class DefaultEffects
     {
-        public static void HidePrincipal(Window window, string target)
+        public static void ShowHidePrincipal(Window window, string target, EventHandler OnComplete, Visibility visibility)
         {
             int seconds = 1;
             Storyboard storyboard = new Storyboard();
-            TimeSpan time = new TimeSpan(0,0,seconds);
+            TimeSpan time = new TimeSpan(0, 0, seconds);
 
-            DoubleAnimation animationFade = new DoubleAnimation(0, new Duration(time));
+            DoubleAnimation animationFade = new DoubleAnimation(
+                visibility == Visibility.Hidden ? 0 : 1,
+                new Duration(time));
             Storyboard.SetTargetName(animationFade, target);
             Storyboard.SetTargetProperty(animationFade, new PropertyPath(Frame.OpacityProperty));
 
             ObjectAnimationUsingKeyFrames animationHide = new ObjectAnimationUsingKeyFrames();
-            ObjectKeyFrame hideFrame = new DiscreteObjectKeyFrame(Visibility.Hidden, KeyTime.FromTimeSpan(time));
+            ObjectKeyFrame hideFrame = new DiscreteObjectKeyFrame(visibility, KeyTime.FromTimeSpan(time));
             animationHide.KeyFrames.Add(hideFrame);
             Storyboard.SetTargetName(animationHide, target);
             Storyboard.SetTargetProperty(animationHide, new PropertyPath(Frame.VisibilityProperty));
-            
+
             storyboard.Children.Add(animationFade);
             storyboard.Children.Add(animationHide);
-
+            storyboard.Completed += OnComplete;
+            
             storyboard.Begin(window);
         }
 

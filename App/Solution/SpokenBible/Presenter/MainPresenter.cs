@@ -16,12 +16,15 @@ using Db4objects.Db4o;
 using System.Speech.Synthesis;
 using System.Windows.Controls;
 using AltzControls;
+using System.Windows.Automation;
+using System.Windows.Input;
 
 namespace SpokenBible.Presenter
 {
     public class MainPresenter
     {
         private MainWindow mainWindow = null;
+        private Main mainPage = null;
         private Principal principalPage = null;
         private Shortcuts shortcutsPage = null;
         private AppController controller = null;
@@ -36,12 +39,14 @@ namespace SpokenBible.Presenter
             //inicialização dos controles
             this.controller = controller;
             this.mainWindow = new MainWindow(this);
+            this.mainPage = new Main(this);
             this.principalPage = new Principal(this);
             this.shortcutsPage = new Shortcuts(this);
 
             //carregamento de paginas e conteudos visuais adicionais
-            this.mainWindow.SetNavigationPages(this.principalPage, this.shortcutsPage);
-
+            this.mainWindow.principal.Navigate(this.principalPage);
+            this.mainWindow.shortcuts.Navigate(this.shortcutsPage);
+            
             //carregamento dos dados
             IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
                                         select l;
@@ -76,8 +81,8 @@ namespace SpokenBible.Presenter
         public void ShowContent(ISbItem item)
         {
             this.controller.DefaultContainer.Activate(item, 5);
-            mainWindow.ClearContent();
-            mainWindow.ShowContent(item);
+            this.mainPage.ClearContent();
+            this.mainPage.ShowContent(item);
         }
 
 
@@ -113,11 +118,26 @@ namespace SpokenBible.Presenter
             Synthetizer.SpeakAsync(text);
         }
 
+        internal void SpeachStop()
+        {
+            Synthetizer.SpeakAsyncCancelAll();
+        }
+
         #region principal
         internal void ClosePrincipal()
         {
-            DefaultEffects.HidePrincipal(mainWindow, "principal");
+            //DefaultEffects.ShowHidePrincipal(mainWindow, "principal", animationCompleted, Visibility.Hidden);
+            this.mainWindow.principal.Navigate(this.mainPage);
+            this.mainPage.busca.Text = this.principalPage.busca.Text;
+            //FocusManager.SetFocusedElement(this.mainPage, this.mainPage.ler);
         }
+
+        private void animationCompleted(object sender, EventArgs e)
+        {
+            this.mainWindow.principal.Navigate(this.mainPage);
+            DefaultEffects.ShowHidePrincipal(mainWindow, "principal", animationCompleted, Visibility.Visible);
+        }
+
         #endregion
 
         #region shortcuts
@@ -127,13 +147,27 @@ namespace SpokenBible.Presenter
             {
                 DefaultEffects.MoveShortcuts(shortcutsPage, "conteudo", 0);
                 shortcutsPage.showHideButton.Content = "<<";
+                shortcutsPage.tabs.IsEnabled = true;
+                AutomationProperties.SetName(shortcutsPage.showHideButton, "Voltar à tela Principal");
             }
             else
             {
                 DefaultEffects.MoveShortcuts(shortcutsPage, "conteudo", -380);
                 shortcutsPage.showHideButton.Content = ">>";
+                shortcutsPage.tabs.IsEnabled = false;
+                AutomationProperties.SetName(shortcutsPage.showHideButton, "Acessar índice de Livros");
             }
         }
+
+        internal void ShowContentFromShortcuts(Livro livro)
+        {
+            this.ClosePrincipal();
+            this.mainPage.busca.PopupEnabled = false;
+            this.mainPage.busca.Text = livro.Display;
+            this.mainPage.busca.PopupEnabled = true;
+            this.ShowContent(livro);
+        }
         #endregion
+
     }
 }

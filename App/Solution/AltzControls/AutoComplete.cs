@@ -116,6 +116,7 @@ namespace AltzControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            this.PopupEnabled = true;
             this.textbox = base.GetTemplateChild("PART_TextBox") as TextBox;
             this.popup = base.GetTemplateChild("PART_Popup") as Popup;
             this.list = base.GetTemplateChild("PART_ListBox") as ListBox;
@@ -144,6 +145,8 @@ namespace AltzControls
         #endregion
 
         #region Popup
+        public bool PopupEnabled { get; set; }
+
         void ListBoxMouseUp(object sender, MouseButtonEventArgs e)
         {
             SelecionaItem();
@@ -180,7 +183,7 @@ namespace AltzControls
 
         private void ExibePopup()
         {
-            if (this.popup != null && !this.popup.IsOpen && this.list.Items.Count > 0)
+            if (this.popup != null && !this.popup.IsOpen && this.list.Items.Count > 0 && this.PopupEnabled)
                 this.popup.IsOpen = true;
         }
         #endregion
@@ -189,7 +192,7 @@ namespace AltzControls
         public IEnumerable ItemsSource
         {
             get { return this.list.ItemsSource; }
-            set { this.list.ItemsSource = value; }
+            set { if (this.list != null) this.list.ItemsSource = value; }
         }
         #endregion
 

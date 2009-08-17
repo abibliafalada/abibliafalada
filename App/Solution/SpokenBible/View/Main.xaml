@@ -1,0 +1,46 @@
+﻿<Page x:Class="SpokenBible.View.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:a="clr-namespace:AltzControls;assembly=AltzControls"
+    Title="Main">
+    <Grid Background="{DynamicResource BaseContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" Margin="12"
+                SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
+                AutomationProperties.Name="digite a referência" />
+
+        <Button x:Name="ir" Grid.Row="0" Grid.Column="1" Margin="0 10" 
+                Content="ir para referência" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" />
+
+        <Button x:Name="ler" Grid.Row="0" Grid.Column="2" Width="50" Margin="0 10" HorizontalAlignment="Left"
+                Content="ler" FontSize="15" FontFamily="Calibri" Click="ler_Click"
+                AutomationProperties.Name="ler com a voz padrão da bíblia falada" />
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{DynamicResource Gradient1}" BorderThickness="0 1">
+            <Border BorderBrush="{DynamicResource Gradient2}" BorderThickness="0 1">
+                <Border Margin="30 10" Background="#EEE">
+                    <FlowDocumentReader x:Name="documentReader" ViewingMode="TwoPage">
+                        <FlowDocument x:Name="document" ColumnWidth="5000">
+                        </FlowDocument>
+                    </FlowDocumentReader>
+                </Border>
+            </Border>
+        </Border>
+
+        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Right" VerticalAlignment="Center" Margin="10 0" >
+                A Bíblia Falada
+                <Span Style="{DynamicResource SpanTitle}">v2.0</Span>
+        </TextBlock>
+
+    </Grid>
+</Page>
