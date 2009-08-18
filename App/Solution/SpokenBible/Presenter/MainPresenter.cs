@@ -30,7 +30,7 @@ namespace SpokenBible.Presenter
         private AppController controller = null;
         
         private ISuggestComponent<string> textSuggest = null;
-        private ISuggestComponent<ISbItem> sbItemSuggest = null;
+        private ISuggestComponent<IEnumerable<ISbItem>> sbItemSuggest = null;
 
         private SpeechSynthesizer synthetizer = null;
 
@@ -78,13 +78,20 @@ namespace SpokenBible.Presenter
             mainWindow.Show();
         }
 
-        public void ShowContent(ISbItem item)
+        public void ShowContent(IEnumerable<ISbItem> itens)
         {
-            this.controller.DefaultContainer.Activate(item, 5);
+            foreach(ISbItem item in itens)
+                this.ActivateSbItem(item);
             this.mainPage.ClearContent();
-            this.mainPage.ShowContent(item);
+            this.mainPage.ShowContent(itens);
         }
 
+        public void ShowContent(ISbItem item)
+        {
+            IList<ISbItem> resp = new List<ISbItem>();
+            resp.Add(item);
+            this.ShowContent(resp);
+        }
 
         internal void SearchChanged(AutoComplete component, string term)
         {
@@ -101,7 +108,7 @@ namespace SpokenBible.Presenter
         {
             if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
             {
-                ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
+                IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
                 this.ShowContent(opcao);
             }
             else
@@ -126,18 +133,9 @@ namespace SpokenBible.Presenter
         #region principal
         internal void ClosePrincipal()
         {
-            //DefaultEffects.ShowHidePrincipal(mainWindow, "principal", animationCompleted, Visibility.Hidden);
             this.mainWindow.principal.Navigate(this.mainPage);
             this.mainPage.busca.Text = this.principalPage.busca.Text;
-            //FocusManager.SetFocusedElement(this.mainPage, this.mainPage.ler);
         }
-
-        private void animationCompleted(object sender, EventArgs e)
-        {
-            this.mainWindow.principal.Navigate(this.mainPage);
-            DefaultEffects.ShowHidePrincipal(mainWindow, "principal", animationCompleted, Visibility.Visible);
-        }
-
         #endregion
 
         #region shortcuts
@@ -166,6 +164,7 @@ namespace SpokenBible.Presenter
             this.mainPage.busca.Text = livro.Display;
             this.mainPage.busca.PopupEnabled = true;
             this.ShowContent(livro);
+            Keyboard.Focus(this.mainPage.ler);
         }
         #endregion
 

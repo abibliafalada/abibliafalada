@@ -24,9 +24,12 @@ namespace sbcore.Components
             return livro.Nome + ", " + cap;
         }
 
-        protected override string GetItem(Livro livro, int cap, int vers)
+        protected override string GetItem(Livro livro, int cap, int vers1, int? vers2)
         {
-            return livro.Nome + ", " + cap + "." + vers;
+            if (vers2 == null)
+                return livro.Nome + ", " + cap + "." + vers1;
+            else
+                return livro.Nome + ", " + cap + "." + vers1 + "-" + vers2;
         }
     }
 }

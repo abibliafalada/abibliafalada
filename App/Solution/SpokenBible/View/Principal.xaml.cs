@@ -38,5 +38,10 @@ namespace SpokenBible.View
         {
             this.presenter.SearchChanged(busca, busca.Text);
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Keyboard.Focus(this.busca);
+        }
     }
 }

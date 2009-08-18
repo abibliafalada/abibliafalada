@@ -32,7 +32,6 @@
         </Style>
         <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
             <Setter Property="Height" Value="Auto" />
-            <Setter Property="Width" Value="200" />
             <Setter Property="Cursor" Value="Hand" />
         </Style>
     </Page.Resources>

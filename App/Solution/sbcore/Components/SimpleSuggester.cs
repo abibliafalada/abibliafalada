@@ -18,11 +18,11 @@ namespace sbcore.Components
 
         private Regex bookPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)$");
         private Regex chapPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)$");
-        private Regex versPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)$");
+        private Regex versPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)([\-]([0-9\ ]*))?$");
 
         protected abstract T GetItem(Livro livro);
         protected abstract T GetItem(Livro livro, int cap);
-        protected abstract T GetItem(Livro livro, int cap, int vers);
+        protected abstract T GetItem(Livro livro, int cap, int vers1, int? vers2);
 
         public SimpleSuggester(IEnumerable<Livro> itens, SbItemChildrenNeeded SbItemChildrenNeeded)
         {
@@ -84,7 +84,8 @@ namespace sbcore.Components
 
             string book = m.Groups[1].Value.Trim();
             string chap = m.Groups[2].Value.Trim();
-            string vers = m.Groups[3].Value.Trim();
+            string vers1 = m.Groups[3].Value.Trim();
+            string vers2 = m.Groups[5].Value.Trim();
 
             IList<T> suggestions = new List<T>();
             foreach (Livro livro in this.itens)
@@ -96,9 +97,36 @@ namespace sbcore.Components
                         if (i.ToString().Contains(chap))
                         {
                             OnSbItemChildrenNeeded(livro.Capitulos[i-1]);
-                            for (int j = 1; j <= livro.Capitulos[i-1].Versiculos.Count; j++)
-                                if (j.ToString().Contains(vers))
-                                    suggestions.Add(this.GetItem(livro, i, j));
+                            if (vers2 == string.Empty)
+                            {
+                                for (int j = 1; j <= livro.Capitulos[i - 1].Versiculos.Count; j++)
+                                {
+                                    if (j.ToString().Contains(vers1))
+                                    {
+                                        suggestions.Add(this.GetItem(livro, i, j, null));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                int k = 0;
+                                try
+                                {
+                                    k = Convert.ToInt32(vers1);
+                                }
+                                catch (Exception)
+                                {
+                                    return suggestions;
+                                }
+
+                                for (int j = k; j <= livro.Capitulos[i - 1].Versiculos.Count; j++)
+                                {
+                                    if (j.ToString().Contains(vers2))
+                                    {
+                                        suggestions.Add(this.GetItem(livro, i, k, j));
+                                    }
+                                }
+                            }
                         }
                     }
                     break;

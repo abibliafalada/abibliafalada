@@ -39,6 +39,14 @@ namespace SpokenBible.View
             documentReader.Document = trickToMoveToBegin;
         }
 
+        public void ShowContent(IEnumerable<ISbItem> itens)
+        {
+            foreach (ISbItem item in itens)
+            {
+                ShowContent(item);
+            }
+        }
+
         public void ShowContent(ISbItem item)
         {
             Paragraph p = new Paragraph();
@@ -100,6 +108,11 @@ namespace SpokenBible.View
                 TextRange r = new TextRange(this.documentReader.Document.Blocks.FirstBlock.ContentStart, this.documentReader.Document.Blocks.LastBlock.ContentEnd);
                 this.presenter.SpeachRequest(r.Text);
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Keyboard.Focus(this.ler);
         }
     }
 }

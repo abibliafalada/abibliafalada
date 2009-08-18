@@ -121,6 +121,8 @@ namespace AltzControls
             this.popup = base.GetTemplateChild("PART_Popup") as Popup;
             this.list = base.GetTemplateChild("PART_ListBox") as ListBox;
 
+            this.GotFocus += new RoutedEventHandler(AutoComplete_GotFocus);
+
             if (this.textbox != null)
             {
                 AutomationProperties.SetName(this.textbox, AutomationProperties.GetName(this));
@@ -142,6 +144,7 @@ namespace AltzControls
                 mainWindow.Deactivated += new EventHandler(OnMainWindowDeactivated);
             }
         }
+
         #endregion
 
         #region Popup
@@ -274,11 +277,20 @@ namespace AltzControls
 
         #endregion
 
-        #region Automation
-        /*protected override AutomationPeer OnCreateAutomationPeer()
+        #region Events
+        void AutoComplete_GotFocus(object sender, RoutedEventArgs e)
         {
-            return new TextBoxAutomationPeer(this.textbox);
-        }*/
+            if (Keyboard.Modifiers != ModifierKeys.Shift)
+            {
+                this.textbox.Focus();
+                e.Handled = true;  
+            }
+            else if(!this.textbox.IsFocused)
+            {
+                this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
+                e.Handled = true;
+            }
+        }
         #endregion
     }
 }
