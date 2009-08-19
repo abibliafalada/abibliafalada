@@ -21,6 +21,12 @@ namespace sbcore.Model
             Numero = numero;
             Descricao = descricao;
         }
+
+        public ISbItem Parent
+        {
+            get { return Capitulo; }
+        }
+
         #endregion
 
         #region ISbItem<Livro> Members

@@ -6,7 +6,9 @@
     <Grid Background="{DynamicResource BaseContainer}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
+            <RowDefinition Height="3" />
             <RowDefinition Height="100*" />
+            <RowDefinition Height="3" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,18 +28,25 @@
                 Content="ler" FontSize="15" FontFamily="Calibri" Click="ler_Click"
                 AutomationProperties.Name="ler com a voz padrão da bíblia falada" />
 
+        
+        <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" StrokeThickness="0" Fill="{DynamicResource Gradient1}" Height="3" />
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="30 10" Background="#EEE">
+            <FlowDocumentReader x:Name="documentReader" ViewingMode="TwoPage">
+                <FlowDocument x:Name="document" ColumnWidth="5000" />
+            </FlowDocumentReader>
+        </Border>
+        <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" StrokeThickness="0" Fill="{DynamicResource Gradient2}" Height="3" />
+        
+<!--        
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="{DynamicResource Gradient1}" BorderThickness="0 1">
-            <Border BorderBrush="{DynamicResource Gradient2}" BorderThickness="0 1">
+            
+            <Border BorderBrush="{DynamicResource Gradient2}" BorderThickness="0 5">
                 <Border Margin="30 10" Background="#EEE">
-                    <FlowDocumentReader x:Name="documentReader" ViewingMode="TwoPage">
-                        <FlowDocument x:Name="document" ColumnWidth="5000">
-                        </FlowDocument>
-                    </FlowDocumentReader>
                 </Border>
             </Border>
         </Border>
-
-        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Right" VerticalAlignment="Center" Margin="10 0" >
+-->
+        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Right" VerticalAlignment="Center" Margin="10 0" >
                 A Bíblia Falada
                 <Span Style="{DynamicResource SpanTitle}">v2.0</Span>
         </TextBlock>

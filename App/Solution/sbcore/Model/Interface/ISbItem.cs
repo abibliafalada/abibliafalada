@@ -10,5 +10,6 @@ namespace sbcore.Model.Interface
     {
         string Display { get; }
         IEnumerable<ISbItem> Children { get; }
+        ISbItem Parent { get; }
     }
 }

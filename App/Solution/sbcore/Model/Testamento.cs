@@ -55,6 +55,11 @@ namespace sbcore.Model
             get { return Enumerable.Cast<ISbItem>(Livros); }
         }
 
+        public ISbItem Parent
+        {
+            get { return Traducao; }
+        }
+
         #endregion
     }
 }

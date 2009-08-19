@@ -16,9 +16,10 @@ namespace sbcore.Components
 
         private IEnumerable<Livro> itens = null;
 
-        private Regex bookPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)$");
-        private Regex chapPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)$");
-        private Regex versPattern = new Regex(@"^([0-9]?[a-zA-Z\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)([\-]([0-9\ ]*))?$");
+        private static string alfabetoAcentuado = @"a-zA-ZÀ-ÿ";
+        private static Regex bookPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)$", RegexOptions.IgnoreCase);
+        private static Regex chapPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)[\,\;\-\ ]*([0-9]*)$", RegexOptions.IgnoreCase);
+        private static Regex versPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)([\-]([0-9\ ]*))?$", RegexOptions.IgnoreCase);
 
         protected abstract T GetItem(Livro livro);
         protected abstract T GetItem(Livro livro, int cap);
@@ -33,15 +34,20 @@ namespace sbcore.Components
         #region ISuggestComponent Members
         public IEnumerable<T> GetSuggestionsFor(string term)
         {
-            term = TextComponent.slug(term);
-            if (bookPattern.IsMatch(term))
-                return this.GetSuggestionsForBooks(term);
-            if (chapPattern.IsMatch(term))
-                return this.GetSuggestionsForChapters(term);
-            if (versPattern.IsMatch(term))
-                return this.GetSuggestionsForVersicles(term);
+            IEnumerable<T> resp = new List<T>(0);
 
-            return new List<T>(0);
+            if (term == null)
+                return resp;
+
+            term = term.Trim();
+            if (bookPattern.IsMatch(term))
+                resp = this.GetSuggestionsForBooks(term);
+            else if (chapPattern.IsMatch(term))
+                resp = this.GetSuggestionsForChapters(term);
+            else if (versPattern.IsMatch(term))
+                resp = this.GetSuggestionsForVersicles(term);
+
+            return resp.Take(20);
         }
         #endregion
 

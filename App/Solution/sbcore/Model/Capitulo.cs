@@ -53,6 +53,11 @@ namespace sbcore.Model
             get { return Enumerable.Cast<ISbItem>(Versiculos); }
         }
 
+        public ISbItem Parent
+        {
+            get { return Livro; }
+        }
+
         #endregion
     }
 }

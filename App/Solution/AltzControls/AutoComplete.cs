@@ -94,15 +94,6 @@ namespace AltzControls
         private Popup popup = null;
         private ListBox list = null;
 
-        private FrameworkElement FindMainWindow(FrameworkElement child)
-        {
-            if (child.Parent == null || child.Parent is Window)
-                return child.Parent as FrameworkElement;
-            if (child.Parent is FrameworkElement)
-                return FindMainWindow(child.Parent as FrameworkElement);
-            return null;
-        }
-
         protected void OnMainWindowLocationChanged(object o, EventArgs e)
         {
             OcultaPopup();
@@ -137,7 +128,7 @@ namespace AltzControls
                 this.list.MouseUp += new MouseButtonEventHandler(ListBoxMouseUp);
             }
 
-            Window mainWindow = FindMainWindow(this) as Window;
+            Window mainWindow = Window.GetWindow(this);
             if (mainWindow != null)
             {
                 mainWindow.LocationChanged += this.OnMainWindowLocationChanged;

@@ -13,8 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpokenBible.Presenter;
 using sbcore.Model.Interface;
-using System.Windows.Automation;
-using System.Windows.Automation.Peers;
+using sbcore.Model;
 
 namespace SpokenBible.View
 {
@@ -41,22 +40,48 @@ namespace SpokenBible.View
 
         public void ShowContent(IEnumerable<ISbItem> itens)
         {
+            ShowFather(itens.First().Parent);
             foreach (ISbItem item in itens)
             {
                 ShowContent(item);
             }
         }
 
-        public void ShowContent(ISbItem item)
+        private void ShowContent(ISbItem item)
+        {
+            CreateParagraph(item);
+
+            foreach (ISbItem i in item.Children)
+                ShowContent(i);
+        }
+
+        private void ShowFather(ISbItem item)
+        {
+            if ((item == null) || (item is Testamento))
+                return;
+
+            ShowFather(item.Parent);
+            CreateParagraph(item);
+        }
+
+        private void CreateParagraph(ISbItem item)
         {
             Paragraph p = new Paragraph();
+            FormatParagraph(p, item);
             p.Cursor = Cursors.Hand;
             p.Inlines.Add(item.Display);
             p.MouseLeave += new MouseEventHandler(OnParagraphMouseLeave);
             p.MouseEnter += new MouseEventHandler(OnParagraphMouseEnter);
             p.MouseDown += new MouseButtonEventHandler(OnParagraphMouseDown);
             documentReader.Document.Blocks.Add(p);
-            InternalShowContent(item);
+        }
+
+        private void FormatParagraph(Paragraph p, ISbItem item)
+        {
+            if(item is Livro)
+                p.FontSize = 28;
+            else if (item is Capitulo)
+                p.FontSize = 24;
         }
 
         private void OnParagraphMouseEnter(object sender, MouseEventArgs e)
@@ -77,14 +102,6 @@ namespace SpokenBible.View
             TextRange textRange = new TextRange(p.ContentStart, p.ContentEnd);
             if (textRange.Text != string.Empty)
                 this.presenter.SpeachRequest(textRange.Text);
-        }
-
-        private void InternalShowContent(ISbItem item)
-        {
-            foreach (ISbItem i in item.Children)
-            {
-                ShowContent(i);
-            }
         }
 
         private void busca_TextChanged(object sender, RoutedEventArgs e)

@@ -20,7 +20,7 @@
 
                             <TextBox x:Name="PART_TextBox" Text="{Binding Path=Text, Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{TemplateBinding Foreground}" BorderThickness="0" VerticalAlignment="Center"/>
+                                BorderBrush="{x:Null}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" BorderThickness="0" VerticalAlignment="Center"/>
                         </DockPanel>
                     </Border>
                 </ControlTemplate>

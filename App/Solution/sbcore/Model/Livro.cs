@@ -58,6 +58,11 @@ namespace sbcore.Model
             get { return Enumerable.Cast<ISbItem>(Capitulos); }
         }
 
+        public ISbItem Parent
+        {
+            get { return Testamento; }
+        }
+
         public override string ToString()
         {
             return this.Display;
@@ -67,7 +72,7 @@ namespace sbcore.Model
         public bool Contains(string text)
         {
             text = text.ToLower();
-            return TextComponent.slug(this.Acronimo.ToLower()).Contains(text) || TextComponent.slug(this.Nome.ToLower()).Contains(text);
+            return this.Acronimo.ToLower().Contains(text) || this.Nome.ToLower().Contains(text);
         }
     }
 }

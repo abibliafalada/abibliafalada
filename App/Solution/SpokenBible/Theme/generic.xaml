@@ -76,6 +76,16 @@
     <SolidColorBrush x:Key="BaseColor3" Color="#222"/>
     <SolidColorBrush x:Key="DefaultBorderBrush" Color="#F90"/>
 
+    <LinearGradientBrush x:Key="Gradient1" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="Black" Offset="0" />
+        <GradientStop Color="#4C4C4C" Offset="1" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Gradient2" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#3B3B3B" Offset="0" />
+        <GradientStop Color="#838383" Offset="1" />
+    </LinearGradientBrush>
+
     <LinearGradientBrush x:Key="ButtonBrush" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#F90" Offset="0.0"/>
         <GradientStop Color="#C70" Offset="1.0"/>
@@ -176,6 +186,7 @@
         <Setter Property="Foreground" Value="#EEE" />
         <Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="14"/>
     </Style>
 
     <!-- Simple ListBox - This uses SimpleScrollViewer to allow items to be scrolled and SimpleListBoxItem to define the look of each item -->

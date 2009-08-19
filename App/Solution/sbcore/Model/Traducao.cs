@@ -54,6 +54,11 @@ namespace sbcore.Model
             get { return Enumerable.Cast<ISbItem>(Testamentos); }
         }
 
+        public ISbItem Parent
+        {
+            get { return null; }
+        }
+
         #endregion
     }
 }
