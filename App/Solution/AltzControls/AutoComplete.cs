@@ -73,7 +73,8 @@ namespace AltzControls
                     {
                         this.list.SelectedIndex = 0;
                         ListBoxItem item = list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem;
-                        item.Focus();
+                        FocusManager.SetFocusedElement(this, item);
+                        Keyboard.Focus(item);
                     }
                     break;
                 case Key.Enter:
@@ -186,7 +187,15 @@ namespace AltzControls
         public IEnumerable ItemsSource
         {
             get { return this.list.ItemsSource; }
-            set { if (this.list != null) this.list.ItemsSource = value; }
+            set
+            {
+                if (this.list != null)
+                {
+                    this.list.ItemsSource = value;
+                    if (this.list.Items.Count <= 0)
+                        OcultaPopup();
+                }
+            }
         }
         #endregion
 
