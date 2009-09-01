@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using SpokenBible.Presenter;
 using sbcore.Model.Interface;
 using sbcore.Model;
+using System.Windows.Xps.Packaging;
+
 
 namespace SpokenBible.View
 {
@@ -23,6 +25,24 @@ namespace SpokenBible.View
     public partial class Main : Page
     {
         MainPresenter presenter = null;
+
+        private Paragraph LinkABibliaFalada
+        {
+            get
+            {
+                Paragraph paragraphABibliaFalada = new Paragraph();
+                paragraphABibliaFalada.TextAlignment = TextAlignment.Right;
+
+                Hyperlink linkABibliaFalada = new Hyperlink(new Run("A Bíblia Falada"));
+                linkABibliaFalada.RequestNavigate += HandleRequestNavigate;
+                linkABibliaFalada.NavigateUri = new Uri("http://spoken-bible.sourceforge.net");
+
+                paragraphABibliaFalada.Inlines.Add(linkABibliaFalada);
+
+                return paragraphABibliaFalada;
+            }
+        }
+        
 
         public Main(MainPresenter presenter)
         {
@@ -38,6 +58,98 @@ namespace SpokenBible.View
             documentReader.Document = trickToMoveToBegin;
         }
 
+        public void ShowHelp()
+        {
+            ClearContent();
+
+            Thickness margemTitulo = new Thickness(5, 20, 5, 5);
+            Thickness margemParagrafo = new Thickness(5);
+
+            Hyperlink linkRaquel = new Hyperlink(new Run("Raquel SAPI5 4shared"));
+            linkRaquel.RequestNavigate += HandleRequestNavigate;
+            linkRaquel.NavigateUri = new Uri("http://www.4shared.com/file/35334181/7d07e5b1/realspeak_-_raquel_-_sapi5_-_portugus_brasil.html");
+
+            Paragraph t1a = new Paragraph();
+            
+            Paragraph t2a = new Paragraph();
+            Paragraph t2b = new Paragraph();
+
+            Paragraph ta = new Paragraph();
+            Paragraph tb = new Paragraph();
+            Paragraph tc = new Paragraph();
+            Paragraph td = new Paragraph();
+            Paragraph te = new Paragraph();
+            Paragraph tf = new Paragraph();
+            
+            t1a.FontSize = 26;
+            t1a.Margin = margemTitulo;
+            
+            t2a.FontSize = 24;
+            t2a.Margin = margemTitulo;
+            t2b.FontSize = 24;
+            t2b.Margin = margemTitulo;
+
+            ta.Margin = margemParagrafo;
+            tb.Margin = margemParagrafo;
+            tc.Margin = margemParagrafo;
+            td.Margin = margemParagrafo;
+            te.Margin = margemParagrafo;
+            tf.Margin = margemParagrafo;
+            
+            t1a.Inlines.Add("Ajuda da Bíblia Falada 2.0 – Gênesis");
+            
+            t2a.Inlines.Add("Como procurar por uma passagem específica?");
+            t2b.Inlines.Add("Não consegue ouvir os textos em português?");
+            
+            ta.Inlines.Add(new Run("Envie suas sugestões para: "));
+            ta.Inlines.Add(new Run("sugestoes@abibliafalada.com.br"));
+
+            tb.Inlines.Add(new Run("Você pode utilizar as formas mais comuns de referenciar os textos bíblicos para encontrar as passagens desejadas."));
+
+            tc.Inlines.Add(new Run("Por exemplo, para encontrar o Salmo de número 23, basta digitar no campo de busca:"));
+            tc.Inlines.Add(new LineBreak());
+            tc.Inlines.Add(new Bold(new Run("Salmo, 23 ")));
+            tc.Inlines.Add(new Run("ou simplesmente: "));
+            tc.Inlines.Add(new Bold(new Run("Sl23")));
+
+            td.Inlines.Add(new Run("Também é possível buscar um livro completo: "));
+            td.Inlines.Add(new Bold(new Run("João")));
+
+            te.Inlines.Add(new Run("Ou mesmo alguns versículos de um capítulo específico: "));
+            te.Inlines.Add(new Bold(new Run("João, 3.16-18")));
+
+            tf.Inlines.Add(new Run("Para ouvir os textos em português é necessário instalar uma voz neste idioma. Você deve baixar e instalar a voz "));
+            tf.Inlines.Add(new Bold(new Run("Raquel")));
+            tf.Inlines.Add(new Run(", procure no Google ou baixe em: "));
+            tf.Inlines.Add(new LineBreak());
+            tf.Inlines.Add(linkRaquel);
+            tf.Inlines.Add(new LineBreak());
+            
+            documentReader.Document.TextAlignment = TextAlignment.Left;
+            
+            documentReader.Document.Blocks.Add(t1a);
+            documentReader.Document.Blocks.Add(ta);
+
+            documentReader.Document.Blocks.Add(t2a);
+            documentReader.Document.Blocks.Add(tb);
+            documentReader.Document.Blocks.Add(tc);
+            documentReader.Document.Blocks.Add(td);
+            documentReader.Document.Blocks.Add(te);
+
+            documentReader.Document.Blocks.Add(t2b);
+            documentReader.Document.Blocks.Add(tf);
+
+            documentReader.Document.Blocks.Add(LinkABibliaFalada);
+            
+        }
+
+        private void HandleRequestNavigate(object sender, RoutedEventArgs e)
+        {
+            string navigateUri = (sender as Hyperlink).NavigateUri.ToString();
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(navigateUri));
+            e.Handled = true;
+        }
+
         public void ShowContent(IEnumerable<ISbItem> itens)
         {
             ShowFather(itens.First().Parent);
@@ -45,6 +157,7 @@ namespace SpokenBible.View
             {
                 ShowContent(item);
             }
+            documentReader.Document.Blocks.Add(LinkABibliaFalada);
         }
 
         private void ShowContent(ISbItem item)
@@ -131,5 +244,6 @@ namespace SpokenBible.View
         {
             Keyboard.Focus(this.ler);
         }
+
     }
 }

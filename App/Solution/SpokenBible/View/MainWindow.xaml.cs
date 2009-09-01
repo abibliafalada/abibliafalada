@@ -36,7 +36,7 @@ namespace SpokenBible.View
                     this.presenter.SpeachStop();
                     break;
                 case Key.F1:
-                    this.presenter.SpeachRequest("Ajuda");
+                    this.presenter.ShowHelp();
                     break;
             }
         }

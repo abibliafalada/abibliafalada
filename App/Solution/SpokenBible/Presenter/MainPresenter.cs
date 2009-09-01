@@ -93,6 +93,12 @@ namespace SpokenBible.Presenter
             this.ShowContent(resp);
         }
 
+        internal void ShowHelp()
+        {
+            this.ClosePrincipal();
+            this.mainPage.ShowHelp();
+        }
+        
         internal void SearchChanged(AutoComplete component, string term)
         {
             IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
