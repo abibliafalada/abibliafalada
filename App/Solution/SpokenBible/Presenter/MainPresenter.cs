@@ -34,6 +34,8 @@ namespace SpokenBible.Presenter
 
         private SpeechSynthesizer synthetizer = null;
 
+        public string LinkSite { get { return "http://spoken-bible.sourceforge.net"; } }
+
         public MainPresenter(AppController controller)
         {
             //inicialização dos controles
@@ -174,5 +176,9 @@ namespace SpokenBible.Presenter
         }
         #endregion
 
+        internal void OpenSite(string uri)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(uri));
+        }
     }
 }

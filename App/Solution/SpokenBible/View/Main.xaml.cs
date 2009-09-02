@@ -35,7 +35,7 @@ namespace SpokenBible.View
 
                 Hyperlink linkABibliaFalada = new Hyperlink(new Run("A Bíblia Falada"));
                 linkABibliaFalada.RequestNavigate += HandleRequestNavigate;
-                linkABibliaFalada.NavigateUri = new Uri("http://spoken-bible.sourceforge.net");
+                linkABibliaFalada.NavigateUri = new Uri(this.presenter.LinkSite);
 
                 paragraphABibliaFalada.Inlines.Add(linkABibliaFalada);
 
@@ -104,7 +104,7 @@ namespace SpokenBible.View
             ta.Inlines.Add(new Run("Envie suas sugestões para: "));
             ta.Inlines.Add(new Run("sugestoes@abibliafalada.com.br"));
 
-            tb.Inlines.Add(new Run("Você pode utilizar as formas mais comuns de referenciar os textos bíblicos para encontrar as passagens desejadas."));
+            tb.Inlines.Add(new Run("Além de selecionar um livro acessando o menu à esquerda, você também pode utilizar as formas mais comuns de referenciar os textos bíblicos para encontrar as passagens desejadas."));
 
             tc.Inlines.Add(new Run("Por exemplo, para encontrar o Salmo de número 23, basta digitar no campo de busca:"));
             tc.Inlines.Add(new LineBreak());
@@ -146,7 +146,7 @@ namespace SpokenBible.View
         private void HandleRequestNavigate(object sender, RoutedEventArgs e)
         {
             string navigateUri = (sender as Hyperlink).NavigateUri.ToString();
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(navigateUri));
+            this.presenter.OpenSite(navigateUri);
             e.Handled = true;
         }
 
@@ -157,7 +157,6 @@ namespace SpokenBible.View
             {
                 ShowContent(item);
             }
-            documentReader.Document.Blocks.Add(LinkABibliaFalada);
         }
 
         private void ShowContent(ISbItem item)
@@ -243,6 +242,16 @@ namespace SpokenBible.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Keyboard.Focus(this.ler);
+        }
+
+        private void AjudaMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.presenter.ShowHelp();
+        }
+
+        private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.presenter.OpenSite(this.presenter.LinkSite);
         }
 
     }

@@ -10,3 +10,15 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.csproj.GenerateResource.Cache
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.dll
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.pdb
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\bin\Debug\AltzControls.dll
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\bin\Debug\AltzControls.pdb
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls_MarkupCompile.cache
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls_MarkupCompile.lref
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\Themes\Generic.baml
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.g.resources
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.Properties.Resources.resources
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.csproj.GenerateResource.Cache
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.dll
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\AltzControls\obj\Debug\AltzControls.pdb

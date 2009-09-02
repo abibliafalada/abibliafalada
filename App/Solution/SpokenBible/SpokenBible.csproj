@@ -16,20 +16,28 @@
     <WarningLevel>4</WarningLevel>
     <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <ApplicationIcon>biblia.ico</ApplicationIcon>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>79D34EE00632E1B8F11053D00E075A617DE1712A</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SpokenBible_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <InstallUrl>http://spoken-bible.sourceforge.net/install/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -88,6 +96,18 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <BlendEmbeddedFont Include="Fonts\segoeui.ttf">
+      <IsSystemFont>True</IsSystemFont>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuib.ttf">
+      <IsSystemFont>True</IsSystemFont>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuii.ttf">
+      <IsSystemFont>True</IsSystemFont>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuiz.ttf">
+      <IsSystemFont>True</IsSystemFont>
+    </BlendEmbeddedFont>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -119,12 +139,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,8 +161,8 @@
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="View\DefaultEffects.cs" />
     <Compile Include="View\Main.xaml.cs">
@@ -163,6 +183,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SpokenBible_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -218,4 +239,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="SubsetFont.targets" />
 </Project>

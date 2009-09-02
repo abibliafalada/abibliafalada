@@ -7,3 +7,12 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\txt2sbdb\obj\Debug\txt2sbdb.pdb
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\txt2sbdb\bin\Debug\Db4objects.Db4o.dll
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\txt2sbdb\bin\Debug\Db4objects.Db4o.xml
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\txt2sbdb.exe
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\txt2sbdb.pdb
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\Db4objects.Db4o.dll
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\sbcore.dll
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\sbcore.pdb
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\bin\Debug\Db4objects.Db4o.xml
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\obj\Debug\txt2sbdb.exe
+C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\txt2sbdb\obj\Debug\txt2sbdb.pdb

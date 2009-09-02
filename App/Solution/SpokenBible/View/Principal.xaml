@@ -17,7 +17,7 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" MouseDown="ABibliaFaladaMouseDown">
                 A Bíblia Falada
                 <Span Style="{DynamicResource SpanTitle}">v2.0</Span>
         </TextBlock>
