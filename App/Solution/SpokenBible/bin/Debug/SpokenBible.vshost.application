@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <assemblyIdentity name="SpokenBible.application" version="2.0.0.0" publicKeyToken="0000000000000000" language="pt-BR" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="Altieres Lopes" co.v1:suiteName="Spoken Bible" asmv2:product="A Biblia Falada" asmv2:supportUrl="http://spoken-bible.sourceforge.net/" co.v1:errorReportUrl="http://spoken-bible.sourceforge.net/" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <deployment install="true" mapFileExtensions="true">
+    <subscription>
+      <update>
+        <expiration maximumAge="1" unit="days" />
+      </update>
+    </subscription>
+    <deploymentProvider codebase="http://spoken-bible.sourceforge.net/install/SpokenBible.application" />
+  </deployment>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="SpokenBible.exe.manifest" size="7690">
+      <assemblyIdentity name="SpokenBible.exe" version="2.0.0.0" publicKeyToken="0000000000000000" language="pt-BR" processorArchitecture="msil" type="win32" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>7qMSSL28Q1n4xZV9XGtahTBV0eo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+</asmv1:assembly>

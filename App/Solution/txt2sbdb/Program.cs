@@ -24,12 +24,13 @@ namespace txt2sbdb
 
         public Program()
         {
-            string arquivo = @"..\..\..\..\Files\Translations\pt_BR\ra.txt";
-
+            string arquivoIn = @"..\..\..\..\Files\Translations\pt_BR\ra.txt";
+            string arquivoOut = @"..\..\..\SpokenBible\Data\database.yap";
+            
             Console.WriteLine("--- SpokenBible: file.txt to SpokenBible DataBase file converter ---");
 
-            File.Delete(Container.FileName);
-            StreamReader sr = new StreamReader(arquivo);
+            File.Delete(arquivoOut);
+            StreamReader sr = new StreamReader(arquivoIn);
             TxtParser parser = new TxtParser();
             parser.OnTraducaoFound = new TxtParser.TokenFound<Traducao>(this.traducaoFound);
             parser.OnTestamentoFound = new TxtParser.TokenFound<Testamento>(this.testamentoFound);
@@ -47,7 +48,7 @@ namespace txt2sbdb
 
             Console.WriteLine("Txt to Object conversion finalized.");
 
-            IObjectContainer container = Container.GetContainer();
+            IObjectContainer container = Container.GetContainer(arquivoOut);
             container.Store(currentTraducao);
             Container.CloseContainer();
 

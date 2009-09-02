@@ -7,8 +7,8 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("A Bíblia Falada")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("A Biblia Falada")]
+[assembly: AssemblyDescription("Spoken Bible Free Software")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Altieres Lopes Corp.")]
 [assembly: AssemblyProduct("SpokenBible")]

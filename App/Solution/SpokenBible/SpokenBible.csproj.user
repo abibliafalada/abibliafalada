@@ -1,15 +1,13 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
+    <PublishUrlHistory>install\|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://spoken-bible.sourceforge.net/install/</InstallUrlHistory>
-    <SupportUrlHistory>
-    </SupportUrlHistory>
+    <SupportUrlHistory>http://spoken-bible.sourceforge.net</SupportUrlHistory>
     <UpdateUrlHistory>
     </UpdateUrlHistory>
     <BootstrapperUrlHistory>
     </BootstrapperUrlHistory>
-    <ErrorReportUrlHistory>
-    </ErrorReportUrlHistory>
+    <ErrorReportUrlHistory>http://spoken-bible.sourceforge.net</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>

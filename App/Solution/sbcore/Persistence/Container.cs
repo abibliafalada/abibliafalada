@@ -10,15 +10,11 @@ namespace sbcore.Persistence
 {
     public class Container
     {
-        private static string file = @"..\..\..\..\Files\SbDbs\database.yap";
-
-        public static string FileName { get { return file; } }
-
         private static IObjectContainer container = null;
 
         private Container() { }
 
-        public static IObjectContainer GetContainer()
+        public static IObjectContainer GetContainer(string fileName)
         {
             if (container == null)
             {
@@ -26,7 +22,7 @@ namespace sbcore.Persistence
                 //Db4oFactory.Configure().ActivationDepth(1);
                 //Db4oFactory.Configure().ObjectClass(typeof(sbcore.Model.Livro)).CascadeOnActivate(false);
                 Db4oFactory.Configure().ObjectClass(typeof(sbcore.Model.Livro)).MaximumActivationDepth(3);
-                container = Db4oFactory.OpenFile(file);
+                container = Db4oFactory.OpenFile(fileName);
             }
             return container;
         }

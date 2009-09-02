@@ -30,39 +30,3 @@ C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\Sp
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Main.baml
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Main.g.cs
 C:\Documents and Settings\Scooby Doo\My Documents\Visual Studio 2008\Projects\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe.config
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe.config
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.exe
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.pdb
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.pdb
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\AltzControls.dll
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.dll
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\sbcore.dll
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\Cecil.FlowAnalysis.dll
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\Mono.Cecil.dll
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\sbcore.pdb
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\AltzControls.pdb
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\Db4objects.Db4o.xml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\Theme\generic.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\Theme\sample.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Main.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Principal.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Shortcuts.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\App.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Main.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\MainWindow.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Principal.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\Shortcuts.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\App.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible_MarkupCompile.cache
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible_MarkupCompile.lref
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\View\MainWindow.baml
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.g.resources
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.Properties.Resources.resources
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.csproj.GenerateResource.Cache
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.exe.manifest
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\bin\Debug\SpokenBible.application
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.exe.manifest
-C:\Users\USER\Documents\Visual Studio 2008\SpokenBible\App\Solution\SpokenBible\obj\Debug\SpokenBible.application

@@ -6,6 +6,7 @@ using sbcore.Persistence;
 using Db4objects.Db4o;
 using SpokenBible.Presenter;
 using sbcore.Model;
+using SpokenBible.Properties;
 
 namespace SpokenBible.Controller
 {
@@ -15,7 +16,7 @@ namespace SpokenBible.Controller
 
         public void Start()
         {
-            DefaultContainer = Container.GetContainer();
+            DefaultContainer = Container.GetContainer(Resources.databaseFile);
             MainPresenter presenter = new MainPresenter(this);
             presenter.ShowView();
         }
