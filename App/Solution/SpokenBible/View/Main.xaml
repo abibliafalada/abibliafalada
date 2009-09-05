@@ -38,7 +38,7 @@
         </Border>
         <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" StrokeThickness="0" Fill="{DynamicResource Gradient2}" Height="3" />
         
-        <TextBlock VerticalAlignment="Center" Margin="10 0" Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextoAjuda}" MouseDown="AjudaMouseDown">Ajuda ?</TextBlock>
+        <TextBlock VerticalAlignment="Bottom" Margin="8" Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextoAjuda}" MouseDown="AjudaMouseDown">Ajuda ?</TextBlock>
         <TextBlock Style="{DynamicResource Title}" BitmapEffect="{DynamicResource Sombra}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Right" VerticalAlignment="Center" Margin="10 0" MouseDown="ABibliaFaladaMouseDown"><Run Text="A Bíblia Falada "/><Span Style="{DynamicResource SpanTitle}"><Run Text="v2.0"/></Span></TextBlock>
 
     </Grid>

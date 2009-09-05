@@ -44,6 +44,11 @@ namespace SpokenBible.View
             Keyboard.Focus(this.busca);
         }
 
+        private void AjudaMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.presenter.ShowHelp();
+        }
+
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
             this.presenter.OpenSite(this.presenter.LinkSite);

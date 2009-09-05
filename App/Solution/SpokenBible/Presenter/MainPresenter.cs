@@ -9,10 +9,10 @@ using System.Collections;
 using sbcore.Model.Interface;
 using SpokenBible.Controller;
 using System.Collections.Generic;
-using Db4objects.Db4o.Linq;
 using sbcore.Components.Interface;
 using sbcore.Components;
 using Db4objects.Db4o;
+using Db4objects.Db4o.Linq;
 using System.Speech.Synthesis;
 using System.Windows.Controls;
 using AltzControls;
@@ -121,7 +121,7 @@ namespace SpokenBible.Presenter
             }
             else
             {
-                ShowContent(new Livro(0, "Nao", "Não encontrado"));
+                mainPage.ShowHelp(true);
             }
         }
 

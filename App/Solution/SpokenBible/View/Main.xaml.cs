@@ -60,6 +60,11 @@ namespace SpokenBible.View
 
         public void ShowHelp()
         {
+            this.ShowHelp(false);
+        }
+
+        public void ShowHelp(bool exibirMensagemNaoEncontrado)
+        {
             ClearContent();
 
             Thickness margemTitulo = new Thickness(5, 20, 5, 5);
@@ -68,6 +73,8 @@ namespace SpokenBible.View
             Hyperlink linkRaquel = new Hyperlink(new Run("Raquel SAPI5 4shared"));
             linkRaquel.RequestNavigate += HandleRequestNavigate;
             linkRaquel.NavigateUri = new Uri("http://www.4shared.com/file/35334181/7d07e5b1/realspeak_-_raquel_-_sapi5_-_portugus_brasil.html");
+
+            Paragraph ne = new Paragraph();
 
             Paragraph t1a = new Paragraph();
             
@@ -80,7 +87,11 @@ namespace SpokenBible.View
             Paragraph td = new Paragraph();
             Paragraph te = new Paragraph();
             Paragraph tf = new Paragraph();
-            
+
+            ne.FontSize = 16;
+            ne.Margin = margemTitulo;
+            ne.Foreground = Brushes.Red;
+
             t1a.FontSize = 26;
             t1a.Margin = margemTitulo;
             
@@ -95,9 +106,9 @@ namespace SpokenBible.View
             td.Margin = margemParagrafo;
             te.Margin = margemParagrafo;
             tf.Margin = margemParagrafo;
-            
+
+            ne.Inlines.Add("A Passagem informada não foi encontrada.");
             t1a.Inlines.Add("Ajuda da Bíblia Falada 2.0 – Gênesis");
-            
             t2a.Inlines.Add("Como procurar por uma passagem específica?");
             t2b.Inlines.Add("Não consegue ouvir os textos em português?");
             
@@ -126,7 +137,8 @@ namespace SpokenBible.View
             tf.Inlines.Add(new LineBreak());
             
             documentReader.Document.TextAlignment = TextAlignment.Left;
-            
+
+            documentReader.Document.Blocks.Add(ne);
             documentReader.Document.Blocks.Add(t1a);
             documentReader.Document.Blocks.Add(ta);
 

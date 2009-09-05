@@ -26,6 +26,7 @@
                 SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
                 AutomationProperties.Name="digite a referência" />
         
+        <TextBlock VerticalAlignment="Bottom" Margin="8" Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextoAjuda}" MouseDown="AjudaMouseDown">Ajuda ?</TextBlock>
         <Button x:Name="ir" Grid.Row="3" Grid.Column="1" Width="120" Click="busca_SearchRequest"
                 Content="ir para referência" FontSize="15" FontFamily="Calibri" />
     </Grid>

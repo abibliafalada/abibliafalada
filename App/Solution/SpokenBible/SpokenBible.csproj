@@ -35,15 +35,15 @@
     <SupportUrl>http://spoken-bible.sourceforge.net</SupportUrl>
     <ErrorReportUrl>http://spoken-bible.sourceforge.net</ErrorReportUrl>
     <TargetCulture>pt-BR</TargetCulture>
-    <ProductName>A Biblia Falada</ProductName>
-    <PublisherName>Altieres Lopes</PublisherName>
-    <SuiteName>Spoken Bible</SuiteName>
+    <ProductName>A Biblia Falada 2.0 - Gênesis</ProductName>
+    <PublisherName>A Biblia Falada</PublisherName>
     <MinimumRequiredVersion>2.0.0.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -71,7 +71,7 @@
     </Reference>
     <Reference Include="Db4objects.Db4o.Linq, Version=7.4.88.12908, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Desktop\db4o-7.4\bin\net-3.5\Db4objects.Db4o.Linq.dll</HintPath>
+      <HintPath>..\db4o\Db4objects.Db4o.Linq.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -207,9 +207,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="biblia.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework Client Profile</ProductName>
@@ -240,6 +237,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="biblia.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
