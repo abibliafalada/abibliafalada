@@ -40,5 +40,12 @@ namespace SpokenBible.View
                     break;
             }
         }
+
+        private void principal_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if(e.NavigationMode != NavigationMode.New)
+                e.Cancel = true;
+        }
+
     }
 }

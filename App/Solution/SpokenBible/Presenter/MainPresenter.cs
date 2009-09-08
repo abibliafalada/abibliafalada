@@ -180,5 +180,34 @@ namespace SpokenBible.Presenter
         {
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(uri));
         }
+
+
+        private WindowState lastWindowState;
+        private WindowStyle lastWindowStyle;
+        private bool fullScreen = false;
+        internal bool FullScreen
+        {
+            get { return fullScreen; }
+            set
+            {
+                fullScreen = value;
+                if (value)
+                {
+                    lastWindowState = this.mainWindow.WindowState;
+                    lastWindowStyle = this.mainWindow.WindowStyle;
+
+                    this.mainWindow.WindowState = WindowState.Normal;
+                    this.mainWindow.WindowStyle = WindowStyle.None;
+                    this.mainWindow.Topmost = true;
+                    this.mainWindow.WindowState = WindowState.Maximized;
+                }
+                else
+                {
+                    this.mainWindow.WindowStyle = lastWindowStyle;
+                    this.mainWindow.Topmost = false;
+                    this.mainWindow.WindowState = lastWindowState;
+                }
+            }
+        }
     }
 }

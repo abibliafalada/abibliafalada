@@ -7,7 +7,7 @@
     k:WindowSettings.Save="True"
     AutomationProperties.Name="A Bíblia Falada 2.0 - Gênesis">
     <Canvas Background="{DynamicResource BaseContainer}">
-        <Frame x:Name="principal" Focusable="False" NavigationUIVisibility="Hidden"
+        <Frame x:Name="principal" Focusable="False" NavigationUIVisibility="Hidden" Navigating="principal_Navigating"
             Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}"
             Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorLevel=1, Mode=FindAncestor, AncestorType={x:Type Canvas}}}" />
         <Frame x:Name="shortcuts" Focusable="False" NavigationUIVisibility="Hidden"

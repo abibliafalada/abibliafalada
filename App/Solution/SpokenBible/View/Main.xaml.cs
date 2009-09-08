@@ -138,7 +138,9 @@ namespace SpokenBible.View
             
             documentReader.Document.TextAlignment = TextAlignment.Left;
 
-            documentReader.Document.Blocks.Add(ne);
+            if (exibirMensagemNaoEncontrado)
+                documentReader.Document.Blocks.Add(ne);
+
             documentReader.Document.Blocks.Add(t1a);
             documentReader.Document.Blocks.Add(ta);
 
@@ -264,6 +266,14 @@ namespace SpokenBible.View
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
             this.presenter.OpenSite(this.presenter.LinkSite);
+        }
+
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F11)
+            {
+                this.presenter.FullScreen = !this.presenter.FullScreen;
+            }
         }
 
     }
