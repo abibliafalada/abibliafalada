@@ -51,7 +51,7 @@ namespace SpokenBible.View
 
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.presenter.OpenSite(this.presenter.LinkSite);
+            this.presenter.OpenSite(SpokenBible.Properties.Resources.linkSite);
         }
     }
 }

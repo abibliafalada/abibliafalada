@@ -18,6 +18,7 @@ using System.Windows.Controls;
 using AltzControls;
 using System.Windows.Automation;
 using System.Windows.Input;
+using System.Globalization;
 
 namespace SpokenBible.Presenter
 {
@@ -33,8 +34,6 @@ namespace SpokenBible.Presenter
         private ISuggestComponent<IEnumerable<ISbItem>> sbItemSuggest = null;
 
         private SpeechSynthesizer synthetizer = null;
-
-        public string LinkSite { get { return "http://spoken-bible.sourceforge.net"; } }
 
         public MainPresenter(AppController controller)
         {
@@ -128,8 +127,17 @@ namespace SpokenBible.Presenter
         internal void SpeachRequest(string text)
         {
             //Vozes em portugues: http://www.microsoft.com/downloads/details.aspx?FamilyID=30e14c5a-a42c-4d4e-9513-c4b0b8d21086&displaylang=en
-            IList<InstalledVoice> voices = Synthetizer.GetInstalledVoices();
-            //Synthetizer.Rate = -2;
+            if (Synthetizer.Voice.Culture.CompareInfo.LCID != 1046)
+            {
+                foreach (InstalledVoice voice in Synthetizer.GetInstalledVoices())
+                {
+                    if (voice.VoiceInfo.Culture.CompareInfo.LCID == 1046)
+                    {
+                        Synthetizer.SelectVoice(voice.VoiceInfo.Name);
+                        break;
+                    }
+                }
+            }
             Synthetizer.SpeakAsync(text);
         }
 

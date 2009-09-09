@@ -16,7 +16,6 @@ using sbcore.Model.Interface;
 using sbcore.Model;
 using System.Windows.Xps.Packaging;
 
-
 namespace SpokenBible.View
 {
     /// <summary>
@@ -35,7 +34,7 @@ namespace SpokenBible.View
 
                 Hyperlink linkABibliaFalada = new Hyperlink(new Run("A Bíblia Falada"));
                 linkABibliaFalada.RequestNavigate += HandleRequestNavigate;
-                linkABibliaFalada.NavigateUri = new Uri(this.presenter.LinkSite);
+                linkABibliaFalada.NavigateUri = new Uri(SpokenBible.Properties.Resources.linkSite);
 
                 paragraphABibliaFalada.Inlines.Add(linkABibliaFalada);
 
@@ -70,9 +69,9 @@ namespace SpokenBible.View
             Thickness margemTitulo = new Thickness(5, 20, 5, 5);
             Thickness margemParagrafo = new Thickness(5);
 
-            Hyperlink linkRaquel = new Hyperlink(new Run("Raquel SAPI5 4shared"));
+            Hyperlink linkRaquel = new Hyperlink(new Run("Voz em Português"));
             linkRaquel.RequestNavigate += HandleRequestNavigate;
-            linkRaquel.NavigateUri = new Uri("http://www.4shared.com/file/35334181/7d07e5b1/realspeak_-_raquel_-_sapi5_-_portugus_brasil.html");
+            linkRaquel.NavigateUri = new Uri(SpokenBible.Properties.Resources.linkVozPortugues);
 
             Paragraph ne = new Paragraph();
 
@@ -129,9 +128,7 @@ namespace SpokenBible.View
             te.Inlines.Add(new Run("Ou mesmo alguns versículos de um capítulo específico: "));
             te.Inlines.Add(new Bold(new Run("João, 3.16-18")));
 
-            tf.Inlines.Add(new Run("Para ouvir os textos em português é necessário instalar uma voz neste idioma. Você deve baixar e instalar a voz "));
-            tf.Inlines.Add(new Bold(new Run("Raquel")));
-            tf.Inlines.Add(new Run(", procure no Google ou baixe em: "));
+            tf.Inlines.Add(new Run("Para ouvir os textos em português é necessário instalar uma voz neste idioma:"));
             tf.Inlines.Add(new LineBreak());
             tf.Inlines.Add(linkRaquel);
             tf.Inlines.Add(new LineBreak());
@@ -265,7 +262,7 @@ namespace SpokenBible.View
 
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.presenter.OpenSite(this.presenter.LinkSite);
+            this.presenter.OpenSite(SpokenBible.Properties.Resources.linkSite);
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
