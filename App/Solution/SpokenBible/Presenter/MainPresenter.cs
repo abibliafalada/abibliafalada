@@ -149,8 +149,11 @@ namespace SpokenBible.Presenter
         #region principal
         internal void ClosePrincipal()
         {
-            this.mainWindow.principal.Navigate(this.mainPage);
-            this.mainPage.busca.Text = this.principalPage.busca.Text;
+            if (this.mainWindow.principal.NavigationService.Content != this.mainPage)
+            {
+                this.mainWindow.principal.Navigate(this.mainPage);
+                this.mainPage.busca.Text = this.principalPage.busca.Text;
+            }
         }
         #endregion
 

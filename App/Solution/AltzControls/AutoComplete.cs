@@ -178,7 +178,7 @@ namespace AltzControls
 
         private void ExibePopup()
         {
-            if (this.popup != null && !this.popup.IsOpen && this.list.Items.Count > 0 && this.PopupEnabled)
+            if (this.popup != null && !this.popup.IsOpen && this.list.Items.Count > 0 && this.PopupEnabled && this.textbox.IsFocused)
                 this.popup.IsOpen = true;
         }
         #endregion
@@ -280,12 +280,15 @@ namespace AltzControls
         #region Events
         void AutoComplete_GotFocus(object sender, RoutedEventArgs e)
         {
+            if (this.textbox.IsFocused)
+                return;
+
             if (Keyboard.Modifiers != ModifierKeys.Shift)
             {
                 this.textbox.Focus();
-                e.Handled = true;  
+                e.Handled = true;
             }
-            else if(!this.textbox.IsFocused)
+            else
             {
                 this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
                 e.Handled = true;
