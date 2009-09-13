@@ -62,6 +62,8 @@ namespace SpokenBible.Presenter
                                                  where l.Testamento.Acronimo == "NT"
                                                  select l;
 
+            //carregamento das configurações salvas
+            this.principalPage.busca.Text = this.controller.Settings.Referencia;
         }
 
         private SpeechSynthesizer Synthetizer
@@ -115,6 +117,7 @@ namespace SpokenBible.Presenter
         {
             if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
             {
+                this.controller.Settings.Referencia = term;
                 IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
                 this.ShowContent(opcao);
             }

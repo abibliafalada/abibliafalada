@@ -155,6 +155,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\SBSettings.cs" />
     <Compile Include="Components\WindowSettings.cs" />
     <Compile Include="Controller\AppController.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
