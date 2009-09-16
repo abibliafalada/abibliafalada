@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SpokenBible.Controlls.SearchBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="{DynamicResource BaseContainer}" CornerRadius="5" BorderBrush="{DynamicResource BaseContainer}" BorderThickness="2,0,2,2" Height="114">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Background="{DynamicResource BaseContainer}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+              CornerRadius="5,5,0,0" Margin="-1,0,-1,0">
+                <Grid>
+                    <TextBlock Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="10,2,10,2"
+                               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=Title}"/>
+                    <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="7"
+                            Width="15" Height="15" Padding="0" Click="FecharButton_Click" />
+                </Grid>
+            </Border>
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="texto" VerticalAlignment="Center" Width="200" Grid.Column="0" Margin="10" />
+                <Button Name="buscar" Content="buscar" VerticalAlignment="Center" Height="30" Width="60" Grid.Column="1" 
+                        Margin="10" FontSize="15" FontFamily="Calibri" Click="BuscarButton_Click" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -47,6 +47,7 @@ namespace SpokenBible.View
         {
             this.presenter = presenter;
             InitializeComponent();
+            this.FecharBusca();
         }
 
         public void ClearContent()
@@ -207,6 +208,18 @@ namespace SpokenBible.View
                 p.FontSize = 24;
         }
 
+        private void AbrirBusca()
+        {
+            this.Conteudo.IsEnabled = false;
+            this.BuscaBox.Visibility = Visibility.Visible;
+        }
+
+        private void FecharBusca()
+        {
+            this.Conteudo.IsEnabled = true;
+            this.BuscaBox.Visibility = Visibility.Hidden;
+        }
+
         private void OnParagraphMouseEnter(object sender, MouseEventArgs e)
         {
             Paragraph p = sender as Paragraph;
@@ -271,6 +284,22 @@ namespace SpokenBible.View
             {
                 this.presenter.FullScreen = !this.presenter.FullScreen;
             }
+        }
+
+        private void buscar_Click(object sender, RoutedEventArgs e)
+        {
+            this.AbrirBusca();
+        }
+
+        private void SearchBox_BuscarButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.presenter.BuscaRequested(this.BuscaBox.texto.Text);
+            this.FecharBusca();
+        }
+
+        private void SearchBox_FecharButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.FecharBusca();
         }
 
     }

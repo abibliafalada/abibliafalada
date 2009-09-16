@@ -19,6 +19,10 @@ using AltzControls;
 using System.Windows.Automation;
 using System.Windows.Input;
 using System.Globalization;
+using Lucene.Net.Search;
+using Lucene.Net.Analysis.Standard;
+using Lucene.Net.QueryParsers;
+using Lucene.Net.Documents;
 
 namespace SpokenBible.Presenter
 {
@@ -47,10 +51,10 @@ namespace SpokenBible.Presenter
             //carregamento de paginas e conteudos visuais adicionais
             this.mainWindow.principal.Navigate(this.principalPage);
             this.mainWindow.shortcuts.Navigate(this.shortcutsPage);
-            
+
             //carregamento dos dados
-            IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
-                                        select l;
+            IEnumerable < Livro > livros = from Livro l in controller.DefaultContainer
+                                           select l;
 
             this.textSuggest = new SimpleTextSuggester(livros, ActivateSbItem);
             this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
@@ -63,7 +67,7 @@ namespace SpokenBible.Presenter
                                                  select l;
 
             //carregamento das configurações salvas
-            this.principalPage.busca.Text = this.controller.Settings.Referencia;
+            this.principalPage.busca.Text = this.controller.DefaultTerm;
         }
 
         private SpeechSynthesizer Synthetizer
@@ -117,7 +121,7 @@ namespace SpokenBible.Presenter
         {
             if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
             {
-                this.controller.Settings.Referencia = term;
+                this.controller.DefaultTerm = term;
                 IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
                 this.ShowContent(opcao);
             }
@@ -125,6 +129,28 @@ namespace SpokenBible.Presenter
             {
                 mainPage.ShowHelp(true);
             }
+        }
+
+        internal void BuscaRequested(string phrase)
+        {
+            /*IEnumerable<ISbItem> versiculos = 
+                from Versiculo v in controller.DefaultContainer
+                where v.Descricao.Contains(phrase)
+                select v as ISbItem;*/
+
+            IList<ISbItem> versiculos = new List<ISbItem>();
+
+            IndexSearcher searcher = this.controller.Index.GetIndex();
+            QueryParser queryParser = new QueryParser("versiculo", new StandardAnalyzer());
+            Hits hits = searcher.Search(queryParser.Parse(phrase));
+            for (int i = 0; i < hits.Length(); i++)
+            {
+                ISbItem item = this.controller.DefaultContainer.Ext().GetByID(Convert.ToInt64(hits.Doc(i).Get("id"))) as ISbItem;
+                //this.controller.DefaultContainer.Activate(item, 1);
+                versiculos.Add(item);
+            }
+            
+            this.ShowContent(versiculos);
         }
 
         internal void SpeachRequest(string text)
@@ -223,5 +249,6 @@ namespace SpokenBible.Presenter
                 }
             }
         }
+
     }
 }

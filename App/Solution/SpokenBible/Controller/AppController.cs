@@ -14,7 +14,14 @@ namespace SpokenBible.Controller
     public class AppController
     {
         public IObjectContainer DefaultContainer { get; set; }
+        public Index Index { get; set; }
         public SBSettings Settings = null;
+
+        internal string DefaultTerm
+        {
+            get { return this.Settings.Referencia; }
+            set { this.Settings.Referencia = value; }
+        }
 
         public AppController()
         {
@@ -23,7 +30,8 @@ namespace SpokenBible.Controller
 
         public void Start()
         {
-            DefaultContainer = Container.GetContainer(Resources.databaseFile);
+            this.DefaultContainer = Container.GetContainer(Resources.databaseFile);
+            this.Index = new Index(Resources.indexFile);
             MainPresenter presenter = new MainPresenter(this);
             presenter.ShowView();
         }
@@ -33,5 +41,6 @@ namespace SpokenBible.Controller
             Container.CloseContainer();
             this.Settings.Save();
         }
+
     }
 }

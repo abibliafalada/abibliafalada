@@ -70,6 +70,15 @@ namespace SpokenBible.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .\Data\index.
+        /// </summary>
+        internal static string indexFile {
+            get {
+                return ResourceManager.GetString("indexFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://spoken-bible.sourceforge.net/.
         /// </summary>
         internal static string linkSite {

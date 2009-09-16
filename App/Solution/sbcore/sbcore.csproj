@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\db4o\Db4objects.Db4o.dll</HintPath>
     </Reference>
+    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lucene2.3.2\src\Lucene.Net\bin\Release\Lucene.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -61,6 +65,7 @@
     <Compile Include="Model\Traducao.cs" />
     <Compile Include="Model\Versiculo.cs" />
     <Compile Include="Persistence\Container.cs" />
+    <Compile Include="Persistence\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -120,6 +120,9 @@
   <data name="databaseFile" xml:space="preserve">
     <value>.\Data\database.yap</value>
   </data>
+  <data name="indexFile" xml:space="preserve">
+    <value>.\Data\index</value>
+  </data>
   <data name="linkSite" xml:space="preserve">
     <value>http://spoken-bible.sourceforge.net/</value>
   </data>
