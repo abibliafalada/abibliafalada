@@ -10,6 +10,7 @@ namespace sbcore.Model
     public class Versiculo : ISbItem
     {
         #region Atributos e propriedades
+        public string Tag { get; set; }
         public int Numero { get; set; }
         public string Descricao { get; set; }
         public Capitulo Capitulo;

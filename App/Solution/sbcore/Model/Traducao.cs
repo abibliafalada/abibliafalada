@@ -12,6 +12,7 @@ namespace sbcore.Model
         #region Atributos e propriedades
         public IList<Testamento> testamentos;
 
+        public string Tag { get; set; }
         public string Idioma { get; set; }
         public string Nome { get; set; }
 

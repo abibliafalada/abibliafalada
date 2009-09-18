@@ -12,6 +12,7 @@ namespace sbcore.Model
         #region Atributos e propriedades
         private IList<Versiculo> versiculos;
 
+        public string Tag { get; set; }
         public int Numero { get; set; }
         public Livro Livro { get; set; }
 
@@ -45,7 +46,7 @@ namespace sbcore.Model
 
         public string Display
         {
-            get { return "Capítulo: " + Numero.ToString(); }
+            get { return Numero.ToString(); }
         }
 
         public IEnumerable<ISbItem> Children

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpokenBible.Presenter;
+using SpokenBible.Helpers;
 
 namespace SpokenBible.View
 {
@@ -51,7 +52,7 @@ namespace SpokenBible.View
 
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.presenter.OpenSite(SpokenBible.Properties.Resources.linkSite);
+            StaticContentGenerator.OpenSite(SpokenBible.Properties.Resources.linkSite);
         }
     }
 }

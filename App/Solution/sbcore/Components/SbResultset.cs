@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using sbcore.Model.Interface;
+
+namespace sbcore.Components
+{
+    public enum SbResultsetType
+    {
+        Referencia, BuscaLivre
+    }
+
+    public class SbResultset
+    {
+        public SbResultsetType Type { get; set; }
+        public IEnumerable<ISbItem> Itens { get; set; }
+
+        public SbResultset(IEnumerable<ISbItem> itens, SbResultsetType type)
+        {
+            this.Type = type;
+            this.Itens = itens;
+        }
+    }
+}

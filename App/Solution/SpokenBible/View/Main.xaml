@@ -39,7 +39,13 @@
             <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" StrokeThickness="0" Fill="{DynamicResource Gradient1}" Height="3" />
             <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="30 10" Background="#EEE">
                 <FlowDocumentReader x:Name="documentReader" ViewingMode="TwoPage">
-                    <FlowDocument x:Name="document" ColumnWidth="5000" />
+                    <FlowDocument x:Name="document" ColumnWidth="5000">
+                        <FlowDocument.Resources>
+                            <Style x:Key="StyleTitle">
+                                <Setter Property="TextElement.FontSize" Value="24" />
+                            </Style>
+                        </FlowDocument.Resources>
+                    </FlowDocument>
                 </FlowDocumentReader>
             </Border>
             <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" StrokeThickness="0" Fill="{DynamicResource Gradient2}" Height="3" />

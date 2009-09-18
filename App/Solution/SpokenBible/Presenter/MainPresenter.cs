@@ -28,6 +28,7 @@ namespace SpokenBible.Presenter
 {
     public class MainPresenter
     {
+        #region Attributes and Methods
         private MainWindow mainWindow = null;
         private Main mainPage = null;
         private Principal principalPage = null;
@@ -39,6 +40,12 @@ namespace SpokenBible.Presenter
 
         private SpeechSynthesizer synthetizer = null;
 
+        private WindowState lastWindowState;
+        private WindowStyle lastWindowStyle;
+        private bool fullScreen = false;
+        #endregion
+
+        #region Initializations
         public MainPresenter(AppController controller)
         {
             //inicialização dos controles
@@ -70,6 +77,13 @@ namespace SpokenBible.Presenter
             this.principalPage.busca.Text = this.controller.DefaultTerm;
         }
 
+        public void ShowView()
+        {
+            mainWindow.Show();
+        }
+        #endregion
+
+        #region Voice synthesizer
         private SpeechSynthesizer Synthetizer
         {
             get
@@ -78,79 +92,6 @@ namespace SpokenBible.Presenter
                     synthetizer = new SpeechSynthesizer();
                 return synthetizer;
             }
-        }
-
-        public void ShowView()
-        {
-            mainWindow.Show();
-        }
-
-        public void ShowContent(IEnumerable<ISbItem> itens)
-        {
-            foreach(ISbItem item in itens)
-                this.ActivateSbItem(item);
-            this.mainPage.ClearContent();
-            this.mainPage.ShowContent(itens);
-        }
-
-        public void ShowContent(ISbItem item)
-        {
-            IList<ISbItem> resp = new List<ISbItem>();
-            resp.Add(item);
-            this.ShowContent(resp);
-        }
-
-        internal void ShowHelp()
-        {
-            this.ClosePrincipal();
-            this.mainPage.ShowHelp();
-        }
-        
-        internal void SearchChanged(AutoComplete component, string term)
-        {
-            IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
-            component.ItemsSource = sugestoes;
-        }
-
-        internal void ActivateSbItem(ISbItem item)
-        {
-            this.controller.DefaultContainer.Activate(item, 5);
-        }
-
-        internal void SearchRequested(string term)
-        {
-            if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
-            {
-                this.controller.DefaultTerm = term;
-                IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
-                this.ShowContent(opcao);
-            }
-            else
-            {
-                mainPage.ShowHelp(true);
-            }
-        }
-
-        internal void BuscaRequested(string phrase)
-        {
-            /*IEnumerable<ISbItem> versiculos = 
-                from Versiculo v in controller.DefaultContainer
-                where v.Descricao.Contains(phrase)
-                select v as ISbItem;*/
-
-            IList<ISbItem> versiculos = new List<ISbItem>();
-
-            IndexSearcher searcher = this.controller.Index.GetIndex();
-            QueryParser queryParser = new QueryParser("versiculo", new StandardAnalyzer());
-            Hits hits = searcher.Search(queryParser.Parse(phrase));
-            for (int i = 0; i < hits.Length(); i++)
-            {
-                ISbItem item = this.controller.DefaultContainer.Ext().GetByID(Convert.ToInt64(hits.Doc(i).Get("id"))) as ISbItem;
-                //this.controller.DefaultContainer.Activate(item, 1);
-                versiculos.Add(item);
-            }
-            
-            this.ShowContent(versiculos);
         }
 
         internal void SpeachRequest(string text)
@@ -174,19 +115,69 @@ namespace SpokenBible.Presenter
         {
             Synthetizer.SpeakAsyncCancelAll();
         }
+        #endregion
 
-        #region principal
-        internal void ClosePrincipal()
+        #region Content processing
+        public void ShowContent(SbResultset results)
         {
-            if (this.mainWindow.principal.NavigationService.Content != this.mainPage)
-            {
-                this.mainWindow.principal.Navigate(this.mainPage);
-                this.mainPage.busca.Text = this.principalPage.busca.Text;
-            }
+            this.mainPage.ClearContent();
+            foreach(ISbItem item in results.Itens)
+                ActivateSbItem(item);
+            this.mainPage.ShowContent(results);
+        }
+
+        internal void ShowHelp()
+        {
+            this.ClosePrincipal();
+            this.mainPage.ShowHelp();
         }
         #endregion
 
-        #region shortcuts
+        #region Search processing
+        internal void SearchChanged(AutoComplete component, string term)
+        {
+            IEnumerable<string> sugestoes = this.textSuggest.GetSuggestionsFor(term);
+            component.ItemsSource = sugestoes;
+        }
+
+        internal void SearchRequested(string term)
+        {
+            if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
+            {
+                this.controller.DefaultTerm = term;
+                IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
+                this.ShowContent(new SbResultset(opcao, SbResultsetType.Referencia));
+            }
+            else
+            {
+                mainPage.ShowHelp(true);
+            }
+        }
+
+        internal void BuscaRequested(string phrase)
+        {
+            /*IEnumerable<ISbItem> versiculos = 
+                from Versiculo v in controller.DefaultContainer
+                where v.Descricao.Contains(phrase)
+                select v as ISbItem;*/
+
+            IList<ISbItem> versiculos = new List<ISbItem>();
+
+            IndexSearcher searcher = this.controller.Index.GetIndex();
+            QueryParser queryParser = new QueryParser("versiculo", new StandardAnalyzer());
+            Hits hits = searcher.Search(queryParser.Parse(phrase));
+            for (int i = 0; i < hits.Length(); i++)
+            {
+                ISbItem item = this.controller.DefaultContainer.Ext().GetByID(Convert.ToInt64(hits.Doc(i).Get("id"))) as ISbItem;
+                this.controller.DefaultContainer.Activate(item, 1);
+                versiculos.Add(item);
+            }
+
+            this.ShowContent(new SbResultset(versiculos, SbResultsetType.BuscaLivre));
+        }
+        #endregion
+
+        #region Shortcuts view
         internal void ShowHideShortcuts()
         {
             if ((string)shortcutsPage.showHideButton.Content == ">>")
@@ -211,20 +202,12 @@ namespace SpokenBible.Presenter
             this.mainPage.busca.PopupEnabled = false;
             this.mainPage.busca.Text = livro.Display;
             this.mainPage.busca.PopupEnabled = true;
-            this.ShowContent(livro);
+            this.ShowContent(new SbResultset(livro.Children, SbResultsetType.Referencia));
             Keyboard.Focus(this.mainPage.ler);
         }
         #endregion
 
-        internal void OpenSite(string uri)
-        {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(uri));
-        }
-
-
-        private WindowState lastWindowState;
-        private WindowStyle lastWindowStyle;
-        private bool fullScreen = false;
+        #region FullScreen
         internal bool FullScreen
         {
             get { return fullScreen; }
@@ -249,6 +232,23 @@ namespace SpokenBible.Presenter
                 }
             }
         }
+        #endregion
+
+        #region General functions
+        internal void ActivateSbItem(ISbItem item)
+        {
+            this.controller.DefaultContainer.Activate(item, 5);
+        }
+
+        internal void ClosePrincipal()
+        {
+            if (this.mainWindow.principal.NavigationService.Content != this.mainPage)
+            {
+                this.mainWindow.principal.Navigate(this.mainPage);
+                this.mainPage.busca.Text = this.principalPage.busca.Text;
+            }
+        }
+        #endregion
 
     }
 }

@@ -12,6 +12,7 @@ namespace sbcore.Model
         #region Atributos e propriedades
         private IList<Livro> livros;
 
+        public string Tag { get; set; }
         public string Acronimo { get; set; }
         public string Nome { get; set; }
         public Traducao Traducao { get; set; }

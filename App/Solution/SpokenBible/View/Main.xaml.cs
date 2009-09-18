@@ -15,6 +15,8 @@ using SpokenBible.Presenter;
 using sbcore.Model.Interface;
 using sbcore.Model;
 using System.Windows.Xps.Packaging;
+using SpokenBible.Helpers;
+using sbcore.Components;
 
 namespace SpokenBible.View
 {
@@ -23,33 +25,20 @@ namespace SpokenBible.View
     /// </summary>
     public partial class Main : Page
     {
+        #region Attributes and Methods
         MainPresenter presenter = null;
+        #endregion
 
-        private Paragraph LinkABibliaFalada
-        {
-            get
-            {
-                Paragraph paragraphABibliaFalada = new Paragraph();
-                paragraphABibliaFalada.TextAlignment = TextAlignment.Right;
-
-                Hyperlink linkABibliaFalada = new Hyperlink(new Run("A Bíblia Falada"));
-                linkABibliaFalada.RequestNavigate += HandleRequestNavigate;
-                linkABibliaFalada.NavigateUri = new Uri(SpokenBible.Properties.Resources.linkSite);
-
-                paragraphABibliaFalada.Inlines.Add(linkABibliaFalada);
-
-                return paragraphABibliaFalada;
-            }
-        }
-        
-
+        #region Initializations
         public Main(MainPresenter presenter)
         {
             this.presenter = presenter;
             InitializeComponent();
             this.FecharBusca();
         }
+        #endregion
 
+        #region General functions
         public void ClearContent()
         {
             documentReader.Document.Blocks.Clear();
@@ -57,7 +46,9 @@ namespace SpokenBible.View
             documentReader.Document = null;
             documentReader.Document = trickToMoveToBegin;
         }
+        #endregion
 
+        #region Help processing
         public void ShowHelp()
         {
             this.ShowHelp(false);
@@ -66,134 +57,28 @@ namespace SpokenBible.View
         public void ShowHelp(bool exibirMensagemNaoEncontrado)
         {
             ClearContent();
-
-            Thickness margemTitulo = new Thickness(5, 20, 5, 5);
-            Thickness margemParagrafo = new Thickness(5);
-
-            Hyperlink linkRaquel = new Hyperlink(new Run("Voz em Português"));
-            linkRaquel.RequestNavigate += HandleRequestNavigate;
-            linkRaquel.NavigateUri = new Uri(SpokenBible.Properties.Resources.linkVozPortugues);
-
-            Paragraph ne = new Paragraph();
-
-            Paragraph t1a = new Paragraph();
-            
-            Paragraph t2a = new Paragraph();
-            Paragraph t2b = new Paragraph();
-
-            Paragraph ta = new Paragraph();
-            Paragraph tb = new Paragraph();
-            Paragraph tc = new Paragraph();
-            Paragraph td = new Paragraph();
-            Paragraph te = new Paragraph();
-            Paragraph tf = new Paragraph();
-
-            ne.FontSize = 16;
-            ne.Margin = margemTitulo;
-            ne.Foreground = Brushes.Red;
-
-            t1a.FontSize = 26;
-            t1a.Margin = margemTitulo;
-            
-            t2a.FontSize = 24;
-            t2a.Margin = margemTitulo;
-            t2b.FontSize = 24;
-            t2b.Margin = margemTitulo;
-
-            ta.Margin = margemParagrafo;
-            tb.Margin = margemParagrafo;
-            tc.Margin = margemParagrafo;
-            td.Margin = margemParagrafo;
-            te.Margin = margemParagrafo;
-            tf.Margin = margemParagrafo;
-
-            ne.Inlines.Add("A Passagem informada não foi encontrada.");
-            t1a.Inlines.Add("Ajuda da Bíblia Falada 2.0 – Gênesis");
-            t2a.Inlines.Add("Como procurar por uma passagem específica?");
-            t2b.Inlines.Add("Não consegue ouvir os textos em português?");
-            
-            ta.Inlines.Add(new Run("Envie suas sugestões para: "));
-            ta.Inlines.Add(new Run("sugestoes@abibliafalada.com.br"));
-
-            tb.Inlines.Add(new Run("Além de selecionar um livro acessando o menu à esquerda, você também pode utilizar as formas mais comuns de referenciar os textos bíblicos para encontrar as passagens desejadas."));
-
-            tc.Inlines.Add(new Run("Por exemplo, para encontrar o Salmo de número 23, basta digitar no campo de busca:"));
-            tc.Inlines.Add(new LineBreak());
-            tc.Inlines.Add(new Bold(new Run("Salmo, 23 ")));
-            tc.Inlines.Add(new Run("ou simplesmente: "));
-            tc.Inlines.Add(new Bold(new Run("Sl23")));
-
-            td.Inlines.Add(new Run("Também é possível buscar um livro completo: "));
-            td.Inlines.Add(new Bold(new Run("João")));
-
-            te.Inlines.Add(new Run("Ou mesmo alguns versículos de um capítulo específico: "));
-            te.Inlines.Add(new Bold(new Run("João, 3.16-18")));
-
-            tf.Inlines.Add(new Run("Para ouvir os textos em português é necessário instalar uma voz neste idioma:"));
-            tf.Inlines.Add(new LineBreak());
-            tf.Inlines.Add(linkRaquel);
-            tf.Inlines.Add(new LineBreak());
-            
             documentReader.Document.TextAlignment = TextAlignment.Left;
-
-            if (exibirMensagemNaoEncontrado)
-                documentReader.Document.Blocks.Add(ne);
-
-            documentReader.Document.Blocks.Add(t1a);
-            documentReader.Document.Blocks.Add(ta);
-
-            documentReader.Document.Blocks.Add(t2a);
-            documentReader.Document.Blocks.Add(tb);
-            documentReader.Document.Blocks.Add(tc);
-            documentReader.Document.Blocks.Add(td);
-            documentReader.Document.Blocks.Add(te);
-
-            documentReader.Document.Blocks.Add(t2b);
-            documentReader.Document.Blocks.Add(tf);
-
-            documentReader.Document.Blocks.Add(LinkABibliaFalada);
-            
+            documentReader.Document.Blocks.AddRange(StaticContentGenerator.GenerateHelpMessage(exibirMensagemNaoEncontrado));
         }
+        #endregion
 
-        private void HandleRequestNavigate(object sender, RoutedEventArgs e)
+        #region Content processing
+        public void ShowContent(SbResultset results)
         {
-            string navigateUri = (sender as Hyperlink).NavigateUri.ToString();
-            this.presenter.OpenSite(navigateUri);
-            e.Handled = true;
+            ResultsetContentGenerator generator = new ResultsetContentGenerator();
+
+            ClearContent();
+
+            generator.StyleTitle = document.FindResource("StyleTitle") as Style;
+            documentReader.Document.Blocks.AddRange(generator.GenerateParagraphs(results));
         }
-
-        public void ShowContent(IEnumerable<ISbItem> itens)
-        {
-            ShowFather(itens.First().Parent);
-            foreach (ISbItem item in itens)
-            {
-                ShowContent(item);
-            }
-        }
-
-        private void ShowContent(ISbItem item)
-        {
-            CreateParagraph(item);
-
-            foreach (ISbItem i in item.Children)
-                ShowContent(i);
-        }
-
-        private void ShowFather(ISbItem item)
-        {
-            if ((item == null) || (item is Testamento))
-                return;
-
-            ShowFather(item.Parent);
-            CreateParagraph(item);
-        }
-
+        /*        
         private void CreateParagraph(ISbItem item)
         {
             Paragraph p = new Paragraph();
-            FormatParagraph(p, item);
             p.Cursor = Cursors.Hand;
             p.Inlines.Add(item.Display);
+            FormatParagraph(p, item);
             p.MouseLeave += new MouseEventHandler(OnParagraphMouseLeave);
             p.MouseEnter += new MouseEventHandler(OnParagraphMouseEnter);
             p.MouseDown += new MouseButtonEventHandler(OnParagraphMouseDown);
@@ -206,8 +91,10 @@ namespace SpokenBible.View
                 p.FontSize = 28;
             else if (item is Capitulo)
                 p.FontSize = 24;
-        }
+        }*/
+        #endregion
 
+        #region Busca - temp
         private void AbrirBusca()
         {
             this.Conteudo.IsEnabled = false;
@@ -219,7 +106,9 @@ namespace SpokenBible.View
             this.Conteudo.IsEnabled = true;
             this.BuscaBox.Visibility = Visibility.Hidden;
         }
+        #endregion
 
+        #region GUI event processing
         private void OnParagraphMouseEnter(object sender, MouseEventArgs e)
         {
             Paragraph p = sender as Paragraph;
@@ -275,7 +164,7 @@ namespace SpokenBible.View
 
         private void ABibliaFaladaMouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.presenter.OpenSite(SpokenBible.Properties.Resources.linkSite);
+            StaticContentGenerator.OpenSite(SpokenBible.Properties.Resources.linkSite);
         }
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
@@ -301,6 +190,6 @@ namespace SpokenBible.View
         {
             this.FecharBusca();
         }
-
+        #endregion
     }
 }

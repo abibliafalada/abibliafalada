@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Interface\ISuggestComponent.cs" />
+    <Compile Include="Components\SbResultset.cs" />
     <Compile Include="Components\SimpleSbItemSuggester.cs" />
     <Compile Include="Components\SimpleSuggester.cs" />
     <Compile Include="Components\SimpleTextSuggester.cs" />
