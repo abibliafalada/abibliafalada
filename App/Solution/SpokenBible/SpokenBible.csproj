@@ -73,9 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\db4o\Db4objects.Db4o.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lucene.Net, Version=2.0.0.4, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lucene2.3.2\src\Lucene.Net\bin\Release\Lucene.Net.dll</HintPath>
+      <HintPath>..\lucene\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>

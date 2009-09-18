@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lucene2.3.2\src\Lucene.Net\bin\Release\Lucene.Net.dll</HintPath>
+      <HintPath>..\lucene\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
