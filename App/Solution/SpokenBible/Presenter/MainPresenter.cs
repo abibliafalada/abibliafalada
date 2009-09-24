@@ -166,9 +166,10 @@ namespace SpokenBible.Presenter
             IndexSearcher searcher = this.controller.Index.GetIndex();
             QueryParser queryParser = new QueryParser("versiculo", new StandardAnalyzer());
             Hits hits = searcher.Search(queryParser.Parse(phrase));
-            for (int i = 0; i < hits.Length(); i++)
+            for (int i = 0; i < (hits.Length() > 100 ? 100 : hits.Length()); i++)
             {
                 ISbItem item = this.controller.DefaultContainer.Ext().GetByID(Convert.ToInt64(hits.Doc(i).Get("id"))) as ISbItem;
+                item.Tag = hits.Score(i).ToString();
                 this.controller.DefaultContainer.Activate(item, 1);
                 versiculos.Add(item);
             }

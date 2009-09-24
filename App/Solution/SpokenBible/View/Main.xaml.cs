@@ -70,28 +70,9 @@ namespace SpokenBible.View
             ClearContent();
 
             generator.StyleTitle = document.FindResource("StyleTitle") as Style;
+            generator.OnParagraphMouseDown = OnParagraphMouseDown;
             documentReader.Document.Blocks.AddRange(generator.GenerateParagraphs(results));
         }
-        /*        
-        private void CreateParagraph(ISbItem item)
-        {
-            Paragraph p = new Paragraph();
-            p.Cursor = Cursors.Hand;
-            p.Inlines.Add(item.Display);
-            FormatParagraph(p, item);
-            p.MouseLeave += new MouseEventHandler(OnParagraphMouseLeave);
-            p.MouseEnter += new MouseEventHandler(OnParagraphMouseEnter);
-            p.MouseDown += new MouseButtonEventHandler(OnParagraphMouseDown);
-            documentReader.Document.Blocks.Add(p);
-        }
-
-        private void FormatParagraph(Paragraph p, ISbItem item)
-        {
-            if(item is Livro)
-                p.FontSize = 28;
-            else if (item is Capitulo)
-                p.FontSize = 24;
-        }*/
         #endregion
 
         #region Busca - temp
@@ -109,18 +90,6 @@ namespace SpokenBible.View
         #endregion
 
         #region GUI event processing
-        private void OnParagraphMouseEnter(object sender, MouseEventArgs e)
-        {
-            Paragraph p = sender as Paragraph;
-            p.Background = Brushes.LightGray;
-        }
-
-        private void OnParagraphMouseLeave(object sender, MouseEventArgs e)
-        {
-            Paragraph p = sender as Paragraph;
-            p.Background = null;
-        }
-
         private void OnParagraphMouseDown(object sender, MouseButtonEventArgs e)
         {
             Paragraph p = sender as Paragraph;

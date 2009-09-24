@@ -13,6 +13,7 @@ namespace SpokenBible.Helpers
     public class ResultsetContentGenerator
     {
         public Style StyleTitle { get; set; }
+        public System.Windows.Input.MouseButtonEventHandler OnParagraphMouseDown { get; set; }
 
         internal IList<Block> GenerateParagraphs(SbResultset resultset)
         {
@@ -32,13 +33,13 @@ namespace SpokenBible.Helpers
                 {
                     if (lastTitle != GetTitle(item))
                     {
-                        Paragraph t = new Paragraph();
+                        Paragraph t = NewParagraph();
                         t.Style = StyleTitle;
                         t.Inlines.Add(new Run(GetTitle(item)));
                         lastTitle = GetTitle(item);
                         blocks.Add(t);
                     }
-                    Paragraph p = new Paragraph();
+                    Paragraph p = NewParagraph();
                     p.Inlines.Add(new Run(item.Display));
                     blocks.Add(p);
                 }
@@ -55,8 +56,8 @@ namespace SpokenBible.Helpers
             IList<Block> blocks = new List<Block>();
             foreach (Versiculo versiculo in itens)
             {
-                Paragraph p = new Paragraph();
-                //blocks.Add(NewParagraph(GetTitle(versiculo) + versiculo.Numero + versiculo.Descricao));
+                Paragraph p = NewParagraph();
+                p.Inlines.Add(new Run(versiculo.Tag + ": "));
                 p.Inlines.Add(new Bold(new Run(GetTitle(versiculo) + versiculo.Numero + ": ")));
                 p.Inlines.Add(new Run(versiculo.Descricao));
                 blocks.Add(p);
@@ -64,11 +65,10 @@ namespace SpokenBible.Helpers
             return blocks;
         }
 
-        private Paragraph NewParagraph(string content)
+        private Paragraph NewParagraph()
         {
             Paragraph p = new Paragraph();
-            p.Cursor = System.Windows.Input.Cursors.Hand;
-            p.Inlines.Add(content);
+            p.MouseDown += this.OnParagraphMouseDown;
             return p;
         }
 
