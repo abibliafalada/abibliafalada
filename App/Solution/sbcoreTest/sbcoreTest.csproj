@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1085B4C7-3CD6-4F9B-B7CB-75002C4A98DF}</ProjectGuid>
+    <ProjectGuid>{5BB59AAE-5F84-4DE2-AB34-EEE17770F6F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>sbcore</RootNamespace>
-    <AssemblyName>sbcore</AssemblyName>
+    <RootNamespace>sbcoreTest</RootNamespace>
+    <AssemblyName>sbcoreTest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,45 +35,37 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\db4o\Db4objects.Db4o.dll</HintPath>
     </Reference>
-    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Db4objects.Db4o.Linq, Version=7.4.88.12908, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lucene\Lucene.Net.dll</HintPath>
+      <HintPath>..\db4o\Db4objects.Db4o.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Interface\ISuggestComponent.cs" />
-    <Compile Include="Model\SbItemPair.cs" />
-    <Compile Include="Components\SbResultset.cs" />
-    <Compile Include="Components\SimpleSbItemSuggester.cs" />
-    <Compile Include="Components\SimpleSuggester.cs" />
-    <Compile Include="Components\SimpleTextSuggester.cs" />
-    <Compile Include="Components\TextComponent.cs" />
-    <Compile Include="Model\Capitulo.cs" />
-    <Compile Include="Model\Interface\ISbItem.cs" />
-    <Compile Include="Model\Livro.cs" />
-    <Compile Include="Model\Testamento.cs" />
-    <Compile Include="Model\Traducao.cs" />
-    <Compile Include="Model\Versiculo.cs" />
-    <Compile Include="Persistence\Container.cs" />
-    <Compile Include="Persistence\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuggestionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagrams\DomainModel.cd" />
+    <None Include="ManualTest1.mht" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sbcore\sbcore.csproj">
+      <Project>{1085B4C7-3CD6-4F9B-B7CB-75002C4A98DF}</Project>
+      <Name>sbcore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpokenBible\SpokenBible.csproj">
+      <Project>{32D2CA89-E0EA-49E1-B7DB-0463F4BD0A71}</Project>
+      <Name>SpokenBible</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

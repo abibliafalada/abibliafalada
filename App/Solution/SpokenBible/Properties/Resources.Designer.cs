@@ -22,7 +22,7 @@ namespace SpokenBible.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SpokenBible.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpokenBible.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace SpokenBible.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace SpokenBible.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .\Data\database.yap.
         /// </summary>
-        internal static string databaseFile {
+        public static string databaseFile {
             get {
                 return ResourceManager.GetString("databaseFile", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace SpokenBible.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .\Data\index.
         /// </summary>
-        internal static string indexFile {
+        public static string indexFile {
             get {
                 return ResourceManager.GetString("indexFile", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace SpokenBible.Properties {
         /// <summary>
         ///   Looks up a localized string similar to http://spoken-bible.sourceforge.net/.
         /// </summary>
-        internal static string linkSite {
+        public static string linkSite {
             get {
                 return ResourceManager.GetString("linkSite", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace SpokenBible.Properties {
         /// <summary>
         ///   Looks up a localized string similar to http://spoken-bible.sourceforge.net/install/VozPortugues.exe.
         /// </summary>
-        internal static string linkVozPortugues {
+        public static string linkVozPortugues {
             get {
                 return ResourceManager.GetString("linkVozPortugues", resourceCulture);
             }

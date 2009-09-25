@@ -36,7 +36,7 @@ namespace SpokenBible.Presenter
         private AppController controller = null;
         
         private ISuggestComponent<string> textSuggest = null;
-        private ISuggestComponent<IEnumerable<ISbItem>> sbItemSuggest = null;
+        private ISuggestComponent<ISbItem> sbItemSuggest = null;
 
         private SpeechSynthesizer synthetizer = null;
 
@@ -145,7 +145,7 @@ namespace SpokenBible.Presenter
             if (this.sbItemSuggest.GetSuggestionsFor(term).Count() > 0)
             {
                 this.controller.DefaultTerm = term;
-                IEnumerable<ISbItem> opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
+                ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
                 this.ShowContent(new SbResultset(opcao, SbResultsetType.Referencia));
             }
             else
@@ -156,11 +156,6 @@ namespace SpokenBible.Presenter
 
         internal void BuscaRequested(string phrase)
         {
-            /*IEnumerable<ISbItem> versiculos = 
-                from Versiculo v in controller.DefaultContainer
-                where v.Descricao.Contains(phrase)
-                select v as ISbItem;*/
-
             IList<ISbItem> versiculos = new List<ISbItem>();
 
             IndexSearcher searcher = this.controller.Index.GetIndex();

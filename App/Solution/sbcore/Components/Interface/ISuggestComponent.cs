@@ -13,5 +13,6 @@ namespace sbcore.Components.Interface
     {
         SbItemChildrenNeeded OnSbItemChildrenNeeded { get; set; }
         IEnumerable<T> GetSuggestionsFor(string item);
+        T GetBetterFor(string item);
     }
 }

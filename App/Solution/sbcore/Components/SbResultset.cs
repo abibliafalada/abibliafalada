@@ -16,6 +16,15 @@ namespace sbcore.Components
         public SbResultsetType Type { get; set; }
         public IEnumerable<ISbItem> Itens { get; set; }
 
+        public SbResultset(ISbItem item, SbResultsetType type)
+        {
+            IList<ISbItem> itens = new List<ISbItem>();
+            itens.Add(item);
+
+            this.Type = type;
+            this.Itens = itens;
+        }
+
         public SbResultset(IEnumerable<ISbItem> itens, SbResultsetType type)
         {
             this.Type = type;

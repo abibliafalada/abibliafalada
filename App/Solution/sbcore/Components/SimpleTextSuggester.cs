@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using sbcore.Model;
 using sbcore.Components.Interface;
+using sbcore.Model.Interface;
 
 namespace sbcore.Components
 {
@@ -14,22 +15,14 @@ namespace sbcore.Components
         {
         }
 
-        protected override string GetItem(Livro livro)
+        public override IEnumerable<string> GetSuggestionsFor(string term)
         {
-            return livro.Nome + ", ";
-        }
-
-        protected override string GetItem(Livro livro, int cap)
-        {
-            return livro.Nome + ", " + cap;
-        }
-
-        protected override string GetItem(Livro livro, int cap, int vers1, int? vers2)
-        {
-            if (vers2 == null)
-                return livro.Nome + ", " + cap + "." + vers1;
-            else
-                return livro.Nome + ", " + cap + "." + vers1 + "-" + vers2;
+            IList<string> itens = new List<string>();
+            foreach (ISbItem item in MakeSuggestionsFor(term))
+            {
+                itens.Add(item.Display);
+            }
+            return itens;
         }
     }
 }
