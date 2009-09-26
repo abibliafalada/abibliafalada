@@ -149,10 +149,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Search.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Shortcuts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,9 +191,6 @@
     </Compile>
     <Compile Include="View\Principal.xaml.cs">
       <DependentUpon>Principal.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Search.xaml.cs">
-      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shortcuts.xaml.cs">
       <DependentUpon>Shortcuts.xaml</DependentUpon>

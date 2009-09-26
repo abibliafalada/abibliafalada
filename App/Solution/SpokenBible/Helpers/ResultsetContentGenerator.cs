@@ -13,7 +13,15 @@ namespace SpokenBible.Helpers
     public class ResultsetContentGenerator
     {
         public Style StyleTitle { get; set; }
+
         public System.Windows.Input.MouseButtonEventHandler OnParagraphMouseDown { get; set; }
+
+        public Paragraph NewParagraph()
+        {
+            Paragraph p = new Paragraph();
+            p.MouseDown += this.OnParagraphMouseDown;
+            return p;
+        }
 
         internal IList<Block> GenerateParagraphs(SbResultset resultset)
         {
@@ -63,13 +71,6 @@ namespace SpokenBible.Helpers
                 blocks.Add(p);
             }
             return blocks;
-        }
-
-        private Paragraph NewParagraph()
-        {
-            Paragraph p = new Paragraph();
-            p.MouseDown += this.OnParagraphMouseDown;
-            return p;
         }
 
         private string GetTitle(ISbItem item)

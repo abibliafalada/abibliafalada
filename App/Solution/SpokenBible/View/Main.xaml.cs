@@ -34,7 +34,6 @@ namespace SpokenBible.View
         {
             this.presenter = presenter;
             InitializeComponent();
-            this.FecharBusca();
         }
         #endregion
 
@@ -58,6 +57,7 @@ namespace SpokenBible.View
         {
             ClearContent();
             documentReader.Document.TextAlignment = TextAlignment.Left;
+            StaticContentGenerator.OnParagraphMouseDown = OnParagraphMouseDown;
             documentReader.Document.Blocks.AddRange(StaticContentGenerator.GenerateHelpMessage(exibirMensagemNaoEncontrado));
         }
         #endregion
@@ -72,20 +72,6 @@ namespace SpokenBible.View
             generator.StyleTitle = document.FindResource("StyleTitle") as Style;
             generator.OnParagraphMouseDown = OnParagraphMouseDown;
             documentReader.Document.Blocks.AddRange(generator.GenerateParagraphs(results));
-        }
-        #endregion
-
-        #region Busca - temp
-        private void AbrirBusca()
-        {
-            this.Conteudo.IsEnabled = false;
-            this.BuscaBox.Visibility = Visibility.Visible;
-        }
-
-        private void FecharBusca()
-        {
-            this.Conteudo.IsEnabled = true;
-            this.BuscaBox.Visibility = Visibility.Hidden;
         }
         #endregion
 
@@ -142,22 +128,6 @@ namespace SpokenBible.View
             {
                 this.presenter.FullScreen = !this.presenter.FullScreen;
             }
-        }
-
-        private void buscar_Click(object sender, RoutedEventArgs e)
-        {
-            this.AbrirBusca();
-        }
-
-        private void SearchBox_BuscarButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.presenter.BuscaRequested(this.BuscaBox.texto.Text);
-            this.FecharBusca();
-        }
-
-        private void SearchBox_FecharButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.FecharBusca();
         }
         #endregion
     }
