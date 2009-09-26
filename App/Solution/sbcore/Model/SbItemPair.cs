@@ -23,17 +23,34 @@ namespace sbcore.Components
 
         public string Display
         {
-            get { return "pair"; }
+            get { return Item1.GetType().ToString() + " de " + Item1.Display + "-" + Item1.Display; }
         }
 
         public IEnumerable<ISbItem> Children
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                bool started = false;
+                IList<ISbItem> itens = new List<ISbItem>();
+                IEnumerator<ISbItem> allItens = Parent.Children.GetEnumerator();
+                
+                while(allItens.MoveNext())
+                {
+                    if (allItens.Current.Equals(Item1))
+                        started = true;
+                    if (started)
+                        itens.Add(allItens.Current);
+                    if (allItens.Current.Equals(Item2))
+                        break;
+                }
+
+                return itens;
+            }
         }
 
         public ISbItem Parent
         {
-            get { throw new NotImplementedException(); }
+            get { return Item1.Parent; }
         }
 
         #endregion

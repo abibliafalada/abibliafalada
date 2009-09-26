@@ -17,9 +17,8 @@ namespace sbcore.Components
         private IEnumerable<Livro> itens = null;
 
         private static string alfabetoAcentuado = @"a-zA-ZÀ-ÿ";
-        private static Regex bookPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)$", RegexOptions.IgnoreCase);
-        private static Regex chapPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)[\,\;\-\ ]*([0-9]*)$", RegexOptions.IgnoreCase);
-        private static Regex versPattern = new Regex(@"^([0-9]?[" + alfabetoAcentuado + @"\ ]+)[\,\;\-\ ]*([0-9]*)[\.\,\ ]*([0-9\ ]*)([\-]([0-9\ ]*))?$", RegexOptions.IgnoreCase);
+        //private static Regex versPattern = new Regex(@"^([0-3]?[" + alfabetoAcentuado + @"\ ]*)[\,\;\ ]*([0-9]*)[\:\.\,\ ]*([0-9\ ]*)([\-]([0-9\ ]*))?$", RegexOptions.IgnoreCase);
+        private static Regex versPattern = new Regex(@"^([0-3]?[" + alfabetoAcentuado + @"\ ]*)([\,\;\ ]*)([0-9]*)([\:\.\,\ ]*)([0-9\ ]*)(\-?)([0-9\ ]*)$", RegexOptions.IgnoreCase);
 
         public SimpleSuggester(IEnumerable<Livro> itens, SbItemChildrenNeeded SbItemChildrenNeeded)
         {
@@ -47,14 +46,17 @@ namespace sbcore.Components
             Match m = versPattern.Match(term);
 
             string book = m.Groups[1].Value.Trim();
-            string chap = m.Groups[2].Value.Trim();
-            string vers1 = m.Groups[3].Value.Trim();
-            string vers2 = m.Groups[5].Value.Trim();
+            string bookS = m.Groups[2].Value.Trim();
+            string chap = m.Groups[3].Value.Trim();
+            string chapS = m.Groups[4].Value.Trim();
+            string vers1 = m.Groups[5].Value.Trim();
+            string versS = m.Groups[6].Value.Trim();
+            string vers2 = m.Groups[7].Value.Trim();
 
-            return this.MakeSuggestionsFor(book, chap, vers1, vers2);
+            return this.MakeSuggestionsFor(book, bookS, chap, chapS, vers1, versS, vers2);
         }
 
-        public IEnumerable<ISbItem> MakeSuggestionsFor(string book, string chap, string vers1, string vers2)
+        public IEnumerable<ISbItem> MakeSuggestionsFor(string book, string bookS, string chap, string chapS, string vers1, string versS, string vers2)
         {
             //inicializacao
             IEnumerable<ISbItem> suggestions = new List<ISbItem>(0);
@@ -66,7 +68,7 @@ namespace sbcore.Components
             //busca por livro
             suggestions = this.GetSuggestionsForBooks(book);
 
-            if (chap == string.Empty)
+            if (bookS == string.Empty && chap == string.Empty)
                 return suggestions;
 
             //busca por capitulo, depende do livro escolhido
@@ -74,15 +76,18 @@ namespace sbcore.Components
 
             suggestions = this.GetSuggestionsForChapters(livro, chap);
 
-            if (vers1 == string.Empty)
+            if (chapS == string.Empty && vers1 == string.Empty)
                 return suggestions;
 
             //busca por versiculo, depende do capitulo especifico
             Capitulo capitulo = suggestions.First() as Capitulo;
 
-            if (vers2 == string.Empty){
+            if (versS == string.Empty && vers2 == string.Empty)
+            {
                 suggestions = this.GetSuggestionsForVersicles(capitulo, vers1);
-            } else {
+            }
+            else
+            {
                 suggestions = this.GetSuggestionsForVersicles(capitulo, vers1, vers2);
             }
 
@@ -107,7 +112,7 @@ namespace sbcore.Components
             {
                 if (i.ToString().Contains(chap))
                 {
-                    suggestions.Add(livro.Capitulos[i]);
+                    suggestions.Add(livro.Capitulos[i-1]);
                 }
             }
             return suggestions;
@@ -122,7 +127,7 @@ namespace sbcore.Components
             {
                 if (j.ToString().Contains(vers))
                 {
-                    suggestions.Add(capitulo.Versiculos[j]);
+                    suggestions.Add(capitulo.Versiculos[j-1]);
                 }
             }
             
@@ -141,7 +146,7 @@ namespace sbcore.Components
             {
                 if (j.ToString().Contains(vers2))
                 {
-                    suggestions.Add(new SbItemPair(capitulo.Versiculos[k], capitulo.Versiculos[j-1]));
+                    suggestions.Add(new SbItemPair(capitulo.Versiculos[k-1], capitulo.Versiculos[j-1]));
                 }
             }
 

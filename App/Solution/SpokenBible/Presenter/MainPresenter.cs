@@ -147,14 +147,22 @@ namespace SpokenBible.Presenter
                 this.controller.DefaultTerm = term;
                 ISbItem opcao = this.sbItemSuggest.GetSuggestionsFor(term).First();
                 this.ShowContent(new SbResultset(opcao, SbResultsetType.Referencia));
+                return;
             }
-            else
+
+            try
             {
-                mainPage.ShowHelp(true);
-            }
+                IList<ISbItem> versiculos = BuscaRequested(term);
+                if (versiculos.Count > 0)
+                {
+                    this.ShowContent(new SbResultset(versiculos, SbResultsetType.BuscaLivre));
+                    return;
+                }
+            } catch { }
+            mainPage.ShowHelp(true);
         }
 
-        internal void BuscaRequested(string phrase)
+        internal IList<ISbItem> BuscaRequested(string phrase)
         {
             IList<ISbItem> versiculos = new List<ISbItem>();
 
@@ -169,7 +177,7 @@ namespace SpokenBible.Presenter
                 versiculos.Add(item);
             }
 
-            this.ShowContent(new SbResultset(versiculos, SbResultsetType.BuscaLivre));
+            return versiculos;
         }
         #endregion
 
@@ -196,7 +204,7 @@ namespace SpokenBible.Presenter
         {
             this.ClosePrincipal();
             this.mainPage.busca.PopupEnabled = false;
-            this.mainPage.busca.Text = livro.Display;
+            this.mainPage.busca.Text = livro.Nome;
             this.mainPage.busca.PopupEnabled = true;
             this.ShowContent(new SbResultset(livro.Children, SbResultsetType.Referencia));
             Keyboard.Focus(this.mainPage.ler);

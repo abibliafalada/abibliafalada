@@ -73,7 +73,7 @@ namespace sbcore.Model
         public bool Contains(string text)
         {
             text = text.ToLower();
-            return this.Acronimo.ToLower().Contains(text) || this.Nome.ToLower().Contains(text);
+            return this.Acronimo.ToLower().Contains(text) || this.Nome.ToLower().Contains(text) || this.Nome.Replace(" ", "").ToLower().Contains(text);
         }
     }
 }
