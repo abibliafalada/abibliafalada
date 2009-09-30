@@ -24,10 +24,10 @@
         
         <a:AutoComplete x:Name="busca" Grid.Row="2" Grid.Column="1" Margin="12 12"
                 SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
-                AutomationProperties.Name="digite a referência" />
+                AutomationProperties.Name="digite a referência ou termo a pesquisar" />
         
         <TextBlock VerticalAlignment="Bottom" Margin="8" Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextoAjuda}" MouseDown="AjudaMouseDown">Ajuda ?</TextBlock>
-        <Button x:Name="ir" Grid.Row="3" Grid.Column="1" Width="120" Click="busca_SearchRequest"
-                Content="ir para referência" FontSize="15" FontFamily="Calibri" />
+        <Button x:Name="buscar" Grid.Row="3" Grid.Column="1" Width="120" Click="busca_SearchRequest"
+                Content="buscar" FontSize="15" FontFamily="Calibri" />
     </Grid>
 </Page>

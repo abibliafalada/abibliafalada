@@ -23,10 +23,10 @@
 
             <a:AutoComplete x:Name="busca" Grid.Row="0" Grid.Column="0" Margin="12"
                 SearchRequest="busca_SearchRequest" TextChanged="busca_TextChanged"
-                AutomationProperties.Name="digite a referência" />
+                AutomationProperties.Name="digite a referência ou termo a pesquisar" />
 
-            <Button x:Name="ir" Grid.Row="0" Grid.Column="1" Width="120" Margin="10"
-                Content="ir para referência" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" />
+            <Button x:Name="buscar" Grid.Row="0" Grid.Column="1" Width="70" Margin="10"
+                Content="buscar" FontSize="15" FontFamily="Calibri" Click="busca_SearchRequest" />
 
             <Button x:Name="ler" Grid.Row="0" Grid.Column="2" Width="50" Margin="10" HorizontalAlignment="Left"
                 Content="ler" FontSize="15" FontFamily="Calibri" Click="ler_Click"
