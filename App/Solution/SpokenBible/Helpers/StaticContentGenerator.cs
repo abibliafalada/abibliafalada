@@ -134,24 +134,24 @@ namespace SpokenBible.Helpers
             tf.Inlines.Add(linkRaquel);
             tf.Inlines.Add(new LineBreak());
 
-            tg.Inlines.Add(new Run("Encontre o versículo que desejar! Você pode procurar qualquer palavra ou frase em toda a Bíblia Sagrada, de forma semelhante à que você faz no Google, por exemplo:"));
-            th.Inlines.Add(new Bold(new Run("Jesus ")));
-            th.Inlines.Add(new Run(" irá retornar todos os versículos em que a palavra \"Jesus\" aparece, por ordem de importância. Se você utilizar duas ou mais palavras, os resultados poderão trazer itens com apenas uma das palavras."));
+            tg.Inlines.Add(new Run("Encontre o versículo que desejar! Você pode procurar qualquer palavra ou frase em toda a Bíblia Sagrada, de forma semelhante à que você faz no Google. Por exemplo:"));
+            th.Inlines.Add(new Bold(new Run("Jesus")));
+            th.Inlines.Add(new Run(": retorna todos os versículos em que a palavra \"Jesus\" aparece, por ordem de importância. Se você utilizar duas ou mais palavras, os resultados poderão trazer itens com apenas uma das palavras."));
             ti.Inlines.Add(new Run("Para restringir apenas aos versículos em que determinada palavra deva obrigatoriamente aparecer, utilize o símbolo + imediatamente antes desta palavra:"));
             ti.Inlines.Add(new LineBreak());
-            ti.Inlines.Add(new Bold(new Run("+pai + nosso ")));
-            ti.Inlines.Add(new Run(" enquanto a busca por \"pai nosso\" encontra 1354 versículos, a busca por \"+pai +nosso\" retorna apenas 66."));
+            ti.Inlines.Add(new Bold(new Run("+pai + nosso")));
+            ti.Inlines.Add(new Run(": Enquanto a busca por \"pai nosso\" encontra 1354 versículos, a busca por \"+pai +nosso\" retorna apenas 66."));
             tj.Inlines.Add(new Run("Também pode-se restringir a pesquisa a uma frase exata, utilizando-se aspas. Seguindo o exemplo:"));
             tj.Inlines.Add(new LineBreak());
-            tj.Inlines.Add(new Bold(new Run("\"pai nosso\" ")));
-            tj.Inlines.Add(new Run(" retorna apenas 2 versículos."));
+            tj.Inlines.Add(new Bold(new Run("\"pai nosso\"")));
+            tj.Inlines.Add(new Run(": Retorna apenas 2 versículos."));
             tk.Inlines.Add(new Run("Outras dicas:"));
             tk.Inlines.Add(new LineBreak());
-            tk.Inlines.Add(new Bold(new Run("+Lucas -Marcos ")));
-            tk.Inlines.Add(new Run(" versículos em que a palavra \"Lucas\" aparece mas a palavra \"Marcos\" não."));
+            tk.Inlines.Add(new Bold(new Run("+Lucas -Marcos")));
+            tk.Inlines.Add(new Run(": Versículos em que a palavra \"Lucas\" aparece mas a palavra \"Marcos\" não."));
             tk.Inlines.Add(new LineBreak());
-            tk.Inlines.Add(new Bold(new Run("luz* ")));
-            tk.Inlines.Add(new Run(" versículos que contenham pelo menos uma palavra iniciada por \"luz\". Por exemplo: luzentes, luzeiros, luzia."));
+            tk.Inlines.Add(new Bold(new Run("luz*")));
+            tk.Inlines.Add(new Run(": Versículos que contenham pelo menos uma palavra iniciada por \"luz\". Por exemplo: luzentes, luzeiros, luzia."));
             
             IList<Block> blocks = new List<Block>();
 

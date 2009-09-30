@@ -7,14 +7,17 @@ using System.Windows.Documents;
 using sbcore.Model.Interface;
 using sbcore.Model;
 using System.Windows;
+using System.Windows.Media;
 
 namespace SpokenBible.Helpers
 {
     public class ResultsetContentGenerator
     {
         public Style StyleTitle { get; set; }
+        private SbResultset currentResultset = null;
 
         public System.Windows.Input.MouseButtonEventHandler OnParagraphMouseDown { get; set; }
+        public System.Windows.Input.MouseButtonEventHandler OnReferenceMouseDown { get; set; }
 
         public Paragraph NewParagraph()
         {
@@ -25,6 +28,7 @@ namespace SpokenBible.Helpers
 
         internal IList<Block> GenerateParagraphs(SbResultset resultset)
         {
+            currentResultset = resultset;
             if(resultset.Type == SbResultsetType.Referencia)
                 return GenerateParagraphsForReference(resultset.Itens);
             else
@@ -62,12 +66,25 @@ namespace SpokenBible.Helpers
         private IList<Block> GenerateParagraphsForSearch(IEnumerable<ISbItem> itens)
         {
             IList<Block> blocks = new List<Block>();
+            
+            Paragraph pFound = NewParagraph();
+            pFound.FontSize = 12;
+            pFound.Padding = new Thickness(5);
+            pFound.Background = Brushes.LightYellow;
+            if (itens.Count() < currentResultset.TotalSearchResults)
+                pFound.Inlines.Add(new Run("Exibindo os " + itens.Count() + " resultados mais relevantes de  um total de "));
+            pFound.Inlines.Add(new Bold(new Run(currentResultset.TotalSearchResults.ToString() + " versículos encontrados.")));
+            blocks.Add(pFound);
+            
             foreach (Versiculo versiculo in itens)
             {
                 Paragraph p = NewParagraph();
-                p.Inlines.Add(new Run(versiculo.Tag + ": "));
-                p.Inlines.Add(new Bold(new Run(GetTitle(versiculo) + versiculo.Numero + ": ")));
-                p.Inlines.Add(new Run(versiculo.Descricao));
+                Run referencia = new Run(GetTitle(versiculo) + versiculo.Numero + ":");
+                referencia.TextDecorations = TextDecorations.Underline;
+                referencia.Foreground = Brushes.SteelBlue;
+                referencia.MouseDown += this.OnReferenceMouseDown;
+                p.Inlines.Add(new Bold(referencia));
+                p.Inlines.Add(new Run(" " + versiculo.Descricao));
                 blocks.Add(p);
             }
             return blocks;

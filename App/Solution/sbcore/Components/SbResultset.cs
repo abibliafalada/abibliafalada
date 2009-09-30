@@ -15,6 +15,7 @@ namespace sbcore.Components
     {
         public SbResultsetType Type { get; set; }
         public IEnumerable<ISbItem> Itens { get; set; }
+        public int TotalSearchResults { get; set; }
 
         public SbResultset(ISbItem item, SbResultsetType type)
         {

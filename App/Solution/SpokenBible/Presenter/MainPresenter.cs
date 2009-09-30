@@ -152,23 +152,27 @@ namespace SpokenBible.Presenter
 
             try
             {
-                IList<ISbItem> versiculos = BuscaRequested(term);
+                int total = 0;
+                IList<ISbItem> versiculos = BuscaRequested(term, out total);
                 if (versiculos.Count > 0)
                 {
-                    this.ShowContent(new SbResultset(versiculos, SbResultsetType.BuscaLivre));
+                    SbResultset resultset = new SbResultset(versiculos, SbResultsetType.BuscaLivre);
+                    resultset.TotalSearchResults = total;
+                    this.ShowContent(resultset);
                     return;
                 }
             } catch { }
             mainPage.ShowHelp(true);
         }
 
-        internal IList<ISbItem> BuscaRequested(string phrase)
+        internal IList<ISbItem> BuscaRequested(string phrase, out int total)
         {
             IList<ISbItem> versiculos = new List<ISbItem>();
 
             IndexSearcher searcher = this.controller.Index.GetIndex();
             QueryParser queryParser = new QueryParser("versiculo", new StandardAnalyzer());
             Hits hits = searcher.Search(queryParser.Parse(phrase));
+            total = hits.Length();
             for (int i = 0; i < (hits.Length() > 100 ? 100 : hits.Length()); i++)
             {
                 ISbItem item = this.controller.DefaultContainer.Ext().GetByID(Convert.ToInt64(hits.Doc(i).Get("id"))) as ISbItem;

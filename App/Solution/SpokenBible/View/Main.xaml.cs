@@ -71,6 +71,7 @@ namespace SpokenBible.View
 
             generator.StyleTitle = document.FindResource("StyleTitle") as Style;
             generator.OnParagraphMouseDown = OnParagraphMouseDown;
+            generator.OnReferenceMouseDown = OnReferenceMouseDown;
             documentReader.Document.Blocks.AddRange(generator.GenerateParagraphs(results));
         }
         #endregion
@@ -82,6 +83,14 @@ namespace SpokenBible.View
             TextRange textRange = new TextRange(p.ContentStart, p.ContentEnd);
             if (textRange.Text != string.Empty)
                 this.presenter.SpeachRequest(textRange.Text);
+        }
+
+        private void OnReferenceMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Run reference = sender as Run;
+            if (reference.Text.Length > 1)
+                this.presenter.SearchRequested(reference.Text.Substring(0, reference.Text.IndexOf('.')));
+            e.Handled = true;
         }
 
         private void busca_TextChanged(object sender, RoutedEventArgs e)
