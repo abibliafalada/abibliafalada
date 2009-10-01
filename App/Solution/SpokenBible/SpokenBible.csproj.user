@@ -10,5 +10,6 @@
     <ErrorReportUrlHistory>http://spoken-bible.sourceforge.net</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

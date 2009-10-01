@@ -79,6 +79,7 @@ namespace SpokenBible.Helpers
             Paragraph ti = NewParagraph();
             Paragraph tj = NewParagraph();
             Paragraph tk = NewParagraph();
+            Paragraph tl = NewParagraph();
 
             ne.FontSize = 16;
             ne.Margin = margemTitulo;
@@ -105,9 +106,10 @@ namespace SpokenBible.Helpers
             ti.Margin = margemParagrafo;
             tj.Margin = margemParagrafo;
             tk.Margin = margemParagrafo;
+            tl.Margin = margemParagrafo;
 
             ne.Inlines.Add("A Passagem informada não foi encontrada.");
-            t1a.Inlines.Add("Ajuda da Bíblia Falada 2.0 – Gênesis");
+            t1a.Inlines.Add("Ajuda da Bíblia Falada " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " – Gênesis");
             t2a.Inlines.Add("Como procurar por uma passagem específica?");
             t2b.Inlines.Add("Não consegue ouvir os textos em português?");
             t2c.Inlines.Add("Como fazer uma busca livre?");
@@ -153,6 +155,8 @@ namespace SpokenBible.Helpers
             tk.Inlines.Add(new Bold(new Run("luz*")));
             tk.Inlines.Add(new Run(": Versículos que contenham pelo menos uma palavra iniciada por \"luz\". Por exemplo: luzentes, luzeiros, luzia."));
             
+            tl.Inlines.Add(new Run("A qualquer momento, pressione ESC para interromper a leitura ou F11 para visualizar em tela cheia."));
+
             IList<Block> blocks = new List<Block>();
 
             if (exibirMensagemNaoEncontrado)
@@ -160,6 +164,7 @@ namespace SpokenBible.Helpers
 
             blocks.Add(t1a);
             blocks.Add(ta);
+            blocks.Add(tl);
 
             blocks.Add(t2a);
             blocks.Add(tb);

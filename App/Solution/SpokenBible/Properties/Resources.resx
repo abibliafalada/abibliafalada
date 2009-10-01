@@ -124,9 +124,12 @@
     <value>.\Data\index</value>
   </data>
   <data name="linkSite" xml:space="preserve">
-    <value>http://spoken-bible.sourceforge.net/</value>
+    <value>http://www.abibliafalada.com.br/?v=2.0.1.0</value>
+  </data>
+  <data name="linkSitePrimeiroUso" xml:space="preserve">
+    <value>http://www.abibliafalada.com.br/?f=2.0.1.0</value>
   </data>
   <data name="linkVozPortugues" xml:space="preserve">
-    <value>http://spoken-bible.sourceforge.net/install/VozPortugues.exe</value>
+    <value>http://ww2.abibliafalada.com.br/install/VozPortugues.exe</value>
   </data>
 </root>

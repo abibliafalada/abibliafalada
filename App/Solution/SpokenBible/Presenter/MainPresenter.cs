@@ -23,6 +23,8 @@ using Lucene.Net.Search;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Documents;
+using SpokenBible.Properties;
+using SpokenBible.Helpers;
 
 namespace SpokenBible.Presenter
 {
@@ -75,6 +77,13 @@ namespace SpokenBible.Presenter
 
             //carregamento das configurações salvas
             this.principalPage.busca.Text = this.controller.DefaultTerm;
+
+            //exibição do site no primeiro acesso ou em uma atualização de versão
+            if (Settings.Default.VersaoVisualizadaNoSite != Application.ResourceAssembly.GetName().Version.ToString())
+            {
+                StaticContentGenerator.OpenSite(Resources.linkSitePrimeiroUso);
+                Settings.Default.VersaoVisualizadaNoSite = Application.ResourceAssembly.GetName().Version.ToString();
+            }
         }
 
         public void ShowView()
@@ -97,6 +106,15 @@ namespace SpokenBible.Presenter
         internal void SpeachRequest(string text)
         {
             //Vozes em portugues: http://www.microsoft.com/downloads/details.aspx?FamilyID=30e14c5a-a42c-4d4e-9513-c4b0b8d21086&displaylang=en
+            if (Synthetizer.GetInstalledVoices().Count <= 0)
+            {
+                MessageBox.Show("Não há nenhum sintetizador de voz instalado em seu Windows." +
+                    "\nSabemos que a Microsoft não disponibiliza um sintetizador de voz para as versões de Windows denominadas \"Starter Edition\"." +
+                    "\nPode ser necessário reinstalar o seu Windows ou instalar uma versão superior.",
+                    "Sem sintetizador de voz", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             if (Synthetizer.Voice.Culture.CompareInfo.LCID != 1046)
             {
                 foreach (InstalledVoice voice in Synthetizer.GetInstalledVoices())

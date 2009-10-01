@@ -163,7 +163,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\SBSettings.cs" />
     <Compile Include="Components\WindowSettings.cs" />
     <Compile Include="Controller\AppController.cs" />
     <Compile Include="Controlls\SearchBox.xaml.cs">
@@ -185,6 +184,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="View\DefaultEffects.cs" />
     <Compile Include="View\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>

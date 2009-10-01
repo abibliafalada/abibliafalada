@@ -79,7 +79,7 @@ namespace SpokenBible.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://spoken-bible.sourceforge.net/.
+        ///   Looks up a localized string similar to http://www.abibliafalada.com.br/?v=2.0.1.0.
         /// </summary>
         public static string linkSite {
             get {
@@ -88,7 +88,16 @@ namespace SpokenBible.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://spoken-bible.sourceforge.net/install/VozPortugues.exe.
+        ///   Looks up a localized string similar to http://www.abibliafalada.com.br/?f=2.0.1.0.
+        /// </summary>
+        public static string linkSitePrimeiroUso {
+            get {
+                return ResourceManager.GetString("linkSitePrimeiroUso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://ww2.abibliafalada.com.br/install/VozPortugues.exe.
         /// </summary>
         public static string linkVozPortugues {
             get {
