@@ -106,27 +106,33 @@ namespace SpokenBible.Presenter
         internal void SpeachRequest(string text)
         {
             //Vozes em portugues: http://www.microsoft.com/downloads/details.aspx?FamilyID=30e14c5a-a42c-4d4e-9513-c4b0b8d21086&displaylang=en
-            if (Synthetizer.GetInstalledVoices().Count <= 0)
+            try
             {
-                MessageBox.Show("Não há nenhum sintetizador de voz instalado em seu Windows." +
+                if (Synthetizer.GetInstalledVoices() == null || Synthetizer.GetInstalledVoices().Count <= 0)
+                {
+                    throw new PlatformNotSupportedException();
+                }
+
+                if (Synthetizer.Voice.Culture.CompareInfo.LCID != 1046)
+                {
+                    foreach (InstalledVoice voice in Synthetizer.GetInstalledVoices())
+                    {
+                        if (voice.VoiceInfo.Culture.CompareInfo.LCID == 1046)
+                        {
+                            Synthetizer.SelectVoice(voice.VoiceInfo.Name);
+                            break;
+                        }
+                    }
+                }
+                Synthetizer.SpeakAsync(text);
+            }
+            catch(PlatformNotSupportedException e)
+            {
+                MessageBox.Show("Não há suporte para sintetizador de voz em seu Windows." +
                     "\nSabemos que a Microsoft não disponibiliza um sintetizador de voz para as versões de Windows denominadas \"Starter Edition\"." +
                     "\nPode ser necessário reinstalar o seu Windows ou instalar uma versão superior.",
                     "Sem sintetizador de voz", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
             }
-
-            if (Synthetizer.Voice.Culture.CompareInfo.LCID != 1046)
-            {
-                foreach (InstalledVoice voice in Synthetizer.GetInstalledVoices())
-                {
-                    if (voice.VoiceInfo.Culture.CompareInfo.LCID == 1046)
-                    {
-                        Synthetizer.SelectVoice(voice.VoiceInfo.Name);
-                        break;
-                    }
-                }
-            }
-            Synthetizer.SpeakAsync(text);
         }
 
         internal void SpeachStop()
