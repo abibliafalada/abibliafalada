@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SBRobots.Properties;
+using SBRobots.Bots;
 
 namespace SBRobots
 {
@@ -20,19 +21,29 @@ namespace SBRobots
 
         protected void btStart_Click(object sender, EventArgs e)
         {
-            controller.StartServer();
+            controller.StartAll();
             update_status();
         }
 
         protected void btStop_Click(object sender, EventArgs e)
         {
-            controller.StopServer();
+            controller.StopAll();
             update_status();
         }
 
         private void update_status()
         {
-            this.lbStatus.Text = controller.Xmpp.Authenticated ? "Authenticated" : "Not authenticated";
+            if (controller.Bots == null)
+            {
+                this.lbStatus.Text = "Not initialized";
+                return;
+            }
+
+            this.lbStatus.Text = string.Empty;
+            foreach(IBot bot in controller.Bots)
+            {
+                this.lbStatus.Text += bot.Status == BotStatus.Active ? "Active, " : "Inactive, ";
+            }
         }
     }
 }

@@ -22,12 +22,22 @@ namespace sbcore.Model
             Numero = numero;
             Descricao = descricao;
         }
+        #endregion
 
+        #region Métodos
         public ISbItem Parent
         {
             get { return Capitulo; }
         }
 
+        public override bool Equals(object obj)
+        {
+            Versiculo versiculo = obj as Versiculo;
+            if ((object)versiculo == null) return false;
+            if (!Object.Equals(this.Numero, versiculo.Numero)) return false;
+            if (!Object.Equals(this.Descricao, versiculo.Descricao)) return false;
+            return true;
+        }
         #endregion
 
         #region ISbItem<Livro> Members

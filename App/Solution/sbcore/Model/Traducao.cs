@@ -41,6 +41,15 @@ namespace sbcore.Model
             this.testamentos.Add(testamento);
             return testamento;
         }
+
+        public override bool Equals(object obj)
+        {
+            Traducao traducao = obj as Traducao;
+            if ((object)traducao == null) return false;
+            if (!Object.Equals(this.Idioma, traducao.Idioma)) return false;
+            if (!Object.Equals(this.Nome, traducao.Nome)) return false;
+            return true;
+        }
         #endregion
 
         #region ISbItem<Livro> Members

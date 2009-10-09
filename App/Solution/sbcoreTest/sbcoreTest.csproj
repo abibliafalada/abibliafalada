@@ -50,9 +50,6 @@
     <Compile Include="SuggestionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ManualTest1.mht" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>

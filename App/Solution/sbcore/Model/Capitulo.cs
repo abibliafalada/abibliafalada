@@ -40,6 +40,14 @@ namespace sbcore.Model
             this.versiculos.Add(versiculo);
             return versiculo;
         }
+
+        public override bool Equals(object obj)
+        {
+            Capitulo capitulo = obj as Capitulo;
+            if ((object)capitulo == null) return false;
+            if (!Object.Equals(this.Numero, capitulo.Numero)) return false;
+            return true;
+        }
         #endregion
 
         #region ISbItem Members

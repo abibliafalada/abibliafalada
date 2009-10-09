@@ -46,6 +46,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lucene\Lucene.Net.dll</HintPath>
     </Reference>
+    <Reference Include="MSNPSharp, Version=3.0.0.1313, Culture=neutral, PublicKeyToken=adaaf016a67b1373, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\MSNPSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -73,6 +77,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Bots\GTalkBot.cs" />
+    <Compile Include="App_Code\Bots\IBot.cs" />
+    <Compile Include="App_Code\Bots\MsnBot.cs" />
     <Compile Include="App_Code\Controller.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

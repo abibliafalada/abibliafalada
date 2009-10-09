@@ -27,7 +27,7 @@ namespace sbcoreTest
 
         private TestContext testContextInstance;
         private static IObjectContainer container;
-        private static SimpleTextSuggester suggester;
+        private static SimpleSbItemSuggester suggester;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -56,7 +56,7 @@ namespace sbcoreTest
             container = Container.GetContainer(@"../../../SpokenBible" + SpokenBible.Properties.Resources.databaseFile);
             IEnumerable<Livro> livros = from Livro l in container
                                         select l;
-            suggester = new SimpleTextSuggester(livros, ActivateSbItem);
+            suggester = new SimpleSbItemSuggester(livros, ActivateSbItem);
         }
         
         // Use ClassCleanup to run code after all tests in a class have run
@@ -81,30 +81,51 @@ namespace sbcoreTest
         #endregion
 
         /// <summary>
-        /// Teste para busca de livros específicos, nome ou sigla
+        /// Teste de sugestões de Livros
         /// </summary>
         [TestMethod]
-        public void BuscaLivro()
+        public void BuscaPorTermoDeveRetornarLivroCorreto()
         {
-            Dictionary<string, string> itens = new Dictionary<string,string>();
-            itens.Add("Marcos", "Marcos");
-            itens.Add("mc", "Marcos");
-            itens.Add("João", "João");
-            itens.Add("JS", "Josué");
-            itens.Add("JO", "João");
-            itens.Add("jó", "Jó");
-            itens.Add("2 Crônicas", "2 Crônicas");
-            itens.Add("2Cr", "2 Crônicas");
+            Dictionary<string, ISbItem> itens = new Dictionary<string, ISbItem>();
+            itens.Add("Marcos", new Livro(41, "Mc", "Marcos"));
+            itens.Add("mc", new Livro(41, "Mc", "Marcos"));
+            itens.Add("João", new Livro(43, "Jo", "João"));
+            itens.Add("JS", new Livro(6, "Js", "Josué"));
+            itens.Add("JO", new Livro(6, "Js", "Josué"));
+            itens.Add("jó", new Livro(18, "Jó", "Jó"));
+            itens.Add("2 Crônicas", new Livro(14, "IICr", "2 Crônicas"));
+            itens.Add("IICr", new Livro(14, "IICr", "2 Crônicas"));
 
-            suggester.GetSuggestionsFor("teste");
-
-            Assert.IsInstanceOfType(suggester, typeof(SimpleTextSuggester), "TextSugester não inicializado.");
-            Dictionary<string, string>.Enumerator enumerator = itens.GetEnumerator();
+            Dictionary<string, ISbItem>.Enumerator enumerator = itens.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                string resultado = suggester.GetBetterFor(enumerator.Current.Key);
-                Assert.AreEqual(enumerator.Current.Value + ", ", resultado, "Busca por livro específico não encontrou o nome de Livro esperado.");
+                ISbItem resultado = suggester.GetBetterFor(enumerator.Current.Key);
+                Assert.AreEqual(enumerator.Current.Value, resultado, "Sugestão não retornou o livro esperado.");
             }
+        }
+
+        /// <summary>
+        /// Teste de sugestões de Capítulos
+        /// </summary>
+        [TestMethod]
+        public void BuscaPorTermoDeveRetornarCapituloCorreto()
+        {
+            ISbItem resultado_Joao_3 = suggester.GetBetterFor("João 3");
+            Assert.AreEqual(new Capitulo(3), resultado_Joao_3, "Sugestão não retornou o capítulo esperado.");
+            Assert.AreEqual(new Livro(43, "Jo", "João"), resultado_Joao_3.Parent, "Sugestão não retornou o livro esperado.");
+        }
+
+        /// <summary>
+        /// Teste de sugestões de Versículos
+        /// </summary>
+        [TestMethod]
+        public void BuscaPorTermoDeveRetornarVersiculoCorreto()
+        {
+            ISbItem resultado_Joao_3_16 = suggester.GetBetterFor("João 3:16");
+            Assert.AreEqual(new Versiculo(16, "Porque Deus amou ao mundo de tal maneira que deu o seu Filho unigênito, para que todo o que nele crê não pereça, mas tenha a vida eterna."),
+                resultado_Joao_3_16, "Sugestão não retornou o versículo esperado.");
+            Assert.AreEqual(new Capitulo(3), resultado_Joao_3_16.Parent, "Sugestão não retornou o capítulo esperado.");
+            Assert.AreEqual(new Livro(43, "Jo", "João"), resultado_Joao_3_16.Parent.Parent, "Sugestão não retornou o livro esperado.");
         }
     }
 }

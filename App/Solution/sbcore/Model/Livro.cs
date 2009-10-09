@@ -45,6 +45,16 @@ namespace sbcore.Model
             this.capitulos.Add(capitulo);
             return capitulo;
         }
+
+        public override bool Equals(object obj)
+        {
+            Livro livro = obj as Livro;
+            if ((object)livro == null) return false;
+            if (!Object.Equals(this.Numero, livro.Numero)) return false;
+            if (!Object.Equals(this.Acronimo, livro.Acronimo)) return false;
+            if (!Object.Equals(this.Nome, livro.Nome)) return false;
+            return true;
+        }
         #endregion
 
         #region ISbItem Members
