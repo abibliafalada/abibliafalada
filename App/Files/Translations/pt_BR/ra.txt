@@ -7458,7 +7458,7 @@ Capítulo:  4
 20 - Aminadabe gerou a Naassom, Naassom gerou a Salmom,
 21 - Salmom gerou a Boaz, Boaz gerou a Obede,
 22 - Obede gerou a Jessé, e Jessé gerou a Davi.
-Livro: ISm - 1 Samuel
+Livro: 1Sm - 1 Samuel
 Capítulo:  1
 1 - Houve um homem de Ramataim-Zofim, da região montanhosa de Efraim, cujo nome era Elcana, filho de Jeroão, filho de Eliú, filho de Toú, filho de Zufe, efraimita.
 2 - Tinha ele duas mulheres: uma se chamava Ana, e a outra, Penina; Penina tinha filhos; Ana, porém, não os tinha.
@@ -8301,7 +8301,7 @@ Capítulo:  31
 11 - Então, ouvindo isto os moradores de Jabes-Gileade, o que os filisteus fizeram a Saul,
 12 - todos os homens valentes se levantaram, e caminharam toda a noite, e tiraram o corpo de Saul e os corpos de seus filhos do muro de Bete-Seã, e, vindo a Jabes, os queimaram.
 13 - Tomaram-lhes os ossos, e os sepultaram debaixo de um arvoredo, em Jabes, e jejuaram sete dias.
-Livro: IISm - 2 Samuel
+Livro: 2Sm - 2 Samuel
 Capítulo:  1
 1 - Depois da morte de Saul, voltando Davi da derrota dos amalequitas e estando já dois dias em Ziclague,
 2 - sucedeu, ao terceiro dia, aparecer do arraial de Saul um homem com as vestes rotas e terra sobre a cabeça; em chegando ele a Davi, inclinou-se, lançando-se em terra.
@@ -9021,7 +9021,7 @@ Capítulo:  24
 23 - Tudo isto, ó rei, Araúna oferece ao rei; e ajuntou: Que o SENHOR, teu Deus, te seja propício.
 24 - Porém o rei disse a Araúna: Não, mas eu to comprarei pelo devido preço, porque não oferecerei ao SENHOR, meu Deus, holocaustos que não me custem nada. Assim, Davi comprou a eira e pelos bois pagou cinqüenta siclos de prata.
 25 - Edificou ali Davi ao SENHOR um altar e apresentou holocaustos e ofertas pacíficas. Assim, o SENHOR se tornou favorável para com a terra, e a praga cessou de sobre Israel.
-Livro: IRs - 1 Reis
+Livro: 1Rs - 1 Reis
 Capítulo:  1
 1 - Sendo o rei Davi já velho e entrado em dias, envolviam-no com roupas, porém não se aquecia.
 2 - Então, lhe disseram os seus servos: Procure-se para o rei, nosso senhor, uma jovem donzela, que esteja perante o rei, e tenha cuidado dele, e durma nos seus braços, para que o rei, nosso senhor, se aqueça.
@@ -9861,7 +9861,7 @@ Capítulo:  22
 52 - Acazias, filho de Acabe, começou a reinar sobre Israel em Samaria, no décimo sétimo ano de Josafá, rei de Judá; e reinou dois anos sobre Israel.
 53 - Fez o que era mau perante o SENHOR; porque andou nos caminhos de seu pai, como também nos caminhos de sua mãe e nos caminhos de Jeroboão, filho de Nebate, que fez pecar a Israel.
 54 - Ele serviu a Baal, e o adoro u, e provocou à ira ao SENHOR, Deus de Israel, segundo tudo quanto fizera seu pai.
-Livro: IIRs - 2 Reis
+Livro: 2Rs - 2 Reis
 Capítulo:  1
 1 - Depois da morte de Acabe, revoltou-se Moabe contra Israel.
 2 - E caiu Acazias pelas grades de um quarto alto, em Samaria, e adoeceu; enviou mensageiros e disse-lhes: Ide e consultai a Baal-Zebube, deus de Ecrom, se sararei desta doença.
@@ -10606,7 +10606,7 @@ Capítulo:  25
 28 - Falou com ele benignamente e lhe deu lugar de mais honra do que a dos reis que estavam com ele na Babilônia.
 29 - Mudou-lhe as vestes do cárcere, e Joaquim passou a comer pão na sua presença todos os dias da sua vida.
 30 - E da parte do rei lhe foi dada subsistência vitalícia, uma pensão diária, durante os dias da sua vida.
-Livro: ICr - 1 Crônicas
+Livro: 1Cr - 1 Crônicas
 Capítulo:  1
 1 - Adão, Sete, Enos,
 2 - Cainã, Maalalel, Jarede,
@@ -11578,7 +11578,7 @@ Capítulo:  29
 28 - Morreu em ditosa velhice, cheio de dias, riquezas e glória; e Salomão, seu filho, reinou em seu lugar.
 29 - Os atos, pois, do rei Davi, tanto os primeiros como os últimos, eis que estão escritos nas crônicas, registrados por Samuel, o vidente, nas crônicas do profeta Natã e nas crônicas de Gade, o vidente,
 30 - juntamente com o que se passou no seu reinado e a respeito do seu poder e todos os acontecimentos que se deram com ele, com Israel e com todos os reinos daquelas terras.
-Livro: IICr - 2 Crônicas
+Livro: 2Cr - 2 Crônicas
 Capítulo:  1
 1 - Salomão, filho de Davi, fortaleceu-se no seu reino, e o SENHOR, seu Deus, era com ele e o engrandeceu sobremaneira.
 2 - Falou Salomão a todo o Israel, aos capitães de mil e aos de cem, aos juízes e a todos os príncipes em todo o Israel, cabeças de famílias;
@@ -29475,7 +29475,7 @@ Capítulo:  16
 25 - Ora, àquele que é poderoso para vos confirmar segundo o meu evangelho e a pregação de Jesus Cristo, conforme a revelação do mistério guardado em silêncio nos tempos eternos,
 26 - e que, agora, se tornou manifesto e foi dado a conhecer por meio das Escrituras proféticas, segundo o mandamento do Deus eterno, para a obediência por fé, entre todas as nações,
 27 - ao Deus único e sábio seja dada glória, por meio de Jesus Cristo, pelos séculos dos séculos. Amém!
-Livro: ICo - 1 Coríntios
+Livro: 1Co - 1 Coríntios
 Capítulo:  1
 1 - Paulo, chamado pela vontade de Deus para ser apóstolo de Jesus Cristo, e o irmão Sóstenes,
 2 - à igreja de Deus que está em Corinto, aos santificados em Cristo Jesus, chamados para ser santos, com todos os que em todo lugar invocam o nome de nosso Senhor Jesus Cristo, Senhor deles e nosso:
@@ -29929,7 +29929,7 @@ Capítulo:  16
 22 - Se alguém não ama o Senhor, seja anátema. Maranata!
 23 - A graça do Senhor Jesus seja convosco.
 24 - O meu amor seja com todos vós, em Cristo Jesus.
-Livro: IICo - 2 Coríntios
+Livro: 2Co - 2 Coríntios
 Capítulo:  1
 1 - Paulo, apóstolo de Cristo Jesus pela vontade de Deus, e o irmão Timóteo, à igreja de Deus que está em Corinto e a todos os santos em toda a Acaia,
 2 - graça a vós outros e paz, da parte de Deus, nosso Pai, e do Senhor Jesus Cristo.
@@ -30726,7 +30726,7 @@ Capítulo:  4
 16 - E, uma vez lida esta epístola perante vós, providenciai por que seja também lida na igreja dos laodicenses; e a dos de Laodicéia, lede-a igualmente perante vós.
 17 - Também dizei a Arquipo: atenta para o ministério que recebeste no Senhor, para o cumprires.
 18 - A saudação é de próprio punho: Paulo. Lembrai-vos das minhas algemas. A graça seja convosco.
-Livro: ITs - 1 Tessalonicenses
+Livro: 1Ts - 1 Tessalonicenses
 Capítulo:  1
 1 - Paulo, Silvano e Timóteo, à igreja dos tessalonicenses em Deus Pai e no Senhor Jesus Cristo, graça e paz a vós outros.
 2 - Damos, sempre, graças a Deus por todos vós, mencionando-vos em nossas orações e, sem cessar,
@@ -30821,7 +30821,7 @@ Capítulo:  5
 26 - Saudai todos os irmãos com ósculo santo.
 27 - Conjuro-vos, pelo Senhor, que esta epístola seja lida a todos os irmãos.
 28 - A graça de nosso Senhor Jesus Cristo seja convosco.
-Livro: IITs - 2 Tessalonicenses
+Livro: 2Ts - 2 Tessalonicenses
 Capítulo:  1
 1 - Paulo, Silvano e Timóteo, à igreja dos tessalonicenses, em Deus, nosso Pai, e no Senhor Jesus Cristo,
 2 - graça e paz a vós outros, da parte de Deus Pai e do Senhor Jesus Cristo.
@@ -30872,7 +30872,7 @@ Capítulo:  3
 16 - Ora, o Senhor da paz, ele mesmo, vos dê continuamente a paz em todas as circunstâncias. O Senhor seja com todos vós.
 17 - A saudação é de próprio punho: Paulo. Este é o sinal em cada epístola; assim é que eu assino.
 18 - A graça de nosso Senhor Jesus Cristo seja com todos vós.
-Livro: ITm - 1 Timóteo
+Livro: 1Tm - 1 Timóteo
 Capítulo:  1
 1 - Paulo, apóstolo de Cristo Jesus, pelo mandato de Deus, nosso Salvador, e de Cristo Jesus, nossa esperança,
 2 - a Timóteo, verdadeiro filho na fé, graça, misericórdia e paz, da parte de Deus Pai e de Cristo Jesus, nosso Senhor.
@@ -30992,7 +30992,7 @@ Capítulo:  6
 19 - que acumulem para si mesmos tesouros, sólido fundamento para o futuro, a fim de se apoderarem da verdadeira vida.
 20 - E tu, ó Timóteo, guarda o que te foi confiado, evitando os falatórios inúteis e profanos e as contradições do saber, como falsamente lhe chamam,
 21 - pois alguns, professando-o, se desviaram da fé. A graça seja convosco.
-Livro: IITm - 2 Timóteo
+Livro: 2Tm - 2 Timóteo
 Capítulo:  1
 1 - Paulo, apóstolo de Cristo Jesus, pela vontade de Deus, de conformidade com a promessa da vida que está em Cristo Jesus,
 2 - ao amado filho Timóteo, graça, misericórdia e paz, da parte de Deus Pai e de Cristo Jesus, nosso Senhor.
@@ -31588,7 +31588,7 @@ Capítulo:  5
 18 - E orou, de novo, e o céu deu chuva, e a terra fez germinar seus frutos.
 19 - Meus irmãos, se algum entre vós se desviar da verdade, e alguém o converter,
 20 - sabei que aquele que converte o pecador do seu caminho errado salvará da morte a alma dele e cobrirá multidão de pecados.
-Livro: IPe - 1 Pedro
+Livro: 1Pe - 1 Pedro
 Capítulo:  1
 1 - Pedro, apóstolo de Jesus Cristo, aos eleitos que são forasteiros da Dispersão no Ponto, Galácia, Capadócia, Ásia e Bitínia,
 2 - eleitos, segundo a presciência de Deus Pai, em santificação do Espírito, para a obediência e a aspersão do sangue de Jesus Cristo, graça e paz vos sejam multiplicadas.
@@ -31699,7 +31699,7 @@ Capítulo:  5
 12 - Por meio de Silvano, que para vós outros é fiel irmão, como também o considero, vos escrevo resumidamente, exortando e testificando, de novo, que esta é a genuína graça de Deus; nela estai firmes.
 13 - Aquela que se encontra em Babilônia, também eleita, vos saúda, como igualmente meu filho Marcos.
 14 - Saudai-vos uns aos outros com ósculo de amor.
-Livro: IIPe - 2 Pedro
+Livro: 2Pe - 2 Pedro
 Capítulo:  1
 1 - Simão Pedro, servo e apóstolo de Jesus Cristo, aos que conosco obtiveram fé igualmente preciosa na justiça do nosso Deus e Salvador Jesus Cristo,
 2 - graça e paz vos sejam multiplicadas, no pleno conhecimento de Deus e de Jesus, nosso Senhor.
@@ -31764,7 +31764,7 @@ Capítulo:  3
 16 - ao falar acerca destes assuntos, como, de fato, costuma fazer em todas as suas epístolas, nas quais há certas coisas difíceis de entender, que os ignorantes e instáveis deturpam, como também deturpam as demais Escrituras, para a própria destruição deles.
 17 - Vós, pois, amados, prevenidos como estais de antemão, acautelai-vos; não suceda que, arrastados pelo erro desses insubordinados, descaiais da vossa própria firmeza;
 18 - antes, crescei na graça e no conhecimento de nosso Senhor e Salvador Jesus Cristo. A ele seja a glória, tanto agora como no dia eterno.
-Livro: IJo - 1 João
+Livro: 1Jo - 1 João
 Capítulo:  1
 1 - O que era desde o princípio, o que temos ouvido, o que temos visto com os nossos próprios olhos, o que contemplamos, e as nossas mãos apalparam, com respeito ao Verbo da vida
 2 - (e a vida se manifestou, e nós a temos visto, e dela damos testemunho, e vo-la anunciamos, a vida eterna, a qual estava com o Pai e nos foi manifestada),
@@ -31875,7 +31875,7 @@ Capítulo:  5
 19 - Sabemos que somos de Deus e que o mundo inteiro jaz no Maligno.
 20 - Também sabemos que o Filho de Deus é vindo e nos tem dado entendimento para reconhecermos o verdadeiro; e estamos no verdadeiro, em seu Filho, Jesus Cristo. Este é o verdadeiro Deus e a vida eterna.
 21 - Filhinhos, guardai-vos dos ídolos.
-Livro: IIJo - 2 João
+Livro: 2Jo - 2 João
 Capítulo:  1
 1 - O presbítero à senhora eleita e aos seus filhos, a quem eu amo na verdade e não somente eu, mas também todos os que conhecem a verdade,
 2 - por causa da verdade que permanece em nós e conosco estará para sempre,
@@ -31890,7 +31890,7 @@ Capítulo:  1
 11 - Porquanto aquele que lhe dá boas-vindas faz-se cúmplice das suas obras más.
 12 - Ainda tinha muitas coisas que vos escrever; não quis fazê-lo com papel e tinta, pois espero ir ter convosco, e conversaremos de viva voz, para que a nossa alegria seja completa.
 13 - Os filhos da tua irmã eleita te saúdam.
-Livro: IIIJo - 3 João
+Livro: 3Jo - 3 João
 Capítulo:  1
 1 - O presbítero ao amado Gaio, a quem eu amo na verdade.
 2 - Amado, acima de tudo, faço votos por tua prosperidade e saúde, assim como é próspera a tua alma.

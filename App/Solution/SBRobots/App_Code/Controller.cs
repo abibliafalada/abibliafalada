@@ -73,8 +73,8 @@ namespace SBRobots
 
                 /*Bots[1].BotDomain = Resources.BotDomain;
                 Bots[1].BotServer = Resources.BotServer;*/
-                Bots[1].BotUserName = "@hotmail.com";
-                Bots[1].BotPassword = "";
+                Bots[1].BotUserName = "abibliafalada@live.com";
+                Bots[1].BotPassword = "lu022005";
             }
             Bots[1].Start();
         }

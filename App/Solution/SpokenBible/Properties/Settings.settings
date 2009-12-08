@@ -8,5 +8,8 @@
     <Setting Name="VersaoVisualizadaNoSite" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="TraducaoAtual" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ntlh</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

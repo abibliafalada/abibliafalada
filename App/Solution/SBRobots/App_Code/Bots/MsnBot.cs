@@ -31,9 +31,58 @@ namespace SBRobots.Bots
                 return;
 
             messenger.Nameserver.OIMService.OIMReceived += new EventHandler<OIMReceivedEventArgs>(Nameserver_OIMReceived);
+            messenger.Nameserver.SignedIn += new EventHandler<EventArgs>(Nameserver_SignedIn);
+            messenger.Nameserver.ExceptionOccurred += new EventHandler<ExceptionEventArgs>(Nameserver_ExceptionOccurred);
+            messenger.Nameserver.AuthenticationError += new EventHandler<ExceptionEventArgs>(Nameserver_AuthenticationError);
+            messenger.ContactService.ServiceOperationFailed += new EventHandler<ServiceOperationFailedEventArgs>(ContactService_ServiceOperationFailed);
+            messenger.OIMService.ServiceOperationFailed += new EventHandler<ServiceOperationFailedEventArgs>(OIMService_ServiceOperationFailed);
+            messenger.StorageService.ServiceOperationFailed += new EventHandler<ServiceOperationFailedEventArgs>(StorageService_ServiceOperationFailed);
+            messenger.WhatsUpService.ServiceOperationFailed += new EventHandler<ServiceOperationFailedEventArgs>(WhatsUpService_ServiceOperationFailed);
+            messenger.Nameserver.WhatsUpService.GetWhatsUpCompleted += new EventHandler<GetWhatsUpCompletedEventArgs>(WhatsUpService_GetWhatsUpCompleted);
+
             messenger.Credentials = new Credentials(this.BotUserName, this.BotPassword, MsnProtocol.MSNP18);
 
             messenger.Connect();
+        }
+
+        void WhatsUpService_GetWhatsUpCompleted(object sender, GetWhatsUpCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void WhatsUpService_ServiceOperationFailed(object sender, ServiceOperationFailedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void StorageService_ServiceOperationFailed(object sender, ServiceOperationFailedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void OIMService_ServiceOperationFailed(object sender, ServiceOperationFailedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ContactService_ServiceOperationFailed(object sender, ServiceOperationFailedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void Nameserver_AuthenticationError(object sender, ExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void Nameserver_ExceptionOccurred(object sender, ExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void Nameserver_SignedIn(object sender, EventArgs e)
+        {
+            messenger.Owner.Status = (PresenceStatus)Enum.Parse(typeof(PresenceStatus), "altz");
         }
 
         public void Stop()

@@ -7,6 +7,7 @@ using Db4objects.Db4o;
 using SpokenBible.Presenter;
 using sbcore.Model;
 using SpokenBible.Properties;
+using SpokenBible.Components;
 
 namespace SpokenBible.Controller
 {
@@ -21,10 +22,10 @@ namespace SpokenBible.Controller
             {
                 if (index == null)
                 {
-                    index = new Index(Resources.indexFile);
-                    if (!System.IO.Directory.Exists(Resources.indexFile))
+                    index = new Index(SbDbManager.Index);
+                    if (!System.IO.Directory.Exists(SbDbManager.Index))
                     {
-                        index.CreateIndex(Resources.databaseFile);
+                        index.CreateIndex(SbDbManager.Index);
                     }
                 }
                 return index;
@@ -43,7 +44,7 @@ namespace SpokenBible.Controller
 
         public void Start()
         {
-            this.DefaultContainer = Container.GetContainer(Resources.databaseFile);
+            this.DefaultContainer = Container.GetContainer(SbDbManager.Database);
             MainPresenter presenter = new MainPresenter(this);
             presenter.ShowView();
         }

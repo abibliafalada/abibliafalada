@@ -25,6 +25,7 @@ using Lucene.Net.QueryParsers;
 using Lucene.Net.Documents;
 using SpokenBible.Properties;
 using SpokenBible.Helpers;
+using SpokenBible.Components;
 
 namespace SpokenBible.Presenter
 {
@@ -62,18 +63,16 @@ namespace SpokenBible.Presenter
             this.mainWindow.shortcuts.Navigate(this.shortcutsPage);
 
             //carregamento dos dados
-            IEnumerable < Livro > livros = from Livro l in controller.DefaultContainer
-                                           select l;
+            IEnumerable<Testamento> testamentos = from Testamento t in controller.DefaultContainer
+                                        select t;
+            IEnumerable<Livro> livros = from Livro l in controller.DefaultContainer
+                                        select l;
 
             this.textSuggest = new SimpleTextSuggester(livros, ActivateSbItem);
             this.sbItemSuggest = new SimpleSbItemSuggester(livros, ActivateSbItem);
 
-            this.shortcutsPage.VelhoTestamento = from Livro l in livros
-                                                 where l.Testamento.Acronimo == "AT"
-                                                 select l;
-            this.shortcutsPage.NovoTestamento = from Livro l in livros
-                                                 where l.Testamento.Acronimo == "NT"
-                                                 select l;
+            this.shortcutsPage.Traducoes = (new SbDbManager()).Databases;
+            this.shortcutsPage.Testamentos = testamentos;
 
             //carregamento das configurações salvas
             this.principalPage.busca.Text = this.controller.DefaultTerm;
@@ -282,5 +281,11 @@ namespace SpokenBible.Presenter
         }
         #endregion
 
+        #region Opções
+        internal void AdicionarTraducao(string traducao)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

@@ -2,47 +2,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:AltzControls;assembly=AltzControls">
 
-    <!-- SimpleStyles.XAML defines a set of control styles which are simplified starting points for creating your own controls -->
-
-    <!-- Brushes : These are used to define the color for background, foreground, selection, enabled etc of all controls
-	If you want to change the color of a control you can just chnage the brush; if you want to add a new shape or change arrangement then also edit the template -->
-
     <!-- NormalBrush is used as the Background for SimpleButton, SimpleRepeatButton -->
     <LinearGradientBrush x:Key="NormalBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#EEE" Offset="0.0"/>
-        <GradientStop Color="#CCC" Offset="1.0"/>
+        <GradientStop Color="#F90" Offset="0.0"/>
+        <GradientStop Color="#C70" Offset="1.0"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="NormalBorderBrush" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#CCC" Offset="0.0"/>
         <GradientStop Color="#444" Offset="1.0"/>
     </LinearGradientBrush>
 
-    <!-- LightBrush is used for content areas such as Menu, Tab Control background -->
-    <LinearGradientBrush x:Key="LightBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFF" Offset="0.0"/>
-        <GradientStop Color="#EEE" Offset="1.0"/>
-    </LinearGradientBrush>
-
     <!-- MouseOverBrush is used for MouseOver in Button, Radio Button, CheckBox -->
     <LinearGradientBrush x:Key="MouseOverBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#C70" Offset="0.0"/>
+        <GradientStop Color="#F90" Offset="1.0"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="MouseOverBorderBrush" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FFF" Offset="0.0"/>
-        <GradientStop Color="#AAA" Offset="1.0"/>
+        <GradientStop Color="#777" Offset="1.0"/>
     </LinearGradientBrush>
 
     <!-- PressedBrush is used for Pressed in Button, Radio Button, CheckBox -->
     <LinearGradientBrush x:Key="PressedBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#BBB" Offset="0.0"/>
-        <GradientStop Color="#EEE" Offset="0.1"/>
-        <GradientStop Color="#EEE" Offset="0.9"/>
-        <GradientStop Color="#FFF" Offset="1.0"/>
+        <GradientStop Color="#C70" Offset="0.0"/>
+        <GradientStop Color="#F90" Offset="1.0"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="PressedBorderBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#444" Offset="0.0"/>
-        <GradientStop Color="#888" Offset="1.0"/>
+        <GradientStop Color="#FFF" Offset="0.0"/>
+        <GradientStop Color="#777" Offset="1.0"/>
     </LinearGradientBrush>
 
     <!-- SelectedBackgroundBrush is used for the Selected item in ListBoxItem, ComboBoxItem-->
-    <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#DDD"/>
+    <LinearGradientBrush x:Key="SelectedBackgroundBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#9FF" Offset="0.0"/>
+        <GradientStop Color="#CCC" Offset="1.0"/>
+    </LinearGradientBrush>
 
     <!-- Disabled Brushes are used for the Disabled look of each control -->
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888"/>
@@ -54,8 +48,8 @@
 
     <!-- DefaultedBorderBrush is used to show KeyBoardFocus -->
     <LinearGradientBrush x:Key="DefaultedBorderBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#777" Offset="0.0"/>
-        <GradientStop Color="#000" Offset="1.0"/>
+        <GradientStop Color="#FFF" Offset="0.0"/>
+        <GradientStop Color="#777" Offset="1.0"/>
     </LinearGradientBrush>
 
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888"/>
@@ -86,11 +80,6 @@
         <GradientStop Color="#838383" Offset="1" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush x:Key="ButtonBrush" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#F90" Offset="0.0"/>
-        <GradientStop Color="#C70" Offset="1.0"/>
-    </LinearGradientBrush>
-    
     <LinearGradientBrush x:Key="BaseContainer" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#333" Offset="0.0"/>
         <GradientStop Color="#666" Offset="1.0"/>
@@ -135,17 +124,20 @@
 
                     <!-- We use Grid as a root because it is easy to add more elements to customize the button -->
                     <Grid x:Name="Grid">
-                        <Border x:Name="Border" CornerRadius="10" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBrush}" />
+                        <Border x:Name="Border" CornerRadius="10" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource NormalBrush}" />
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
                     </Grid>
 
                     <!--Each state sets a brush on the Border in the template -->
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="BorderThickness" Value="2" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource MouseOverBorderBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
@@ -162,15 +154,18 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Grid">
-                        <Border x:Name="Border" CornerRadius="0 10 10 0" Padding="{TemplateBinding Padding}" BorderThickness="0 1 1 1" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBrush}" />
+                        <Border x:Name="Border" CornerRadius="0 10 10 0" Padding="{TemplateBinding Padding}" BorderThickness="0 1 1 1" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource NormalBrush}" />
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            <Setter Property="BorderThickness" Value="0 2 2 2" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource MouseOverBorderBrush}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
@@ -267,9 +262,10 @@
 
     <Style TargetType="{x:Type TabItem}" BasedOn="{x:Null}">
         <Setter Property="Background" Value="{DynamicResource BaseColor3}"/>
-        <Setter Property="Foreground" Value="#EEE"/>
+        <Setter Property="Foreground" Value="#CCC"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseColor2}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin" Value="1 0"/>
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
@@ -277,24 +273,42 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid SnapsToDevicePixels="true">
                         <Border x:Name="Border" CornerRadius="10 10 0 0" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
-                        <ContentPresenter Margin="20 10" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Header}"/>
+                        <ContentPresenter Margin="10 7" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Header}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Background" Value="{DynamicResource BaseColor1}" TargetName="Border"/>
                             <Setter Property="Foreground" Value="{DynamicResource DefaultBorderBrush}"/>
                             <Setter Property="BorderThickness" Value="1 1 1 0"/>
-                        </Trigger>
-
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="#EEE" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Label}">
+                    <Grid SnapsToDevicePixels="true">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="TextoAjuda" TargetType="{x:Type TextBlock}">
     	<Setter Property="Foreground" Value="#FFA4A4A4"/>
 		<Setter Property="Background" Value="Transparent"/>

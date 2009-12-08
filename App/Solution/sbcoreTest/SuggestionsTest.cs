@@ -53,7 +53,7 @@ namespace sbcoreTest
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-            container = Container.GetContainer(@"../../../SpokenBible" + SpokenBible.Properties.Resources.databaseFile);
+            container = Container.GetContainer(@"../../../SpokenBible" + SpokenBible.Components.SbDbManager.Database);
             IEnumerable<Livro> livros = from Livro l in container
                                         select l;
             suggester = new SimpleSbItemSuggester(livros, ActivateSbItem);
