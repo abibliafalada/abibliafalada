@@ -7,6 +7,8 @@ using System.IO;
 using sbcore.Model;
 using sbcore.Persistence;
 using Db4objects.Db4o;
+using ICSharpCode.SharpZipLib.Zip;
+using System.Reflection;
 
 namespace SpokenBible.Components
 {
@@ -47,6 +49,12 @@ namespace SpokenBible.Components
                 }
                 return traducoes;
             }
+        }
+
+        public static void AddTranslation(string arquivo)
+        {
+            FastZip fz = new FastZip();
+            fz.ExtractZip(arquivo, Path.GetDirectoryName(Assembly.GetAssembly(typeof(SbDbManager)).Location) + defaultDir, "");
         }
     }
 }

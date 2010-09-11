@@ -282,9 +282,9 @@ namespace SpokenBible.Presenter
         #endregion
 
         #region Opções
-        internal void AdicionarTraducao(string traducao)
+        internal void AdicionarTraducao(string arquivo)
         {
-            throw new NotImplementedException();
+            SbDbManager.AddTranslation(arquivo);
         }
         #endregion
     }
