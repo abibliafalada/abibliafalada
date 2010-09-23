@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TraducaoAtual" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ntlh</Value>
+      <Value Profile="(Default)">deutsch</Value>
     </Setting>
   </Settings>
 </SettingsFile>

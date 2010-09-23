@@ -22,7 +22,7 @@ namespace SpokenBible.Controller
             {
                 if (index == null)
                 {
-                    index = new Index(SbDbManager.Index);
+                    index = new Index(SbDbManager.Database);
                     if (!System.IO.Directory.Exists(SbDbManager.Index))
                     {
                         index.CreateIndex(SbDbManager.Index);
@@ -45,6 +45,7 @@ namespace SpokenBible.Controller
         public void Start()
         {
             this.DefaultContainer = Container.GetContainer(SbDbManager.Database);
+            Index index = Index;
             MainPresenter presenter = new MainPresenter(this);
             presenter.ShowView();
         }

@@ -3,8 +3,7 @@
     <PublishUrlHistory>install\|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://ww2.abibliafalada.com.br/install/|http://spoken-bible.sourceforge.net/install/</InstallUrlHistory>
     <SupportUrlHistory>http://spoken-bible.sourceforge.net</SupportUrlHistory>
-    <UpdateUrlHistory>
-    </UpdateUrlHistory>
+    <UpdateUrlHistory>http://ww2.abibliafalada.com.br/install/</UpdateUrlHistory>
     <BootstrapperUrlHistory>
     </BootstrapperUrlHistory>
     <ErrorReportUrlHistory>http://spoken-bible.sourceforge.net</ErrorReportUrlHistory>

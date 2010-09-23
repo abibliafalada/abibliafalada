@@ -5,7 +5,7 @@
     <Canvas Height="400" Width="400">
         <StackPanel x:Name="conteudo" Orientation="Horizontal" Canvas.Left="-380" Height="400" Width="400">
             <TabControl x:Name="tabs" IsEnabled="False" Width="380" TabIndex="110">
-                <TabItem Header="Opções">
+                <TabItem Header="Opções" Visibility="Hidden">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80" />

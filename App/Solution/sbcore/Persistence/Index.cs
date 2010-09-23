@@ -16,9 +16,9 @@ namespace sbcore.Persistence
     {
         private string indexFileName = string.Empty;
 
-        public Index(string fileName)
+        public Index(string indexFileName)
         {
-            this.indexFileName = fileName;
+            this.indexFileName = indexFileName;
         }
 
         public IndexSearcher GetIndex()
@@ -29,10 +29,10 @@ namespace sbcore.Persistence
 
         public void CreateIndex(string containerFileName)
         {
-            IndexWriter writer = new IndexWriter(indexFileName, new StandardAnalyzer(), true);
+            IndexWriter writer = new IndexWriter(containerFileName, new StandardAnalyzer(), true);
             writer.SetUseCompoundFile(false);
 
-            IndexDatabase(writer, Container.GetContainer(containerFileName));
+            IndexDatabase(writer, Container.GetContainer(indexFileName));
 
             writer.Optimize();
             writer.Close();
