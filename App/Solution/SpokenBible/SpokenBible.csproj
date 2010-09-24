@@ -17,8 +17,8 @@
     <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <ApplicationIcon>biblia.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>79D34EE00632E1B8F11053D00E075A617DE1712A</ManifestCertificateThumbprint>
-    <ManifestKeyFile>SpokenBible_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>A5557168079FC589B0BC49DB439C311E94A8C128</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SpokenBible_1_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <ErrorReportUrl>http://spoken-bible.sourceforge.net</ErrorReportUrl>
@@ -27,18 +27,18 @@
     <PublishUrl>install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>1</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://ww2.abibliafalada.com.br/install/</UpdateUrl>
+    <UpdateUrl>http://ww2.abibliafalada.com.br/de/install/</UpdateUrl>
     <SupportUrl>http://spoken-bible.sourceforge.net</SupportUrl>
-    <TargetCulture>pt-BR</TargetCulture>
-    <ProductName>A Biblia Falada 2.0 - Gênesis</ProductName>
-    <PublisherName>A Biblia Falada</PublisherName>
+    <TargetCulture>de</TargetCulture>
+    <ProductName>A Biblia Falada 2.0 - Gênesis - Alemão</ProductName>
+    <PublisherName>A Biblia Falada - Alemão</PublisherName>
     <MinimumRequiredVersion>2.0.0.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
@@ -203,9 +203,38 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
-    <Content Include="Data\ra.yap">
+    <Content Include="Data\deutsch\deletable">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\deutsch\segments">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.f0">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.fdt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.fdx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.fnm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.frq">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.tii">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\deutsch\_qnz.tis">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Data\ra.yap">
+    </None>
     <Content Include="Data\deutsch.yap">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -213,6 +242,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SpokenBible_1_TemporaryKey.pfx" />
     <None Include="SpokenBible_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>

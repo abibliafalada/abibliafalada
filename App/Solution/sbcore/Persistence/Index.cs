@@ -14,25 +14,25 @@ namespace sbcore.Persistence
 {
     public class Index
     {
-        private string indexFileName = string.Empty;
+        private string indexFolderName = string.Empty;
 
-        public Index(string indexFileName)
+        public Index(string indexFolderName)
         {
-            this.indexFileName = indexFileName;
+            this.indexFolderName = indexFolderName;
         }
 
         public IndexSearcher GetIndex()
         {
-            IndexSearcher searcher = new IndexSearcher(indexFileName);
+            IndexSearcher searcher = new IndexSearcher(indexFolderName);
             return searcher;
         }
 
-        public void CreateIndex(string containerFileName)
+        public void CreateIndex(string databaseFileName)
         {
-            IndexWriter writer = new IndexWriter(containerFileName, new StandardAnalyzer(), true);
+            IndexWriter writer = new IndexWriter(indexFolderName, new StandardAnalyzer(), true);
             writer.SetUseCompoundFile(false);
 
-            IndexDatabase(writer, Container.GetContainer(indexFileName));
+            IndexDatabase(writer, Container.GetContainer(databaseFileName));
 
             writer.Optimize();
             writer.Close();

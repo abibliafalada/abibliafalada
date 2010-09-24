@@ -22,10 +22,10 @@ namespace SpokenBible.Controller
             {
                 if (index == null)
                 {
-                    index = new Index(SbDbManager.Database);
+                    index = new Index(SbDbManager.Index);
                     if (!System.IO.Directory.Exists(SbDbManager.Index))
                     {
-                        index.CreateIndex(SbDbManager.Index);
+                        index.CreateIndex(SbDbManager.Database);
                     }
                 }
                 return index;

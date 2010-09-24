@@ -24,6 +24,12 @@ namespace txt2sbdb
 
         public Program()
         {
+            Index i = new Index(@"..\..\..\SpokenBible\Data\deutsch.yap");
+            i.CreateIndex(@"..\..\..\SpokenBible\Data\deutsch");
+            Console.Write("foi!!!");
+            Console.ReadKey();
+            return;
+
             string arquivoIn = @"..\..\..\..\Files\Translations\pt_BR\ra.txt";
             string arquivoOut = @"..\..\..\SpokenBible\Data\database.yap";
             
