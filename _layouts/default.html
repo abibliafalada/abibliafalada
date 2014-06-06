@@ -6,34 +6,44 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
 
-        <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
-
+        <link rel="stylesheet" href="/semantic/css/semantic.min.css">
     </head>
     <body>
-
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-          </div>
-
-          {{ content }}
-
-          <div class="footer">
-            <div class="about">
-              <h2>Sobre</h2>
-              <p>
-                A Bíblia Falada possui recursos de leitura automática e é 
-                totalmente gratuita. Contém todos os textos das Sagradas Escrituras,
-                na versão Revista e Atualizada. A Bíblia Falada pode ser usada por
-                deficientes visuais ou cegos, uma vez que possui recursos de acessibilidade.
-              </p>
+        
+        <div class="ui inverted menu">
+            <div class="item">
+                <a href="/">{{ site.name }}</a>
             </div>
+            <div class="right menu">
+              <a class="item">Tudo sobre a Bíblia Falada</a>
+            </div>
+        </div>
+        
+        <div class="ui menu">
+          <a href="{{ site.url }}/" class="item">Início</a>
+          <a href="{{ site.url }}/telas.html" class="item">Telas</a>
+          <a href="{{ site.url }}/sobre.html" class="item">Sobre</a>
+          <div class="right menu">
+            <a href="{{ site.url }}/instalar.html"class="item">Instalar</a>
           </div>
+        </div>
+        
+        <div class="container">
+            {{ content }}
+        </div>
+        
+        <div class="ui horizontal icon divider">
+          <i class="circular info letter icon"></i>
+        </div>
+        
+        <div class="container">
+            <h2 class="ui header">Sobre</h2>
+            <p>A Bíblia Falada possui recursos de leitura automática e é 
+            totalmente gratuita. Contém todos os textos das Sagradas Escrituras,
+            na versão Revista e Atualizada. A Bíblia Falada pode ser usada por
+            deficientes visuais ou cegos, uma vez que possui recursos de acessibilidade.
+            </p>
         </div>
 
     </body>
