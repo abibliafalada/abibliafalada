@@ -14,6 +14,6 @@ Diga-nos o que achou selecionando a opção “Deixe um comentário” abaixo ou
 Você possui um site? Coloque o link da bíblia falada para que outros também possam conhecê-la:
 
 <a href="http://www.abibliafalada.com.br/abibliafalada/instalar">
-<img src="http://abibliafalada.media.multisites.net/wp-content/uploads/sites/22/2009/09/baixar.gif" alt="Baixar a Bíblia Falada 2.0"/>
+<img src="baixar.gif" alt="Baixar a Bíblia Falada 2.0"/>
 </a>
 

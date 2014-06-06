@@ -6,14 +6,14 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="{{ site.url }}/css/syntax.css">
-        <link rel="stylesheet" href="{{ site.url }}/semantic/css/semantic.min.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/semantic/css/semantic.min.css">
     </head>
     <body>
         
         <div class="ui inverted menu">
             <div class="item">
-                <a href="{{ site.url }}/">{{ site.name }}</a>
+                <a href="{{ site.baseurl }}/">{{ site.name }}</a>
             </div>
             <div class="right menu">
               <a class="item">Tudo sobre a Bíblia Falada</a>
@@ -21,11 +21,11 @@
         </div>
         
         <div class="ui menu">
-          <a href="{{ site.url }}/" class="item">Início</a>
-          <a href="{{ site.url }}/telas.html" class="item">Telas</a>
-          <a href="{{ site.url }}/sobre.html" class="item">Sobre</a>
+          <a href="{{ site.baseurl }}/" class="item">Início</a>
+          <a href="{{ site.baseurl }}/telas.html" class="item">Telas</a>
+          <a href="{{ site.baseurl }}/sobre.html" class="item">Sobre</a>
           <div class="right menu">
-            <a href="{{ site.url }}/instalar.html"class="item">Instalar</a>
+            <a href="{{ site.baseurl }}/instalar.html"class="item">Instalar</a>
           </div>
         </div>
         

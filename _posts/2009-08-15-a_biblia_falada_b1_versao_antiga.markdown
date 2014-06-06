@@ -13,11 +13,11 @@ Hoje esta versão tem registrados mais de 60.000 downloads pelo superdownloads e
 
 Veja como é a versão b1.0:
 
-![Tela de leitura com capítulo, livro e versículos]({{ site.url }}/img/tela_principal_de_leitura_da_biblia_falada_b1.jpg)
+![Tela de leitura com capítulo, livro e versículos]({{ site.baseurl }}/img/tela_principal_de_leitura_da_biblia_falada_b1.jpg)
 
 Imagem 1: Tela principal de leitura da Bíblia Falada b1
 
-![Tela de leitura com um assistente realizando a leitura]({{ site.url }}/img/leitura_dos_textos_biblicos_pelo_assistente_da_biblia_falada_b1.jpg)
+![Tela de leitura com um assistente realizando a leitura]({{ site.baseurl }}/img/leitura_dos_textos_biblicos_pelo_assistente_da_biblia_falada_b1.jpg)
 
 Imagem 2: Leitura dos textos bíblicos pelo assistente da Bíblia Falada b1
 
