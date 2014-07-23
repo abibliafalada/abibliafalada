@@ -1,4 +1,4 @@
 name: A Biblia Falada
 markdown: redcarpet
-pygments: true
+highlighter: null
 baseurl: /abibliafalada
