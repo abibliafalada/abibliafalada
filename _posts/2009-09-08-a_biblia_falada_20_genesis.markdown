@@ -13,7 +13,7 @@ Também disponibilizamos a função de exibição em tela cheia (pressione F11 n
 Diga-nos o que achou selecionando a opção “Deixe um comentário” abaixo ou pelo nosso twitter.
 Você possui um site? Coloque o link da bíblia falada para que outros também possam conhecê-la:
 
-<a href="http://www.abibliafalada.com.br/abibliafalada/instalar">
-<img src="baixar.gif" alt="Baixar a Bíblia Falada 2.0"/>
+<a href="http://www.abibliafalada.com.br/abibliafalada/instalar" class="btn btn-warning">
+Baixar a Bíblia Falada 2.0
 </a>
 

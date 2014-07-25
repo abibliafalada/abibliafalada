@@ -1,0 +1,50 @@
+/*****************************************************************************/
+/*
+/* Common
+/*
+/*****************************************************************************/
+
+body{
+  
+}
+
+h1, h2, h3, h4, h5{
+  font-family: 'Merriweather', serif;
+}
+
+p.lead{
+  font-weight: lighter; 
+  letter-spacing: 1px;
+}
+
+#cover .btn-default{
+  color: #FFF;
+  background-color: transparent;
+  border-color: #FFF;
+  margin-left: 15px;
+}
+
+#cover-icon{
+  font-size: 500%;
+  margin-bottom: 20px; 
+}
+
+.cover-content{
+  text-align: center;
+  color: #FFF;
+  width: 640px;
+  margin: 5% auto 0;
+  /*background: rgba(0, 0, 0, .1);
+  border: 1px solid #FFF;
+  border-color: rgba(255, 255, 255, .3);*/
+  padding: 30px;
+  border-radius: 4px;
+}
+
+/*post-list*/
+
+#post-list{
+  width: 640px;
+  margin: 0 auto;
+  padding: 50px;
+}
