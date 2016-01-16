@@ -1,0 +1,11 @@
+jekyll: &base
+  image: altieres/docker-jekyll-s3
+  volumes:
+    - .:/usr/src/app/site
+  ports:
+    - "4000:4000"
+
+site:
+  <<: *base
+  working_dir: /usr/src/app/site
+  command: bash -c 'jekyll build; s3_website push'

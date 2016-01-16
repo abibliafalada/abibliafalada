@@ -1,0 +1,35 @@
+---
+layout: default
+title: A Biblia Falada
+---
+
+<div class="cover">
+  <div class="cover-wrapper">
+    <div class="cover-container">
+      <div class="cover-content">
+      	<span class="fa fa-file-sound-o cover-icon"></span>
+        <h1>A Bíblia Falada</h1>
+        <p class="lead">A Bíblia Falada possui recursos de leitura automática e acessibilidade. Contém todos os textos das Sagradas Escrituras, na versão Revista e Atualizada. Baixe gratuitamente.</p>
+        <a href="{{ site.baseurl }}/instalar.html" class="btn btn-warning btn-lg"><span class="fa fa-windows"></span> Instalar no Windows</a>
+				<a href="#" id="more" class="btn btn-default btn-lg">Saiba mais</a></li>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="content">
+	<div class="row">
+		<div class="col-lg-8 col-md-8">
+			{% for post in site.posts %}
+				<div class="post-excerpt">
+					<h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+					<div class="post-date">{{ post.date | date_to_string }}</div>
+					{{ post.excerpt }}
+				</div>
+			{% endfor %}			
+		</div>
+		<div class="col-lg-4 col-md-4">
+			{% include sidebar.html %}
+		</div>
+	</div>
+</div>
