@@ -23,10 +23,9 @@ title: A Biblia Falada
 			{% for post in site.posts %}
 				<div class="post-excerpt">
 					<h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-					<div class="post-date">{{ post.date | date_to_string }}</div>
 					{{ post.excerpt }}
 				</div>
-			{% endfor %}			
+			{% endfor %}
 		</div>
 		<div class="col-lg-4 col-md-4">
 			{% include sidebar.html %}
