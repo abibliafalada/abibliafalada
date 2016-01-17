@@ -3,6 +3,4 @@ title: A Biblia Falada
 email: contato@abibliafalada.com.br
 description: "A Bíblia Falada possui recursos de acessibilidade e leitura automática com todos os textos das Sagradas Escrituras, na versão Revista e Atualizada."
 markdown: kramdown
-highlighter: null
-baseurl: ""
 excerpt_separator: <!--more-->
